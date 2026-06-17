@@ -4,8 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>ホーム</title>
-<link rel="stylesheet" href="/WebContent/css/style.css">
+<title>Insert title here</title>
 </head>
 <body>
 
