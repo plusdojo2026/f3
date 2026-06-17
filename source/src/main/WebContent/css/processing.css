@@ -1,1 +1,10 @@
 @charset "UTF-8";
+
+body {
+	width: 100%;
+	height: 100vh;
+	background-image: url("images/processBack.png");
+	background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
