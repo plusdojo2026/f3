@@ -11,7 +11,28 @@
 <!-- ロゴクリックでホーム行くやつ -->
 <a href="/servlet/HomeServlet"><img src=""></a>
 
+<!-- テーマ表示部 -->
 <h2>テーマ</h2>
+
+<!-- 音声追加 -->
+
+<!-- 音声選択 -->
+
+<!-- 通報 -->
+<label for="popupFlag">ポップアップを開く</label>
+
+<input type="checkbox" id="popupFlag" style="display:none">
+
+<div class="popup-background"></div>
+
+<div id="popwin" class="popup">
+    <span class="close-button"
+    onclick="document.getElementById('popupFlag').checked = false;">×</span>
+    <h3 style="color: white">ポップアップ内容</h3>
+    <p style="color: white">ここにメッセージを記載できます。</p>
+    <button id="button1">天国</button>
+</div>
+
 
 <!-- 加工機能全般 -->
 <div>
@@ -32,4 +53,9 @@
 	
 </div>
 </body>
+<script>
+document.getElementById('button1').onclick = function() {
+    window.alert('あなたには縁のない場所ですわ。');
+}
+</script>
 </html>
