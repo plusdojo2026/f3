@@ -3,16 +3,18 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="css/post.css">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 
 <!-- actionのurlを変更せよ -->
-	<form action="/PostServlet" method="post">
-		<input type="file" id="image">
-		<input type="text" id="theme" placeholder="テーマ（１０文字まで）">
-		<input type="range" id="number">
+	<form action="/f3/PostServlet" method="post">
+		<input type="file" id="image" name="image">
+		<input type="text" id="theme" name="theme" placeholder="テーマ（１０文字まで）">
+		<input type="range" id="number" name="number">
+		<input type="submit" value="送信">
 	</form>
 
 </body>
