@@ -9,6 +9,8 @@
 </head>
 <body>
 
+
+
 <h1 class="title">異物クロニクル</h1>
 <div class="input-box">
 	<label>ユーザーID</label>
@@ -21,15 +23,17 @@
 	<input type="text" name="password" id="password">
 </div>
 
+<div class ="loginButton">
+	<input type="image"src="" name="loginButton" id="loginButton" alt="渡してログイン">
+	
+</div>
+
+			
 <div class ="registerButton">
 	<input type="image"src="" name="registerButton" id="registerButton"alt="新規登録">
 	
 </div>
 
-<div class ="loginButton">
-	<input type="image"src="" name="loginButton" id="loginButton" alt="渡してログイン">
-	
-</div>			
 
 </body>
 </html>
