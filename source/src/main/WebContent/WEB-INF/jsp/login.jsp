@@ -22,7 +22,13 @@
 </div>
 
 <div class ="registerButton">
-	<input type="image"src>
+	<input type="image"src="" name="registerButton" id="registerButton"alt="新規登録">
+	
+</div>
+
+<div class ="loginButton">
+	<input type="image"src="" name="loginButton" id="loginButton" alt="渡してログイン">
+	
 </div>			
 
 </body>
