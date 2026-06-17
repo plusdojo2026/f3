@@ -3,9 +3,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="css/post.css">
+<link rel="stylesheet" href="/f3/css/post.css">
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>異物投稿</title>
+
 </head>
 <body>
 
