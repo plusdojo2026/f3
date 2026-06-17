@@ -3,14 +3,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet">
 <meta charset="UTF-8">
 <title>作品検索</title>
 </head>
 <body>
 	<!-- いいねボタン-->
 	<div class="good">
-	
-	
+	<form action"" method="GET">
+	<>
 	
 	</div>
 	<!-- きもいいねボタン-->
@@ -27,18 +28,14 @@
 	<!--作品画像サムネ -->
 	<div class="thumbnail">
 	
-	<a href=""><img src="">
+	
 	</div>
 	<!--ロゴ -->
 	<header>
 	<div class="logo">
-	<img src="" alt="異物クロニクル">
+	<img src="/WebContent/" alt="異物クロニクル">
 	</div>
 	</header>
-	<h1 id="logo">
-			<a href=""><img src=""
-				width="260" height="60" alt="名刺管理"></a>
-		</h1>
 		
 	
 </body>
