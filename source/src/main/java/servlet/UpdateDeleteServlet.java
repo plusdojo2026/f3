@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,13 +12,13 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class UpdateDeleteSevrlet
  */
 @WebServlet("/UpdateDeleteSevrlet")
-public class UpdateDeleteSevrlet extends HttpServlet {
+public class UpdateDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UpdateDeleteSevrlet() {
+    public UpdateDeleteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
