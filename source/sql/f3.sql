@@ -1,5 +1,7 @@
 CREATE DATABASE f3;
 
+
+
 /*ユーザ情報*/
 CREATE TABLE users (
 	user_id VARCHAR(20) PRIMARY KEY,/*ユーザID*/
