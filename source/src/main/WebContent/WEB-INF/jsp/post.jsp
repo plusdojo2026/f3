@@ -8,5 +8,12 @@
 </head>
 <body>
 
+<!-- actionのurlを変更せよ -->
+	<form action="/PostServlet" method="post">
+		<input type="file" id="image">
+		<input type="text" id="theme" placeholder="テーマ（１０文字まで）">
+		<input type="range" id="number">
+	</form>
+
 </body>
 </html>
