@@ -1,1 +1,63 @@
 @charset "UTF-8";
+
+body{
+	
+	margin:0;/*ブラウザ標準の余白を無くす*/
+    width:100vw;/*画面の横幅いっぱいにする*/
+    height:100vh;/*画面高さいっぱいにする*/
+	background-image:url("images/registBackground.png");/*背景画像を設定*/
+	background-size:cover;/*画面全体に背景画像を表示（必要に応じて画像を拡大・縮小する）*/
+    background-position:center;/*背景画像を中央揃えで表示*/
+    background-repeat:no-repeat;/*背景画像を繰り返し表示しない*/
+}
+
+.title1{
+	color:white;
+	font-size:50px;
+	margin-top:0px;/*上側の余白を0にする*/
+	margin-bottom:0px;/*下側の余白を-20pxにして、title2との間隔を狭くする*/
+}
+
+.title2{
+	color:gray;
+	font-size:40px;
+	margin-top:0;/* 上側の余白を0にする */
+}
+
+@font-face {
+    font-family: "taisyokatuji";
+    src: url("../font/taisyokatujippoi7T5.ttf") format("truetype");
+}
+
+.title1,
+.title2{
+    font-family: "taisyokatuji";
+}
+
+.newregist{
+	/* 画面中央下 */
+	position:absolute;
+
+	left:50%;
+	bottom:0;
+
+	transform:translateX(-50%);
+
+	/* テレビ画像 */
+	width:800px;
+	height:500px;
+
+	background-image:url("images/newRegist.png");
+	background-size:contain;
+	background-repeat:no-repeat;
+	background-position:center;
+	
+}
+	
+	
+
+
+
+
+
+
