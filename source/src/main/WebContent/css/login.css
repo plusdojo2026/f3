@@ -1,5 +1,88 @@
 @charset "UTF-8";
 
+
 body{
-	background-image:url("../img/loginBackground.png");
+	
+	margin:0;/*ブラウザ標準の余白を無くす*/
+    width:100vw;/*画面の横幅いっぱいにする*/
+    height:100vh;/*画面高さいっぱいにする*/
+	
+	background-image:url("images/loginBackground.png");/*背景画像を設定*/
+	
+	background-size:cover;/*画面全体に背景画像を表示（必要に応じて画像を拡大・縮小する）*/
+    background-position:center;/*背景画像を中央揃えで表示*/
+    background-repeat:no-repeat;/*背景画像を繰り返し表示しない*/
+}
+
+.title1{
+	color:white;
+	text-align:center;
+	font-size:80px;
+	margin-top:0px;/*上側の余白を0にする*/
+	margin-bottom:-20px;/*下側の余白を-20pxにして、title2との間隔を狭くする*/
+}
+
+.title2{
+	color:gray;
+	text-align:center;
+	font-size:60px;
+	margin-top:0;/* 上側の余白を0にする */
+}
+
+
+.paper{
+	position:absolute;/* 要素を好きな位置に配置できるようにする */
+	background-image:url("images/old_paper.png");/* 背景画像として古い紙を表示 */
+	transform:translate(-50%, -50%);/* 要素自身の幅・高さの半分だけ戻して完全中央にする */
+	top:55%;/* 画面上から55%の位置に配置 */
+	left:50%;/* 画面左から50%（中央）に配置 */
+	width:700px;/* 紙画像の横幅 */
+	height:300px;/* 紙画像の高さ */
+	background-size:contain;/* 画像の縦横比を維持したまま表示 */
+	background-position:center;/* 背景画像を中央に配置 */
+	background-repeat:no-repeat;/* 背景画像を繰り返し表示しない */
+	display:flex;/* 中の要素をFlexboxで配置 */
+	justify-content:center;	/* 縦方向の中央に配置 */
+	align-items:center;/* 横方向の中央に配置 */
+	gap:120px;/* 入力欄同士の間隔を30px空ける */	
+}
+
+.vertical-label{
+	writing-mode: vertical-rl;/*縦書きにする*/
+	text-orientation: upright;
+	font-size:10px;
+}
+
+.vertical-input{
+	writing-mode: vertical-rl;/* 縦書き */
+	text-orientation: upright;
+	height:250px;
+	width:50px;
+	font-size:24px;
+	border:2px solid black;
+	background: transparent;
+}
+
+.vertical-input::placeholder{
+
+	color:black;
+}
+
+/* ログイン画像ボタン */
+#loginButton{
+    position:absolute;/* 紙の中で位置指定 */
+    right:50px; /* 右下 */
+    bottom:40px;
+    width:120px;/* 画像サイズ */
+    height:auto;
+    cursor:pointer;/* マウスカーソルを指マークに */
+}
+
+#registerButton{
+    position:absolute;/* 紙の中で位置指定 */
+    left:50px; /* 右下 */
+    bottom:40px;
+    width:120px;/* 画像サイズ */
+    height:auto;
+    cursor:pointer;/* マウスカーソルを指マークに */
 }
