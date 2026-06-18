@@ -1,1 +1,9 @@
 @charset "UTF-8";
+body {
+	background-image:url("images/adminbackground.webp");
+	background-size: cover; 
+    background-repeat: no-repeat; 
+}
+textlogo {
+	display: flex
+}
