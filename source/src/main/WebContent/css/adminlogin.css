@@ -1,9 +1,113 @@
 @charset "UTF-8";
-body {
-	background-image:url("images/adminbackground.webp");
-	background-size: cover; 
-    background-repeat: no-repeat; 
+
+body{
+    margin:0;
+    overflow:hidden;
+    background:#000;
+
+    display:flex;
+    justify-content:center;
 }
-textlogo {
-	display: flex
+
+.screen{
+    position:relative;
+
+    width:1600px;
+    height:800px;
+
+    transform-origin: top center;
+}
+
+/* 背景 */
+.bg{
+    width:1600px;
+    height:800px;
+    display:block;
+}
+
+/* 上段 */
+.textlogo{
+    position:absolute;
+
+    top:120px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    display:flex;
+    align-items:center;
+    gap:300px;
+}
+
+.id{
+    font-size:24px;
+    color:white;
+
+    position:relative;
+    top:90px;
+    white-space: nowrap;
+    left:-130px;
+}
+
+.login{
+    font-size:24px;
+    color:white;
+	position:relative;
+    background:transparent;
+    border:none;
+    cursor:pointer;
+    top:50px;
+    left:10px;
+    font-size:24px;
+    font-weight: bold;
+}
+
+.password{
+	position:relative;
+    font-size:24px;
+    color:white;
+    white-space: nowrap;
+    top:85px;
+    left:180px;
+}
+
+/* 下段 */
+.center{
+    position:absolute;
+
+    top:350px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    display:flex;
+    align-items:center;
+    gap:120px;
+}
+
+/* ロゴ */
+.logo{
+    width:680px;
+    height:350px;
+
+    margin-top:-150px;
+}
+
+/* 入力欄 */
+input[name="admin_id"]{
+	position:relative;
+    width:200px;
+    height:80px;
+    font-size:20px;
+    left:30px;
+}
+
+input[name="password"]{
+	position:relative;
+    width:200px;
+    height:80px;
+    top:-20px;
+    left:30px;
+    font-size:20px;
+
 }
