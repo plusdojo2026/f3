@@ -23,6 +23,12 @@
 	<!-- メイン（ここから） -->
 	<main>
 	<!-- 画像がくる -->
+		<div class="form">
+			<form action="processing.jsp" method="post">
+				<p>加工画像<br>
+				<input type="text" name="picture"></p>
+			</form>
+		</div>
 		<div class="center">
 			<a href="post.jsp"><img src="/WebContent/images/home/異物投稿.png" width="105" height="140" alt="" class="post"></a>
 			<a href="search.jsp"><img src="/WebContent/images/home/異物探索.png" width="105" height="120" alt="" class="search"></a>
