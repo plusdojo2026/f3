@@ -12,23 +12,27 @@
 <body>
 	<!-- ヘッダー（ここから） -->
 	<header>
-	<a href="login.jsp"><img src="/WebContent/images/home/ログインボタン.png" width="70" height="80" alt=""></a>
-	<a href="login.jsp"><img src="/WebContent/images/home/ログアウト.png" width="70" height="80" alt=""></a>
-	<h1>異物クロニクル</h1>
-	<a href="login.jsp"><img src="/WebContent/images/home/でべそ.png" width="100" height="80" alt=""></a>
+		<div class="header">
+			<a href="login.jsp"><img src="/WebContent/images/home/ログインボタン.png" width="110" height="130" alt=""></a>
+			<a href="login.jsp"><img src="/WebContent/images/home/ログアウト.png" width="110" height="130" alt=""></a>
+			<a href="login.jsp"><img src="/WebContent/images/home/でべそ.png" width="140" height="120" alt=""></a>
+		</div>
+		<h1>異物クロニクル</h1>
 	</header>
 	<!-- ヘッダー（ここまで） -->
 	<!-- メイン（ここから） -->
 	<main>
-	<a href="post.jsp"><img src="/WebContent/images/home/異物投稿.png" width="70" height="80" alt=""></a>
-	<a href="search.jsp"><img src="/WebContent/images/home/異物探索.png" width="70" height="80" alt=""></a>
-	
-	<a href="setting.jsp"><img src="/WebContent/images/home/ホーム画面コイン.png" width="60" height="80" alt=""></a>
+	<!-- 画像がくる -->
+		<div class="center">
+			<a href="post.jsp"><img src="/WebContent/images/home/異物投稿.png" width="105" height="140" alt="" class="post"></a>
+			<a href="search.jsp"><img src="/WebContent/images/home/異物探索.png" width="105" height="120" alt="" class="search"></a>
+		</div>
+		<a href="setting.jsp"><img src="/WebContent/images/home/ホーム画面コイン.png" width="120" height="160" alt="" class="right" id="coin"></a>
 	</main>
 	<!-- メイン（ここまで） -->
 	<!-- フッター（ここから） -->
 	<!-- フッター（ここまで） -->
 	<!-- JavaScript（ここから） -->
-<
+
 </body>
 </html>
