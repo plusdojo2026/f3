@@ -1,1 +1,63 @@
 @charset "UTF-8";
+/* すべてのページ */
+@font-face {
+    font-family: 'taisyoKatuji';
+    src: url('/WebContent/font/taisyokatujippoi7T5.ttf') format('truetype');
+}
+/* 全画面共通のフォント設定 */
+html {
+font-family: 'taisyoKatuji', sans-serif;
+}
+
+/* ホーム画面 */
+html {
+background-image: url(/WebContent/images/home/ホーム背景.png);
+background-size: 95%;
+background-attachment: fixed;
+}
+body {
+    margin: 40px;
+}
+
+/* 異物クロニクル文字 */
+h1 {
+    font-family: 'taisyoKatuji', sans-serif;
+    color:white;
+    font-size: 5rem;
+    text-align: center;
+    margin-top: 0;
+}
+/* 加工画像（仮） */
+.form {
+    text-align: center;
+    color: white;
+}
+
+/* 設定、通知を右寄せ */
+.right {
+    display: block;
+    margin-left: auto;
+}
+/* 設定 */
+#coin {
+    position: relative;
+    top: -120px;
+}
+
+.header {
+    display: flex;
+    align-items: flex-start;
+}
+
+/* 異物探索、異物投稿 */
+.center {
+    text-align: center;
+}
+.post {
+    margin-left: 30px;
+    margin-right: 30px;
+}
+.search {
+    margin-left: 30px;
+    margin-right: 30px;
+}
