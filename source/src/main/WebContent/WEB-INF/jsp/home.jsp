@@ -26,7 +26,7 @@
 		<div class="form">
 			<form action="processing.jsp" method="post">
 				<p>加工画像<br>
-				<input type="text" name="picture"></p>
+				<input type="text" name="relay"></p>
 			</form>
 		</div>
 		<div class="center">
