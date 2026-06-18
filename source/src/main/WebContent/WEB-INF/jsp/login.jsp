@@ -38,8 +38,9 @@
 
 			
 <div class ="registerButton">
+	<a href="${pageContext.request.contextPath}/RegistServlet">
 	<input type="image"src="${pageContext.request.contextPath}/css/images/registration.png" name="registerButton" id="registerButton"alt="新規登録">
-	
+	</a>
 </div>
 
 
