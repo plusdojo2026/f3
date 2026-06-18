@@ -1,1 +1,146 @@
 @charset "UTF-8";
+/* body */
+body {
+    background-image: url("../images/searchBackgrond.png");
+    background-size: cover;
+    background-position: center;
+    /*スクロールしても背景固定？*/
+    background-attachment: fixed;
+    margin: 0;
+}
+
+/* ロゴ */
+.header {
+   display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px 40px;
+}
+
+.logo {
+    margin: 0 0 500 0;
+    width: 850px;
+    /* 幅を固定 */
+}
+
+
+/* 検索バー */
+.search {
+    display: flex;
+    flex-direction: column;
+    align-items:flex-end;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+/* いいねボタン */
+.good,
+.grossgood,
+.scarygood {
+    position: relative;
+    width: 140px;
+    height: 140px;
+}
+
+/* 指サイズ */
+.good-img {
+    
+ position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    z-index: 3;/* 重ね順 */
+
+}
+
+/* topサイズ */
+.top {
+    
+ position: absolute;
+    top: -10px;         
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90px;
+    z-index: 2;
+
+}
+
+/* bottomサイズ */
+.bottom {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 140px;
+    z-index: 1;
+}
+
+/* button */
+
+/* サムネと評価を横並びにする */
+.content {
+    display: flex;
+    align-items: center;
+    /*縦位置*/
+    gap: 40px;
+    /*サムネとボタン感覚*/
+    margin-top: 40px;
+}
+
+/* 評価を横並びにする */
+.evaluate {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+/* 表示順セレクト */
+
+/* プリティ愛 */
+.navi {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 10vw;
+    height: 100vh;
+    background-color: black;
+    padding-top: 20px;
+    box-sizing: border-box;
+    display: none;
+}
+
+/* 閉じるボタン */
+.close-button {
+    color: white;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+#naviFlag:checked+.navi-background,
+#naviFlag:checked+.navi-background+.navi {
+    display: block;
+}
+
+#naviwin a {
+    font-size: 30px;
+}
+
+/* 常識を破壊するボタン 再読み込み */
+.fetch{ 
+ background: none;
+    border: none;
+    padding: 0;
+    margin-left: auto; 
+}
+.fetch img {
+    width: 100px;
+    display: block;/*隙間削除*/
+}
+.fetch-zoon {
+    display: flex;
+    justify-content: flex-end;
+}

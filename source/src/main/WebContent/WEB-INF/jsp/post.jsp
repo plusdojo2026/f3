@@ -15,12 +15,20 @@
 <!-- ナビゲーション -->
 	<div class="logo">LOGO</div>
 	<input type="checkbox" id="menu-toggle" class="menu-toggle">
-	<label for="menu-toggle" class="menu-icon>
+	<label for="menu-toggle" class="menu-icon">
 	<span></span>
 	<span></span>
 	<span></span>
 	</label>
 	<nav class="menu">
+		<ul>
+		<li><a class="naviLetter" href="">ログイン</li>
+		<li><a class="naviLetter" href="">異物探索</li>
+		<li><a class="naviLetter" href="">通知</li>
+		<li><a class="naviLetter" href="">設定</li>
+		<li><a class="naviLetter" href="">ログアウト</li>
+		</ul>
+		</nav>
 	
 <!-- actionのurlを変更せよ -->
 	<form action="/f3/PostServlet" method="post">
