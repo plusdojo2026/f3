@@ -9,13 +9,25 @@
 
 </head>
 <body>
+<!-- タイトルロゴ。画像をもらって挿入せよ -->
+<a href="Home.Servlet"><img src="" alt="タイトルロゴ"></a>
 
+<!-- ナビゲーション -->
+	<div class="logo">LOGO</div>
+	<input type="checkbox" id="menu-toggle" class="menu-toggle">
+	<label for="menu-toggle" class="menu-icon>
+	<span></span>
+	<span></span>
+	<span></span>
+	</label>
+	<nav class="menu">
+	
 <!-- actionのurlを変更せよ -->
 	<form action="/f3/PostServlet" method="post">
 		<input type="file" id="image" name="image">
 		<input type="text" id="theme" name="theme" placeholder="テーマ（１０文字まで）">
 		<input type="range" id="number" name="number">
-		<input type="submit" value="送信">
+		<input type="submit" value="投稿">
 	</form>
 
 </body>
