@@ -15,3 +15,45 @@ body {
 	height: auto;
 }
 
+.logo {
+	font-size: 20px;
+}
+
+.menu-icon {
+	display:flex;
+	flex-direction: column;
+	gap: 5px;
+	cursor: pointer;
+	
+}
+
+.menu-icon span {
+	display: block;
+	width: 25px;
+	height: 3px;
+	background-color: #fff;
+}
+
+/* メニューの非表示設定*/
+.menu {
+	display: none;
+}
+
+.menu ul {
+	list-style: none;
+	padding: 0;
+}
+
+.menu ul li a {
+	text-decoration: none;
+	color: #fff;
+}
+
+/* チェックボックスがオンの場合にメニューを表示 */
+#menu-toggle {
+	display:none;
+}
+
+#menu-toggle:checked + .menu-icon + .menu {
+	display:block;
+}
