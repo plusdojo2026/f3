@@ -19,7 +19,7 @@ body{
 	text-align:center;
 	font-size:80px;
 	margin-top:0px;/*上側の余白を0にする*/
-	margin-bottom:-20px;/*下側の余白を-20pxにして、title2との間隔を狭くする*/
+	margin-bottom:-10px;/*下側の余白を-20pxにして、title2との間隔を狭くする*/
 }
 
 .title2{
@@ -85,4 +85,15 @@ body{
     width:120px;/* 画像サイズ */
     height:auto;
     cursor:pointer;/* マウスカーソルを指マークに */
+}
+
+
+@font-face {
+    font-family: "taisyokatuji";
+    src: url("../font/taisyokatujippoi7T5.ttf") format("truetype");
+}
+
+.title1,
+.title2{
+    font-family: "taisyokatuji";
 }
