@@ -4,7 +4,7 @@
 <html>
 
 <head>
-	<link rel="stylesheet" href="WebContent/css/search.css">
+	<link rel="stylesheet" href="f3/css/search.css">
 	<meta charset="UTF-8">
 	<title>作品検索</title>
 </head>
@@ -40,7 +40,7 @@
 		<!--検索バー -->
 		<div class="search">
 
-			<form method="GET" action="/f3/SearchServlet">
+			<form method="GET" action="">
 				<input type="search" name="search" value="">
 			</form>
 
@@ -58,27 +58,27 @@
 	<div class="content">
 		<!--作品画像サムネ -->
 		<div class="thumbnail">
-			<img src="images/" class="thumbnail-img">
+			
 			<input type="search" name="search" value="サムネイルだよーん">
 		</div>
 		<div class="evaluate">
 			<!-- いいねボタン-->
 			<div class="good">
-				<img src="/f3/css/images/prettyAiSitting.png" class="bottom"><!-- マンホール画像-->
-				<img src="/f3/css/images/prettyAiSitting.png" class="good-img"><!-- ゆび画像-->
-				<img src="/f3/css/images/prettyAiSitting.png" class="top"><!-- メッセージ画像-->
+				<img src="/f3/css/images/search/goodBack.png" class="bottom"><!-- マンホール画像-->
+				<img src="/f3/css/images/search/good.png" class="good-img"><!-- ゆび画像-->
+				<img src="/f3/css/images/search/goodMessage.png" class="top"><!-- メッセージ画像-->
 			</div>
 			<!-- きもいいねボタン-->
 			<div class="grossgood">
-				<img src="images/grossgoodBack.png" class="bottom"><!-- テントウムシ画像-->
-				<img src="images/good.png" class="good-img"><!-- ゆび画像-->
-				<img src="images/grossgoodMessage.png" class="top"><!-- メッセージ画像-->
+				<img src="/f3/css/images/search/grossgoodBack.png" class="bottom"><!-- テントウムシ画像-->
+				<img src="/f3/css/images/search/good.png" class="good-img"><!-- ゆび画像-->
+				<img src="/f3/css/images/search/grossgoodMessage.png" class="top"><!-- メッセージ画像-->
 			</div>
 			<!-- こわいいねボタン-->
 			<div class="scarygood">
-				<img src="images/scarygoodBack.png" class="bottom"><!-- 顔面画像-->
-				<img src="images/good.png" class="good-img"><!-- ゆび画像-->
-				<img src="images/scarygoodMessage .png" class="top"><!-- メッセージ画像-->
+				<img src="/f3/css/images/search/scarygoodBack.png" class="bottom"><!-- 顔面画像-->
+				<img src="/f3/css/images/search/good.png" class="good-img"><!-- ゆび画像-->
+				<img src="/f3/css/images/search/scarygoodMessage .png" class="top"><!-- メッセージ画像-->
 			</div>
 		</div>
 	</div>
@@ -86,7 +86,7 @@
 	<div class="fetch-zoon">
 	<button type="button" class="fetch" onclick="window.location.reload(true);">
 
-		<img src="images/load.png"  alt="作品をさらに表示する">
+		<img src="/f3/css/images/load.png"  alt="作品をさらに表示する">
 	</button>
 </div>
 

@@ -6,12 +6,21 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/f3/css/processing.css">
 <title>異物加工</title>
+<style>
+#caption {
+width: 210px;
+height: 70px;
+background-color: transparent;
+color: white;
+}
+
+</style>
 </head>
 <body>
 <!-- ロゴクリックでホーム行くやつ -->
-<a href="/servlet/HomeServlet"><img src=""></a>
+<a href="/f3/HomeServlet"><img src="/f3/css/images/logoAnker.png" style="position: absolute; width: 20vw; height: auto; left: 1vw; top: 2vh;"></a>
 <!-- ナビゲーション -->
-<label for="naviFlag"><img src="/f3/css/images/prettyAiSitting.png" style="width: 10vw; height: auto; top: 20vh;"></label>
+<label for="naviFlag"><img src="/f3/css/images/prettyAiSitting.png" style="position: absolute; width: 7vw; height: auto; top: 80vh; left: 0vw;"></label>
 
 <input type="checkbox" id="naviFlag" style="display:none">
 
@@ -30,7 +39,7 @@
 </div>
 
 <!-- テーマ表示部 -->
-<div id="theme">
+<div id="themeContainer">
 <h2>テーマ</h2>
 <img src="/f3/css/images/themebox.png">
 </div>
@@ -49,7 +58,23 @@
 
 <!-- 加工の種類 -->
 <div class="kindContainer">
-<img src="/f3/css/images/processKind2.png" alt="加工種類の背景">
+<img src="/f3/css/images/processKind2.png" alt="加工種類の背景" style="z-index: 900;">
+<div class="pTag" style="position: absolute; left: 4vw; top: 4vh;">
+<p id=kind1 style="">フィルム加工</p><br>
+<p id=kind2 style="">ケージ変形</p><br>
+<p id=kind3 style="">モザイク</p><br>
+<p id=kind4 style="">拡大・縮小</p><br>
+<p id=kind5 style="">背景透過</p><br>
+<p id=kind6 style="">サンプル画像と合成</p><br>
+<p id=kind7 style="">消しゴムマジック</p><br>
+<p id=kind8 style="">3Dデータと合成</p><br>
+<p id=kind9 style="">エフェクト</p><br>
+<p id=kind10 style="">吹き出し</p><br>
+<p id=kind11 style="">ぼかし</p><br>
+<p id=kind12 style="">明るさ変更</p><br>
+<p id=kind13 style="">お絵描き</p><br>
+<p id=kind14 style="">画像ランダム変化</p>
+</div>
 </div>
 
 
@@ -79,8 +104,9 @@
     <p>選べ、死にたくなければな</p>
 </div>
 <!-- キャプション 送信は音声や画像加工とまとめて-->
-<div id="caption">
-<input type="text" placeholder="キャプション">
+<div class="caption" style="position: relative; top: 77vh; left: 30vw;">
+<img src="/f3/css/images/proCaption.png" alt="キャプションボックス画像" style="position: absolute; width: 20vw; height: auto;">
+<input id="caption" type="text" placeholder="キャプション" style="position: absolute; top: 4vh; left: 3vw">
 </div>
 
 
