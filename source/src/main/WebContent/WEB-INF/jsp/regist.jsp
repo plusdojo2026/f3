@@ -27,10 +27,10 @@
     <span class="close-button"onclick="document.getElementById('naviFlag').checked = false;">×</span>
     <br><br><br><br>
     <a href="LoginServlet" style="color: white;">ログイン</a><br><br>
-    <a href="" style="color: white;">異物探索</a><br><br>
-    <a href="" style="color: white;">通知</a><br><br>
-    <a href="" style="color: white;">設定</a><br><br>
-    <a href="" style="color: white;">ログアウト</a>
+    <a href="PostServlet" style="color: white;">異物探索</a><br><br>
+    <a href="HomeServlet" style="color: white;">通知</a><br><br>
+    <a href="SettingServlet" style="color: white;">設定</a><br><br>
+    <a href="LogoutServlet" style="color: white;">ログアウト</a>
 
 </div>
 
