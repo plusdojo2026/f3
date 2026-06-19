@@ -127,7 +127,7 @@ public class UsersDao {
 
 				// SQL
 				String sql =
-						"SELECT COUNT(*) FROM users WHERE userid = ?";
+						"SELECT COUNT(*) FROM users WHERE user_id = ?";
 
 				PreparedStatement pStmt =
 						conn.prepareStatement(sql);
