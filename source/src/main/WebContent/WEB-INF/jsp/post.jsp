@@ -7,6 +7,14 @@
 <meta charset="UTF-8">
 <title>異物投稿</title>
 <style>
+/* ロゴ */
+.logo img {
+position: absolute;
+width: 20vw;
+height: auto;
+top: 2vh;
+left: 2vw;
+}
 /* ナビゲーション */
 .navi {
         position: absolute;
@@ -58,17 +66,33 @@ left: 43vw;
             display: none; /* 初期状態では非表示 */
         }
 
+#theme {
+border: 3px solid black;
+background-color: white;
+width: 300px;
+height: 34px;
+font-size: 30px
 
+}
+
+#number {
+-webkit-appearane: none;
+appearance: none;
+background: #F5B31B;
+}
 </style>
 
 </head>
 <body>
 
 <!-- タイトルロゴ。画像をもらって挿入せよ -->
-<a href="Home.Servlet"><img src="" alt="タイトルロゴ"></a>
+<div class="logo">
+	<a href="/f3/servlet/HomeServlet.java"><img src="/f3/css/images/logoAnker.png" alt="タイトルロゴ"></a>
+</div>
+
 
 <!-- ナビゲーション -->
-<label for="naviFlag"><img src="/f3/css/images/prettyAiSitting.png" style="width: 10vw; height: auto; top: 20vh;"></label>
+<label for="naviFlag"><img src="/f3/css/images/prettyAiSitting.png" style="position: absolute; width: 10vw; height: auto; left: 0vw; top: 80vh;"></label>
 
 <input type="checkbox" id="naviFlag" style="display:none">
 
@@ -99,13 +123,13 @@ left: 43vw;
 		
 		
 	<!-- テーマ -->	
-	<div class="theme" style="position: absolute; top: 30vh; left: 80vw;">
+	<div class="theme" style="position: absolute; top: 30vh; left: 70vw;">
 		<input type="text" id="theme" name="theme" placeholder="テーマ（１０文字まで）">
 	</div>
 	
 	<!-- 人数指定メーター -->
 	<div class="number" style="position: absolute; top: 90vh; left: 50vw;">
-		<input type="range" id="number" name="number">
+		<input type="range" id="number" name="number" min="3" max="7" value="5">
 	</div>
 	
 	<!-- 投稿ボタン -->
@@ -146,6 +170,12 @@ left: 43vw;
                 noImageText.style.display = 'block';
             }
         });
+        
+/* 人数指定 */
+/* input要素を取得 */
+let slider = document.querySelector('#number');
+
+/* バーの色を現在地に合わせる */
 </script>
 </html>
 
