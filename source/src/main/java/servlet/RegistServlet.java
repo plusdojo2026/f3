@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.UsersDao;
+import dto.Users;
+
 /**
  * Servlet implementation class RegistServlet
  */
@@ -35,7 +38,44 @@ public class RegistServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-	}
+		
+		request.setCharacterEncoding("UTF-8");
 
+		// 入力値取得
+		String userId =request.getParameter("userId");
+		String userName =request.getParameter("userName");
+		String password =request.getParameter("password");
+		String email =request.getParameter("mailAddress");
+		
+		//DTO
+		Users user =new Users(userId,userName,password,email,false,false);
+		
+		//登録処理
+		UsersDao dao =new UsersDao();
+		
+		if (dao.isExistUserId(userId)) {
+
+			request.setAttribute("errorMsg","このユーザーIDは既に使用されています");
+
+			request.getRequestDispatcher("/WEB-INF/jsp/regist.jsp")
+			.forward(request, response);
+
+			return;
+		}
+		
+		if(dao.insert(user)) {
+			//登録成功
+			response.sendRedirect(
+					request.getContextPath()+"/LoginServlet");
+		}else {
+
+			// 登録失敗
+			request.setAttribute("errorMsg",
+					"登録に失敗しました");
+
+			request.getRequestDispatcher(
+					"/WEB-INF/jsp/regist.jsp")
+					.forward(request, response);
+		}
+	}
 }
