@@ -1,1 +1,9 @@
 @charset "UTF-8";
+@font-face {
+    font-family: 'taisyoKatuji';
+    src: url('taisyokatujippoi7T5.ttf') format('truetype');
+}
+/* 全画面共通のフォント */
+html {
+font-family: 'taisyoKatuji', sans-serif;
+}

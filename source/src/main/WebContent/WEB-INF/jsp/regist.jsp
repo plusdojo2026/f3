@@ -136,6 +136,51 @@ document.getElementById("join")
 .addEventListener("click", function(event){
 
 	event.preventDefault(); // 画像ボタンの送信を止める
+	
+	// 入力欄取得
+	const userName = document.getElementById("userName");
+	const userId = document.getElementById("userId");
+	const password = document.getElementById("password");
+	const mailAddress = document.getElementById("mailAddress");
+
+	// エラーフラグ
+	let hasError = false;
+
+	// 一旦赤枠を消す
+	userName.classList.remove("error");
+	userId.classList.remove("error");
+	password.classList.remove("error");
+	mailAddress.classList.remove("error");
+
+	// ユーザー名
+	if(userName.value.trim() === ""){
+		userName.classList.add("error");
+		hasError = true;
+	}
+
+	// ユーザーID
+	if(userId.value.trim() === ""){
+		userId.classList.add("error");
+		hasError = true;
+	}
+
+	// パスワード
+	if(password.value.trim() === ""){
+		password.classList.add("error");
+		hasError = true;
+	}
+
+	// メールアドレス
+	if(mailAddress.value.trim() === ""){
+		mailAddress.classList.add("error");
+		hasError = true;
+	}
+
+	// 未入力があれば終了
+	if(hasError){
+		alert("項目を入力してください");
+		return;
+	}
 
 	document.getElementById("termsModal").style.display = "block";
 

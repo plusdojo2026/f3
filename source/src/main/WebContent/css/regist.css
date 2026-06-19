@@ -201,7 +201,13 @@ font-size: 30px;
 	cursor:pointer;
 }
 
-
+#userName.error,
+#userId.error,
+#password.error,
+#mailAddress.error{
+	border:3px solid red !important;
+	background-color:#ffe5e5 !important;
+}
 
 
 
