@@ -18,7 +18,7 @@
 		    <input type="password" name="password" placeholder="パスワード"><br>
             <input type="submit" name="submit" value="変更">
             <input type="submit" name="submit" value="退会"><br>
-           	<!-- 利用規約と退会ボタンはsubmitではないはず -->  
+           	<!-- 利用規約はsubmitではないはず -->  
         </form>
         <form action="SettingServlet" method="post">
            <input type="submit" name="" value="利用規約"> 
@@ -29,12 +29,12 @@
     <input type="checkbox" id="naviFlag" style="display:none">
     <div class="navi-background"></div>
     <div id="naviwin" class="navi">
-        <span class="close-button" onclick="document.getElementById('naviFlag').checked = false;">罪</span><br><br><br><br>
-        <a href="" style="color: white;">ログイン</a><br><br>
-        <a href="" style="color: white;">異物探索</a><br><br>
-        <a href="" style="color: white;">通知</a><br><br>
-        <a href="" style="color: white;">設定</a><br><br>
-        <a href="" style="color: white;">ログアウト</a>
+        <span class="close-button" onclick="document.getElementById('naviFlag').checked = false;">➡➡➡　罪</span><br><br><br><br>
+        <a href="WebContent/login.jsp" style="color: white;">ログイン</a><br><br>
+        <a href="WebContent/search.jsp" style="color: white;">異物探索</a><br><br>
+        <a href="WebContent/.jsp" style="color: white;">通知</a><br><br>
+        <a href="WebContent/setting.jsp" style="color: white;">設定</a><br><br>
+        <a href="WebContent/login.jsp" style="color: white;">ログアウト</a>
     </div>
 </body>
 </html>

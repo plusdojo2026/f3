@@ -1,7 +1,16 @@
 @charset "UTF-8";
+/* すべてのページ */
+@font-face {
+    font-family: 'taisyoKatuji';
+    src: url('/WebContent/font/taisyokatujippoi7T5.ttf') format('truetype');
+}
+/* 全画面共通のフォント設定 */
+html {
+font-family: 'taisyoKatuji', sans-serif;
+}
 /* 設定画面全体 */
 html {
-background-image: url(images/自販機ぱふぇ.png);
+background-image: url(WebContent/images/setting/自販機ぱふぇ.png);
 background-size: 100%;
 background-attachment: fixed;
 }
@@ -30,9 +39,9 @@ input[type="submit"] {
     position: absolute;
     top: 0;
     left:0;
-    width: 10vw;
+    width: 13vw;
     height: 100vh;
-    background-color: black;
+    background-color: rgb(65, 28, 66);
     padding-top: 20px;
     box-sizing: border-box;
     display: none;
