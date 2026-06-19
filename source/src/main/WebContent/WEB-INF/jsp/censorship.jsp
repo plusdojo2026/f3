@@ -16,7 +16,7 @@
 			<a href="/f3/CensorshipServlet"><img src="images/adminlogo.png" class="logo" alt="管理者ページ"></a>
 		</div>
 		<div class="ban">
-			<a href="/f3/BanshipServlet"><img src="images/teapott.png" class="ban" alt="通報確認"></a>
+			<a href="/f3/BanServlet"><img src="images/teapott.png" class="ban" alt="通報確認"></a>
 		</div>
 	</div>
 	<!-- ここにc:forEach -->

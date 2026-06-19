@@ -4,13 +4,15 @@ body{
     margin:0;
     overflow:hidden;
     background:#000;
+    background-size: 95%;
+    background-image: url("images/adminbackground.webp");
 
     display:flex;
     justify-content:center;
 }
-
 .screen{
     position:relative;
+    background-size: 95%;
 
     width:1600px;
     height:800px;
@@ -53,13 +55,13 @@ body{
     font-size:24px;
     color:white;
 	position:relative;
-    background:transparent;
-    border:none;
     cursor:pointer;
     top:50px;
     left:10px;
     font-size:24px;
     font-weight: bold;
+    background:transparent;
+    border:none;
 }
 
 .password{
@@ -88,9 +90,10 @@ body{
 /* ロゴ */
 .logo{
     width:680px;
-    height:350px;
+    height:250px;
 
-    margin-top:-150px;
+    margin-top:-50px;
+    
 }
 
 /* 入力欄 */
