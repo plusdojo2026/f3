@@ -10,30 +10,45 @@
 <body>
 	<div class="top">
 		<div class="logout">
-			<a href="/f3/LogoutServlet"><img src="images/teaflower.png"  alt="ログアウト"></a>
-			<span class="logoutcap">ログアウト</span>
+			<a href="/f3/LogoutServlet"><img src="images/ログアウト.png" class="flower" alt="ログアウト"></a>
 		</div>
 		<div>
 			<a href="/f3/CensorshipServlet"><img src="images/adminlogo.png" class="logo" alt="管理者ページ"></a>
 		</div>
 		<div class="ban">
-			<a href="/f3/BanshipServlet"><img src="images/teapott.png" alt="通報確認"></a>
-			<span class="bancap">通報確認</span>
+			<a href="/f3/BanshipServlet"><img src="images/teapott.png" class="ban" alt="通報確認"></a>
 		</div>
 	</div>
 	<!-- ここにc:forEach -->
 	<div class="censorlist">
-		<img src="images/teaflower.png"><!-- ここにc:forEach -->
+		<img src="images/ログアウト.png" class="img"><!-- ここにc:forEach -->
 		<input type="text" name="caption" value="テストです">
-		<button type="button" onclick="playAudio()">音声</button>
-		<button type="submit" class="undo" name="undo" value="取り消し">
-			<img src="images/teabag.png" alt="取り消しボタン">
+		<button type="button" onclick="playAudio()" class="voice">
+			<img src="images/再生ボタン.png" class="voice" alt="再生ボタン">
 		</button>
-		<input type="submit" class="login" name="login" value="ログイン">
+		<button type="submit" class="undo" name="undo" value="取り消し">
+			<img src="images/取り消し.png" class="cancel" alt="取り消しボタン">
+		</button>
+		<button type="submit" class="authorize" name="authorize" value="許可">
+			<img src="images/許可.png" class="permission" alt="許可ボタン">
+		</button>
+	</div>
+	<div class="censorlist">
+		<img src="images/ログアウト.png" class="img"><!-- ここにc:forEach -->
+		<input type="text" name="caption" value="テストです">
+		<button type="button" onclick="playAudio()" class="voice">
+			<img src="images/再生ボタン.png" class="voice" alt="再生ボタン">
+		</button>
+		<button type="submit" class="undo" name="undo" value="取り消し">
+			<img src="images/取り消し.png" class="cancel" alt="取り消しボタン">
+		</button>
+		<button type="submit" class="authorize" name="authorize" value="許可">
+			<img src="images/許可.png" class="permission" alt="許可ボタン">
+		</button>
 	</div>
 	
 <script>
-const audio = new Audio("${voice_url}");
+const audio = new Audio("voices/jingle_22.mp3");
 
 function playAudio() {
     audio.currentTime = 0; 
