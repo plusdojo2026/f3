@@ -4,7 +4,7 @@
 <html>
 
 <head>
-	<link rel="stylesheet" href="css/ken.css">
+	<link rel="stylesheet" href="WebContent/css/search.css">
 	<meta charset="UTF-8">
 	<title>作品検索</title>
 </head>
@@ -13,9 +13,10 @@
 	<!--ロゴ -->
 	<header>
 		<div class="logo">
-			<h1>異物クロニクル<img src="images/logo.png"></h1>
+			<h1>異物クロニクル</h1>
 		</div>
 		<!--プリティ愛 ナビゲーション-->
+		<div class="area">
 		<div class="prettyAi">
 			<label for="naviFlag"><img src="/f3/css/images/prettyAiSitting.png"
 					style="width: 10vw; height: auto; top: 20vh;"></label>
@@ -39,7 +40,7 @@
 		<!--検索バー -->
 		<div class="search">
 
-			<form method="GET" action="">
+			<form method="GET" action="/f3/SearchServlet">
 				<input type="search" name="search" value="">
 			</form>
 
@@ -50,14 +51,8 @@
 				<option>評価順</option>
 			</select>
 		</div>
-
+</div>
 	</header>
-
-	<!--プリティ愛 ナビゲーション-->
-	<!--<button>
-<img src="images/bun.png" class="thumbnail-img">
-	</button>-->
-
 
 	<!--作品画像サムネと評価ボタンを横並び -->
 	<div class="content">
@@ -69,9 +64,9 @@
 		<div class="evaluate">
 			<!-- いいねボタン-->
 			<div class="good">
-				<img src="images/goodBack.png" class="bottom"><!-- マンホール画像-->
-				<img src="images/good.png" class="good-img"><!-- ゆび画像-->
-				<img src="images/goodMessage.png" class="top"><!-- メッセージ画像-->
+				<img src="/f3/css/images/prettyAiSitting.png" class="bottom"><!-- マンホール画像-->
+				<img src="/f3/css/images/prettyAiSitting.png" class="good-img"><!-- ゆび画像-->
+				<img src="/f3/css/images/prettyAiSitting.png" class="top"><!-- メッセージ画像-->
 			</div>
 			<!-- きもいいねボタン-->
 			<div class="grossgood">

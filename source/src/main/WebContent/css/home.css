@@ -26,7 +26,15 @@ h1 {
     font-size: 5rem;
     text-align: center;
     margin-top: 0;
+    margin-bottom: 0;
 }
+h2 {
+	color: gray;
+	font-size: 3rem;
+	margin-top: 0;/* 上側の余白を0にする */
+}
+
+
 /* 加工画像（仮） */
 .form {
     text-align: center;
@@ -40,17 +48,6 @@ h1 {
     position: relative;
     top: -120px
 }
-
-/* 設定 
-#coin {
-    position: relative;
-    top: -120px;
-}*/
-
-/*.header {
-    display: flex;
-    align-items: flex-start;
-}*/
 
 /* 異物探索、異物投稿 */
 .center {

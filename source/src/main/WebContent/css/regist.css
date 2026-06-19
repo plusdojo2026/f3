@@ -35,6 +35,12 @@ body{
     font-family: "taisyokatuji";
 }
 
+.title-link{
+	text-decoration:none; /* 下線を消す */
+	color:inherit;       /* 元の文字色を維持 */
+}
+
+
 .newregist{
 	position:absolute;
 	left:50%;

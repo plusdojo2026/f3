@@ -11,8 +11,10 @@
 </head>
 <body>
 
+<a href="${pageContext.request.contextPath}/HomeServlet" class="title-link">
 <h1 class="title1">異物クロニクル</h1>
 <h2 class="title2">異物クロニクル</h2>
+</a>
 
 <!-- ナビゲーション -->
 <label for="naviFlag"><img src="/f3/css/images/prettyAiSitting.png" style="width: 10vw; height: auto; float:right;"></label>
@@ -24,11 +26,11 @@
 <div id="naviwin" class="navi">
     <span class="close-button"onclick="document.getElementById('naviFlag').checked = false;">×</span>
     <br><br><br><br>
-    <a href="" style="color: white;">ログイン</a><br><br>
-    <a href="" style="color: white;">異物探索</a><br><br>
-    <a href="" style="color: white;">通知</a><br><br>
-    <a href="" style="color: white;">設定</a><br><br>
-    <a href="" style="color: white;">ログアウト</a>
+    <a href="LoginServlet" style="color: white;">ログイン</a><br><br>
+    <a href="PostServlet" style="color: white;">異物探索</a><br><br>
+    <a href="HomeServlet" style="color: white;">通知</a><br><br>
+    <a href="SettingServlet" style="color: white;">設定</a><br><br>
+    <a href="LogoutServlet" style="color: white;">ログアウト</a>
 
 </div>
 
@@ -181,6 +183,13 @@ document.getElementById("join")
 		alert("項目を入力してください");
 		return;
 	}
+	
+	// パスワード8文字チェック
+	if(password.value.length < 8){
+		alert("パスワードは8文字以上で入力してください");
+		password.classList.add("error");
+		return;
+	}
 
 	document.getElementById("termsModal").style.display = "block";
 
@@ -200,9 +209,15 @@ document.getElementById("cancel")
 
 	document.getElementById("termsModal").style.display="none";
 
+	
 });
 
 </script>
 
+	<% String errorMsg =(String)request.getAttribute("errorMsg");if(errorMsg != null){%>
+		<script>
+			alert("<%= errorMsg %>");
+		</script>
+	<%}%>
 </body>
 </html>

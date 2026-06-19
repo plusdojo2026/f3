@@ -53,6 +53,19 @@ public class RegistServlet extends HttpServlet {
 		//登録処理
 		UsersDao dao =new UsersDao();
 		
+		if (password.length() < 8) {
+
+			request.setAttribute(
+					"errorMsg",
+					"パスワードは8文字以上で入力してください");
+
+			request.getRequestDispatcher(
+					"/WEB-INF/jsp/regist.jsp")
+					.forward(request, response);
+
+			return;
+		}
+		
 		if (dao.isExistUserId(userId)) {
 
 			request.setAttribute("errorMsg","このユーザーIDは既に使用されています");
