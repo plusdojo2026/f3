@@ -17,6 +17,7 @@
 			<a href="login.jsp"><img src="/f3/css/images/home/デべそ.png" width="140" height="120" alt="" class="right"></a>
 		</div>
 		<h1>異物クロニクル</h1>
+		<h2>異物クロニクル</h2>
 	</header>
 	<!-- ヘッダー（ここまで） -->
 	<!-- メイン（ここから） -->

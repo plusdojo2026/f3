@@ -76,9 +76,7 @@ font-size: 30px
 }
 
 #number {
--webkit-appearane: none;
-appearance: none;
-background: #F5B31B;
+accent-color: #F5B31B;
 }
 </style>
 
@@ -87,7 +85,7 @@ background: #F5B31B;
 
 <!-- タイトルロゴ。画像をもらって挿入せよ -->
 <div class="logo">
-	<a href="/f3/servlet/HomeServlet.java"><img src="/f3/css/images/logoAnker.png" alt="タイトルロゴ"></a>
+	<a href="/f3/HomeServlet"><img src="/f3/css/images/logoAnker.png" alt="タイトルロゴ"></a>
 </div>
 
 
@@ -130,11 +128,12 @@ background: #F5B31B;
 	<!-- 人数指定メーター -->
 	<div class="number" style="position: absolute; top: 90vh; left: 50vw;">
 		<input type="range" id="number" name="number" min="3" max="7" value="5">
+		
 	</div>
 	
 	<!-- 投稿ボタン -->
-	<div class="submit" style="position: absolute; top: 80vh; left: 20vw;">
-		<input type="submit" value="投稿">
+	<div class="submit" style="position: absolute; top: 70vh; left: 15vw;">
+		<input type="image" src="/f3/css/images/postSubmit.png" alt="投稿" style="position: absolute; width: 20vw; height: auto;">
 	</div>
 	</form>
 
@@ -171,11 +170,6 @@ background: #F5B31B;
             }
         });
         
-/* 人数指定 */
-/* input要素を取得 */
-let slider = document.querySelector('#number');
-
-/* バーの色を現在地に合わせる */
 </script>
 </html>
 

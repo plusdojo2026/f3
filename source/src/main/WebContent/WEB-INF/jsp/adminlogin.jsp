@@ -18,7 +18,7 @@
 	</div>
 	<div class="center">
 	<input type="text" name="admin_id" placeholder="入力出来たらログイン">
-	<a href="/f3/AdminLoginServlet"><img src="images/adminlogo.png" class="logo" alt="管理者ログイン"></a>
+	<a href="/f3/AdminLoginServlet"><img src="images/adminlogo.png" class="logo" alt="管理者ページ"></a>
 	<input type="text" name="password" placeholder="の顔をクリック‼">
 	</div>
 	</form>

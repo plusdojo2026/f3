@@ -1,1 +1,80 @@
 @charset "UTF-8";
+
+body {
+background-image: url("images/adminbackground.webp"); /* 背景画像を指定 */
+background-size: 95%;
+background-attachment: fixed;
+}
+
+.censorlist{
+	display:flex;
+	justify-content: center; /* 水平方向中央 */
+  	width: 100%;
+  	margin-bottom: 20px;
+  	margin-top: 60px;
+  	justify-content: space-around;
+}
+.flower{
+	width:auto;
+	height:300px;
+}
+.logo{
+	width:auto;
+	height:300px;
+	transform: scale(1.3);
+}
+.ban{
+	width:auto;
+	height:300px;
+	transform: scale(1.3);
+}
+.top{
+	display:flex;
+	justify-content: center; 
+	align-items: center;     /* 垂直方向中央 */
+  	width: 100%;
+  	gap:20%;
+  	margin-bottom: 100px;
+}
+.img{
+	width:300px;
+	height:300px;
+	margin-right:20px;
+}
+input[name="caption"]{
+	width:300px;
+	height:300px;
+}
+.voice{
+	width:300px;
+	height:300px;
+	background:transparent;
+    border:none;
+}
+button[name="undo"]{
+	width:300px;
+	height:300px;
+	background:transparent;
+    border:none;
+}
+
+.authorize{
+	width:300px;
+	height:300px;
+	background:transparent;
+    border:none;
+}
+.cancel{
+	width:300px;
+	height:300px;
+	transform: scale(1.4)
+}
+.permission{
+	width:300px;
+	height:300px;
+	transform: scale(1.4)
+}
+.img{
+	width:300px;
+	height:300px;
+}
