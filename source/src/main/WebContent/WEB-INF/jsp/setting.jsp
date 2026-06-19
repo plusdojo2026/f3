@@ -33,26 +33,26 @@
             <span class="close-button" onclick="document.getElementById('popupFlag').checked = false;">罰</span>
         	<h3 style="color: white">利用規約</h3>
         	<p style="color: white">
-                        ログインユーザーは以下の規約に同意なければならない。 
+                        ログインユーザーは以下の規約に同意なければならない。<br> 
 
-            第一条
-            ・ユーザーは、以下の内容を含む画像・動画・テキストその他のコンテンツを投稿、してはならない。 
-            ・過度に暴力的、性的、または一般に不快と判断されるセンシティブな内容 
-            ・児童ポルノ、リベンジポルノ、またはそれに類する内容 
-            ・法令または公序良俗に反する内容 
-            ・他者の権利を侵害する内容 
-            ・運営は、上記に該当すると判断した場合、必要に応じてアカウントを停止させることができる。 
+            【第一条】<br>
+            ユーザーは、以下の内容を含む画像・動画・テキストその他のコンテンツを投稿、してはならない。<br> 
+            ・過度に暴力的、性的、または一般に不快と判断されるセンシティブな内容<br> 
+            ・児童ポルノ、リベンジポルノ、またはそれに類する内容<br> 
+            ・法令または公序良俗に反する内容<br> 
+            ・他者の権利を侵害する内容<br> 
+            運営は、上記に該当すると判断した場合、必要に応じてアカウントを停止させることができる。<br> 
             
-            第二条 
-            ・ユーザーが投稿した画像・動画・テキストその他の投稿データに関する著作権は、当該投稿データの作成または加工に関与したすべてのユーザーに共同著作物として帰属するものとする。 
-            ・加工に関与していないユーザーは、当該投稿データに対して著作権その他の権利を主張することはできない。 
+            【第二条】<br> 
+            ユーザーが投稿した画像・動画・テキストその他の投稿データに関する著作権は、当該投稿データの作成または加工に関与したすべてのユーザーに共同著作物として帰属するものとする。<br> 
+            加工に関与していないユーザーは、当該投稿データに対して著作権その他の権利を主張することはできない。<br> 
 
-            第三条 
-            ・ユーザーは、投稿データについて、運営に対し以下の範囲での利用を無償・非独占的・全世界的・期限の定めなく許諾する。 
-            ・アプリ内での表示、複製、配布 
-            ・他ユーザーによる二次加工の許可 
-            ・広告、宣伝、プロモーションへの利用 
-            ・運営が必要と判断する形式への改変・編集 
+            【第三条】<br> 
+            ユーザーは、投稿データについて、運営に対し以下の範囲での利用を無償・非独占的・全世界的・期限の定めなく許諾する。<br> 
+            ・アプリ内での表示、複製、配布<br> 
+            ・他ユーザーによる二次加工の許可<br> 
+            ・広告、宣伝、プロモーションへの利用<br> 
+            ・運営が必要と判断する形式への改変・編集<br> 
         	</p>
         	<button id="button1">激しく同意</button>
 		</div>
@@ -66,7 +66,6 @@
         <span class="close-button" onclick="document.getElementById('naviFlag').checked = false;">➡➡➡　罰</span><br><br><br><br>
         <a href="WebContent/login.jsp" style="color: white;">ログイン</a><br><br>
         <a href="WebContent/search.jsp" style="color: white;">異物探索</a><br><br>
-        <a href="WebContent/.jsp" style="color: white;">通知</a><br><br>
         <a href="WebContent/setting.jsp" style="color: white;">設定</a><br><br>
         <a href="WebContent/login.jsp" style="color: white;">ログアウト</a>
     </div>
@@ -76,6 +75,13 @@
     document.getElementById('button1').onclick = function() {
         window.alert('同意したね。');
     }
+    /* 退会ボタンをクリックしたときの処理 */
+    formObj.onsubmit = function(event) {
+    	if (window.confirm('あんたが退会するなんてな。別れの言葉はなしか？') === false) {
+    	      event.preventDefault();
+    	}
+    };
+
     </script>
 </body>
 </html>
