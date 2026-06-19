@@ -26,8 +26,8 @@ public class UsersDao {
 			// SELECT文を準備する
 			String sql = "SELECT count(*) FROM users WHERE user_id=? AND password=?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
-			pStmt.setString(1, user.getUserId());
-			pStmt.setString(2, user.getPassword());
+			pStmt.setString(1, user.getUserId());// 1つ目の ? にユーザーIDをセット
+			pStmt.setString(2, user.getPassword());// 2つ目の ? にパスワードをセット
 
 			// SELECT文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
@@ -78,14 +78,16 @@ public class UsersDao {
 				
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 				
-				pStmt.setString(1,user.getUserId());
+				pStmt.setString(1,user.getUserId());// ユーザーID
 
-				pStmt.setString(2,user.getUserName());
+				pStmt.setString(2,user.getUserName());// ユーザー名
 
-				pStmt.setString(3,user.getPassword());
+				pStmt.setString(3,user.getPassword());// パスワード
 
-				pStmt.setString(4,user.getEmail());
-			
+				pStmt.setString(4,user.getEmail());// メールアドレス
+				
+				// INSERT実行
+				// 1件追加なら成功
 				if (pStmt.executeUpdate() == 1) {
 					result = true;
 				}
@@ -94,7 +96,7 @@ public class UsersDao {
 				e.printStackTrace();
 			}
 			finally {
-
+				// DB切断
 				if (conn != null) {
 
 					try {
@@ -105,7 +107,7 @@ public class UsersDao {
 					}
 				}
 			}
-
+			// 登録結果返却
 			return result;
 		}
 		
@@ -126,19 +128,18 @@ public class UsersDao {
 						"root", "password");
 
 				// SQL
-				String sql =
-						"SELECT COUNT(*) FROM users WHERE userid = ?";
+				String sql ="SELECT COUNT(*) FROM users WHERE user_id = ?";
 
-				PreparedStatement pStmt =
-						conn.prepareStatement(sql);
+				PreparedStatement pStmt =conn.prepareStatement(sql);
+				
+				
+				pStmt.setString(1, userId);// ? に入力されたユーザーIDをセット
 
-				pStmt.setString(1, userId);
+				ResultSet rs =pStmt.executeQuery();// SQL実行
 
-				ResultSet rs =
-						pStmt.executeQuery();
-
-				rs.next();
-
+				rs.next();// 1行目へ移動
+				
+				// 件数が1件以上なら既に存在
 				if (rs.getInt(1) > 0) {
 					result = true;
 				}

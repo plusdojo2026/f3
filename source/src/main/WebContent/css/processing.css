@@ -1,4 +1,5 @@
 @charset "UTF-8";
+
 /* 背景画像設定 */
 body {
 	margin: 0;
@@ -26,7 +27,7 @@ body {
         height: 60vh;
         background-color:red;
         display: none;
-        
+        z-index: 1200;
     }
 
         .close-button {
@@ -53,6 +54,7 @@ body {
         padding-top: 20px;
         box-sizing: border-box;
         display: none;
+        z-index: 1000;
     }
 /* 閉じるボタン */
         .close-button {
@@ -72,17 +74,23 @@ body {
  }   
 
  /* テーマ */
- #theme {
- position: absolute;
- left: 60%;
- top: 4%;
- transform: translate(-50%, -50%);
+ #themeContainer {
+ position: relative;
+ left: 33vw;
+ top: -10vh;
  }
  
- #theme img {
- top: 20%;
- left:50%;
- width: 50%;
+ #themeContainer h2 {
+ z-index: 30;
+ position: absolute;
+ color: white;
+ left: 11vw;
+ top: 11vh;
+ }
+ #themeContainer img {
+ z-index: 20;
+ position: absolute;
+ width: 400px;
  height: auto;
  }
  /* タイマー */
@@ -108,22 +116,31 @@ body {
  
  /* キャンバス要素 */
  canvas {
+ z-index: 1100;
  position: absolute;
- left: 50%;
- top: 40%;
- transform: translate(-50%, 0%);
+ left: 27vw;
+ top: 17vh;
  
  }
  
  .kindContainer {
  position: relative;
- top: 0vh;
+ top: 20vh;
  left: 2vw; 
+ 
  }
  .kindContainer img {
  position: absolute;
  width: 20%;
  height: auto;
+ z-index: 901;
+ }
+ .kindContainer p {
+ position: absolute;
+ z-index: 902;
+ width: 10vw; 
+ height: auto;
+ 
  }
  /* 音声追加 */
  /* 画像 */
@@ -146,6 +163,7 @@ body {
         padding-top: 20px;
         box-sizing: border-box;
         display: none;
+        z-index: 1200;
     }
 /* 閉じるボタン */
         .close-button {
@@ -179,6 +197,7 @@ body {
         padding-top: 20px;
         box-sizing: border-box;
         display: none;
+        z-index: 1200;
     }
 /* 閉じるボタン */
         .close-button {
@@ -194,9 +213,4 @@ body {
             display: block;
         }      
 
-#caption {
-	position: absolute;
-        top: 80vh;
-        left: 30vw;
-}
 

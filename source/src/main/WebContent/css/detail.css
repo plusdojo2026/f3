@@ -1,1 +1,220 @@
 @charset "UTF-8";
+/* body */
+body {
+    background-image: url("/f3/css/images/detail/deatilBackgrond.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    /*スクロールしても背景固定？*/
+    margin: 0;
+}
+
+.logo {
+    margin: 0 0 100px 0;
+    width: 850px;
+    /* 幅を固定 */
+}
+
+/* ナビゲーション位置 */
+.area {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px
+}
+
+/*main 縦に並べる*/
+.main {
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+}
+
+/*横並び　スライド*/
+.topArea {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+/*light 右側の横並び*/
+.light {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 420px;
+
+}
+
+/*合作者とタグの横並び*/
+.topBox {
+    display: flex;
+    gap: 20px;
+}
+
+/*bottom　キャプション　タグ　横並び*/
+.bottom {
+    display: flex;
+    gap: 40px;
+    margin-top: 20px;
+}
+
+/*bottomRight　評価と送信 右下固定*/
+.bottomRight {
+    position: absolute;
+    right: 60px;
+    bottom: 60px;
+}
+
+/*スライドショー*/
+.slideshow {
+    width: 600px;
+    height: 300px;
+    background: rgba(255, 255, 255, 0.85);
+}
+
+/*合作社とタグ*/
+.collaborator,
+.tag {
+    width: 200px;
+    height: 130px;
+    background: rgba(255, 255, 255, 0.85);
+}
+
+/*キャプション*/
+.caption {
+    width: 600px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.85);
+}
+
+
+/* いいねボタン */
+.good,
+.grossgood,
+.scarygood {
+    position: relative;
+    width: 140px;
+    height: 140px;
+}
+
+
+/* 指サイズ */
+.good-img {
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    z-index: 3;
+    /* 重ね順 */
+
+}
+
+/* topサイズ */
+.top {
+
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90px;
+    z-index: 2;
+
+}
+
+/* bottomサイズ */
+.bottom {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 140px;
+    z-index: 1;
+}
+
+
+/* 評価を横並びにする */
+.evaluate {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+
+}
+
+/* プリティ愛 */
+.navi {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 10vw;
+    height: 100vh;
+    background-color: black;
+    padding-top: 20px;
+    box-sizing: border-box;
+    display: none;
+}
+
+/* 閉じるボタン */
+.close-button {
+    color: white;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+#naviFlag:checked+.navi-background,
+#naviFlag:checked+.navi-background+.navi {
+    display: block;
+}
+
+#naviwin a {
+    font-size: 30px;
+}
+
+/* 送信 */
+.send {
+    background: none;
+    border: none;
+    padding: 0;
+    margin-left: auto;
+}
+
+.send img {
+    width: 100px;
+    display: block;
+    /*隙間削除*/
+}
+
+/*ポップアップウィンドウデザイン*/
+/*背景*/
+.pop {
+    display: none; /*始めは非表示にする*/
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+
+    justify-content: center;
+    align-items: center;
+}
+/*テキストボックスを赤く表示*/
+.popBox{   
+position: relative;
+    background: red;
+    color: white;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    width: 300px;
+}
+/*タイトル*/
+.popBox,title{
+font-size: 20px;
+font-weight: bold; 
+}

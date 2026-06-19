@@ -24,13 +24,30 @@ h1 {
     font-family: 'taisyoKatuji', sans-serif;
     color:white;
     font-size: 5rem;
-    text-align: center;
     margin-top: 0;
+    margin-bottom: 0;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 100px;
 }
+h2 {
+	color: gray;
+	font-size: 3rem;
+	text-align: center;
+	margin-top: 0;/* 上側の余白を0にする */
+	position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 170px;
+}
+
+
 /* 加工画像（仮） */
 .form {
     text-align: center;
     color: white;
+    margin-top: 0;
 }
 
 /* 設定、通知を右寄せ */
@@ -40,17 +57,6 @@ h1 {
     position: relative;
     top: -120px
 }
-
-/* 設定 
-#coin {
-    position: relative;
-    top: -120px;
-}*/
-
-/*.header {
-    display: flex;
-    align-items: flex-start;
-}*/
 
 /* 異物探索、異物投稿 */
 .center {
