@@ -7,6 +7,14 @@
 <meta charset="UTF-8">
 <title>異物投稿</title>
 <style>
+@font-face {
+	font-family: "taisyokatuji";
+	src: url("/f3/css/font/taishyokatujippoi7T5.ttf") format("truetype");
+}
+.title1,
+.title2　{
+	font-family:"taisyokatuji";
+}
 /* ナビゲーション */
 .navi {
         position: absolute;
@@ -65,7 +73,11 @@ left: 43vw;
 <body>
 
 <!-- タイトルロゴ。画像をもらって挿入せよ -->
-<a href="Home.Servlet"><img src="" alt="タイトルロゴ"></a>
+<div class="logo">
+	<h1 class="title1">異物クロニクル</h1>
+	<h2 class="title2">異物クロニクル</h2>
+</div>
+
 
 <!-- ナビゲーション -->
 <label for="naviFlag"><img src="/f3/css/images/prettyAiSitting.png" style="width: 10vw; height: auto; top: 20vh;"></label>
