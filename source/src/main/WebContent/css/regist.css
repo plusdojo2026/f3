@@ -22,6 +22,7 @@ body{
 	color:gray;
 	font-size:40px;
 	margin-top:0;/* 上側の余白を0にする */
+	margin-left:30px;
 }
 
 @font-face {
@@ -69,7 +70,7 @@ body{
 	width:130px;/* ラベルの横幅を固定 */
 	font-size:18px;/* 文字サイズ */
 	font-weight:bold;/* 太字 */
-	color:white;
+	color:red;
 }
 /* テキストボックス */
 .form-row input{
@@ -81,6 +82,124 @@ body{
 	border:1px solid #333;/* 枠線 */
 }
 
+.loginButton{
+
+	position:fixed;
+
+	left:50px;
+	bottom:40px;
+
+	z-index:9999;
+}
+
+#loginButton{
+
+	width:120px;
+	height:auto;
+
+	cursor:pointer;
+}
+
+.join{
+
+	position:fixed;
+
+	right:50px;
+	bottom:40px;
+
+	z-index:9999;
+}
+
+#join{
+
+	width:150px;
+	height:auto;
+
+	cursor:pointer;
+}
+
+/* ナビゲーションのcss*/
+.navi {
+position: absolute;
+top:0;
+right:0;
+width: 10vw;
+height: 100vh;
+background-color: black;
+padding-top: 20px;
+box-sizing: border-box;
+display: none;
+}
+
+/* 閉じるボタン */
+.close-button {
+color: white;
+position: absolute;
+top: 10px;
+right: 10px;
+cursor: pointer;
+}
+
+#naviFlag:checked + .navi-background,
+#naviFlag:checked + .navi-background + .navi {
+display: block;
+}
+ #naviwin a {
+font-size: 30px;
+}
+
+
+/* モーダル全体 */
+.modal{
+	display:none;
+	position:fixed;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	background:rgba(0,0,0,0.8);
+	z-index:9999;
+}
+
+/* 利用規約の紙 */
+.modal-content{
+	position:absolute;
+	top:50%;
+	left:50%;
+	transform:translate(-50%,-50%);
+	width:700px;
+	height:500px;
+	padding:30px;
+	background-image:url("images/Agreement.png");
+	background-size:cover;
+	background-position:center;
+	border-radius:10px;
+}
+/* 規約本文 */
+.terms-text{
+	height:300px;
+	overflow-y:auto; /* 縦スクロール */
+	padding:10px;
+	background:rgba(255,255,255,0.2);
+	color:white;
+	font-size:18px;
+}
+
+/* ボタンエリア */
+.termsButtonArea{
+	margin-top:20px;
+	text-align:center;
+}
+
+/* ボタン */
+#regist,
+#cancel{
+	width:180px;
+	height:50px;
+	font-size:20px;
+	margin:0 20px;
+	cursor:pointer;
+}
 
 
 
