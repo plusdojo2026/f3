@@ -29,7 +29,7 @@
     <input type="checkbox" id="naviFlag" style="display:none">
     <div class="navi-background"></div>
     <div id="naviwin" class="navi">
-        <span class="close-button" onclick="document.getElementById('naviFlag').checked = false;">➡➡➡　罪</span><br><br><br><br>
+        <span class="close-button" onclick="document.getElementById('naviFlag').checked = false;">➡➡➡　罰</span><br><br><br><br>
         <a href="WebContent/login.jsp" style="color: white;">ログイン</a><br><br>
         <a href="WebContent/search.jsp" style="color: white;">異物探索</a><br><br>
         <a href="WebContent/.jsp" style="color: white;">通知</a><br><br>
