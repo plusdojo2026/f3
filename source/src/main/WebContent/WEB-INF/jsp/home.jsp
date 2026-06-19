@@ -4,18 +4,17 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
 <title>ホーム</title>
-<link rel="stylesheet" href="/WebContent/css/style.css">
-<link rel="stylesheet" href="/WebContent/css/home.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="css/home.css">
 </head>
 <body>
 	<!-- ヘッダー（ここから） -->
 	<header>
 		<div class="header">
-			<a href="login.jsp"><img src="/WebContent/images/home/ログインボタン.png" width="110" height="130" alt=""></a>
-			<a href="login.jsp"><img src="/WebContent/images/home/ログアウト.png" width="110" height="130" alt=""></a>
-			<a href="login.jsp"><img src="/WebContent/images/home/でべそ.png" width="140" height="120" alt=""></a>
+			<a href="login.jsp"><img src="/f3/css/images/home/ログインボタン.png" width="110" height="130" alt=""></a>
+			<a href="login.jsp"><img src="/f3/css/images/home/ログアウト.png" width="110" height="130" alt=""></a>
+			<a href="login.jsp"><img src="/f3/css/images/home/デべそ.png" width="140" height="120" alt="" class="right"></a>
 		</div>
 		<h1>異物クロニクル</h1>
 	</header>
@@ -30,10 +29,10 @@
 			</form>
 		</div>
 		<div class="center">
-			<a href="post.jsp"><img src="/WebContent/images/home/異物投稿.png" width="105" height="140" alt="" class="post"></a>
-			<a href="search.jsp"><img src="/WebContent/images/home/異物探索.png" width="105" height="120" alt="" class="search"></a>
+			<a href="post.jsp"><img src="/f3/css/images/home/異物投稿.png" width="105" height="140" alt="" class="post"></a>
+			<a href="search.jsp"><img src="/f3/css/images/home/異物探索.png" width="105" height="120" alt="" class="search"></a>
+			<a href="setting.jsp"><img src="/f3/css/images/home/ホーム画面コイン.png" width="120" height="160" alt="" class="right"></a>
 		</div>
-		<a href="setting.jsp"><img src="/WebContent/images/home/ホーム画面コイン.png" width="120" height="160" alt="" class="right" id="coin"></a>
 	</main>
 	<!-- メイン（ここまで） -->
 	<!-- フッター（ここから） -->
