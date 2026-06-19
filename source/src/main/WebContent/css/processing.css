@@ -1,5 +1,5 @@
 @charset "UTF-8";
-
+/* 背景画像設定 */
 body {
 	margin: 0;
 	position: relative;
@@ -10,17 +10,21 @@ body {
     background-size: cover;
     background-position: center center;
 }
-
-    .popup {
+/* 通報　*/
+#reportMark {
+	position: absolute;
+	color: white; 
+	font-size: 30px;
+	left: 80vw;
+	top: 85vh;
+}
+.popup {
         position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 30vw;
-        padding: 20%;
+        top: 20vh;
+        left: 30vw;
+        width: 40vw;
+        height: 60vh;
         background-color:red;
-        border-radius: 10px;
-        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
         display: none;
         
     }
@@ -83,14 +87,15 @@ body {
  }
  /* タイマー */
  .timerContainer {
- position: absolute;
+ position: relative;
  top: 0vh;
- left: 70vw;
+ left: 80vw;
 
  }
  
  .timerContainer img {
  position: absolute;
+ left: 0;
  width: 30%;
  height: auto;
  }
@@ -105,20 +110,39 @@ body {
  canvas {
  position: absolute;
  left: 50%;
- top: 50%;
+ top: 40%;
  transform: translate(-50%, 0%);
  
  }
  
- 
+ .kindContainer {
+ position: relative;
+ top: 0vh;
+ left: 2vw; 
+ }
+ .kindContainer img {
+ position: absolute;
+ width: 20%;
+ height: auto;
+ }
  /* 音声追加 */
+ /* 画像 */
+ #addSoundImage {
+ position: absolute;
+ width: 100px;
+ height: auto; 
+ top: 80vh; 
+ left: 60vw;
+ }
+ 
+ /* ポップアップウインドウ */
  .addSound {
         position: absolute;
-        top: 0;
-        left:0;
-        width: 8vw;
-        height: 90vhpx;
-        background-color: black;
+        top: 20vh;
+        left: 30vw;
+        width: 40vw;
+        height: 60vh;
+        background-color: red;
         padding-top: 20px;
         box-sizing: border-box;
         display: none;
@@ -135,4 +159,44 @@ body {
         #addSoundFlag:checked + .addSound-background,
         #addSoundFlag:checked + .addSound-background + .addSound {
             display: block;
+        }
+ /* 音声選択 */
+ /* 画像 */
+ #selSoundImage {
+ position: absolute;
+ width: 100px; 
+ height: auto; 
+ top: 80vh; 
+ left: 70vw;
+ }
+ .selSound {
+        position: absolute;
+        top: 20vh;
+        left: 30vw;
+        width: 40vw;
+        height: 60vh;
+        background-color: blue;
+        padding-top: 20px;
+        box-sizing: border-box;
+        display: none;
+    }
+/* 閉じるボタン */
+        .close-button {
+        	color: white;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+        
+        #selSoundFlag:checked + .selSound-background,
+        #selSoundFlag:checked + .selSound-background + .selSound {
+            display: block;
         }      
+
+#caption {
+	position: absolute;
+        top: 80vh;
+        left: 30vw;
+}
+

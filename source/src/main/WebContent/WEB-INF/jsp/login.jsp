@@ -17,8 +17,9 @@
 <h1 class="title1">異物クロニクル</h1>
 <h2 class="title2">異物クロニクル</h2>
 
-	<div class="paper">
 
+	<form id="form" action="/f3/LoginServlet" method="post">
+	<div class="paper">
 		<div class="input-box">
 			<label class="vertical-label"></label> 
 			<input type="text" class="vertical-input" name="loginId" id="loginId" placeholder="ユーザーID">
@@ -30,10 +31,11 @@
 			<input type="text" class="vertical-input" name="password" id="password" placeholder="パスワード入力">
 		</div>
 	</div>
+	
 
 	<div class ="loginButton">
 	<input type="image"src="${pageContext.request.contextPath}/css/images/loginbutton.png" name="loginButton" id="loginButton" alt="渡してログイン">
-	
+	</form>
 </div>
 
 			
