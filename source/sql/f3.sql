@@ -1,13 +1,15 @@
 CREATE DATABASE f3;
 
+USE f3;
 
+create user 'f3'@'%' identified by '3MY7eT2zLbU8GDVm';
 
 /*ユーザ情報*/
 CREATE TABLE users (
 	user_id VARCHAR(20) PRIMARY KEY,/*ユーザID*/
 	user_name VARCHAR(20) NOT NULL,/*ユーザ名*/
 	password VARCHAR(20) NOT NULL,/*パスワード*/
-	email VARCHAR(100) NOT NULL,/*メールアドレス*/
+	email VARCHAR(100) NOT NULL ,/*メールアドレス*/
 	ban boolean DEFAULT FALSE,/*BAN*/
 	status boolean DEFAULT FALSE/*状態*/
 );
@@ -70,7 +72,7 @@ CREATE TABLE history(
 	process_count int NOT NULL,/*加工順番*/
 	project_id int NOT NULL,/*プロジェクトID*/
 	voice_id int NOT NULL,/*音声ID*/
-	caption VARCHAR(100) NOT NULL,/*キャプション*/
+	caption VARCHAR(500) NOT NULL,/*キャプション*/
 	processing_date DATETIME,/*加工日時*/
 	
 	FOREIGN KEY (user_id)
@@ -109,7 +111,7 @@ CREATE TABLE report(
 	report_id int AUTO_INCREMENT PRIMARY KEY,/*通報ID*/
 	relay_id int NOT NULL,/*リレーID*/
 	user_id VARCHAR(20) NOT NULL,/*ユーザーID*/
-	reason VARCHAR(50) NOT NULL,/*通報理由*/
+	reason VARCHAR(255) NOT NULL,/*通報理由*/
 	report_time DATETIME,/*通報日時*/
 	
 	FOREIGN KEY (relay_id)

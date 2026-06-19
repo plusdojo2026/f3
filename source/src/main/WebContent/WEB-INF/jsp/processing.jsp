@@ -41,29 +41,20 @@
 <p>23:59</p>
 </div>
 
-<div>
+
+
+
 <!-- Canvas -->
-<canvas id="canvas" width="800" height="500" style="border:3px solid black; padding: 0;"></canvas>
+<canvas id="canvas" width="700" height="400" style="border:3px solid black; padding: 0;"></canvas>
 
-
-<!-- ② スタンプボタン -->
-<button onclick="addStamp('だらけ目玉.png')">スタンプ1</button>
-<button onclick="addStamp('藁人形持ち目玉.png')">スタンプ2</button>
-
-<!--　モード切替ボタン　-->
-<button onclick="isDrawMode = !isDrawMode">
-  ペンモード切替
-</button>
-
-
-
-
-	
+<!-- 加工の種類 -->
+<div class="kindContainer">
+<img src="/f3/css/images/processKind2.png" alt="加工種類の背景">
 </div>
 
 
 <!-- 音声追加 -->
-<label for="addSoundFlag"><img src="/f3/css/images/proAddSound.png" style="width: 100px; height: auto; top: 80vh; left: 60vw;"></label>
+<label for="addSoundFlag"><img id="addSoundImage" src="/f3/css/images/proAddSound.png"></label>
 
 <input type="checkbox" id="addSoundFlag" style="display:none;">
 
@@ -76,24 +67,25 @@
     
 </div>
 <!-- 音声選択 -->
-<label for="addSoundFlag"><img src="/f3/css/images/proAddSound.png" style="width: 100px; height: auto; top: 80vh; left: 60vw;"></label>
+<label for="selSoundFlag"><img id="selSoundImage" src="/f3/css/images/proSelSound.png"></label>
 
-<input type="checkbox" id="addSoundFlag" style="display:none;">
+<input type="checkbox" id="selSoundFlag" style="display:none;">
 
-<div class="addSound-background"></div>
+<div class="selSound-background"></div>
 
-<div id="addSoundwin" class="addSound">
+<div id="selSoundwin" class="selSound">
     <span class="close-button"
-    onclick="document.getElementById('addSoundFlag').checked = false;">×</span>
+    onclick="document.getElementById('selSoundFlag').checked = false;">×</span>
     <p>選べ、死にたくなければな</p>
-
+</div>
 <!-- キャプション 送信は音声や画像加工とまとめて-->
+<div id="caption">
 <input type="text" placeholder="キャプション">
-
+</div>
 
 
 <!-- 通報 -->
-<label for="popupFlag" style="color: white;">通報</label>
+<label for="popupFlag" id="reportMark">通報</label>
 
 <input type="checkbox" id="popupFlag" style="display:none">
 

@@ -2,7 +2,7 @@
 /* すべてのページ */
 @font-face {
     font-family: 'taisyoKatuji';
-    src: url('/WebContent/font/taisyokatujippoi7T5.ttf') format('truetype');
+    src: url('/f3/font/taisyokatujippoi7T5.ttf') format('truetype');
 }
 /* 全画面共通のフォント設定 */
 html {
@@ -11,7 +11,7 @@ font-family: 'taisyoKatuji', sans-serif;
 
 /* ホーム画面 */
 html {
-background-image: url(/WebContent/images/home/ホーム背景.png);
+background-image: url(/f3/css/images/home/ホーム背景.png);
 background-size: 95%;
 background-attachment: fixed;
 }
@@ -37,17 +37,20 @@ h1 {
 .right {
     display: block;
     margin-left: auto;
+    position: relative;
+    top: -120px
 }
-/* 設定 */
+
+/* 設定 
 #coin {
     position: relative;
     top: -120px;
-}
+}*/
 
-.header {
+/*.header {
     display: flex;
     align-items: flex-start;
-}
+}*/
 
 /* 異物探索、異物投稿 */
 .center {
