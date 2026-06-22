@@ -30,7 +30,8 @@ if(request.getAttribute("error_msg")!=null){
 	String error_msg = (String)request.getAttribute("error_msg");
 %>
 <script>
-var msg = "<%=request.getAttribute("error_msg")%>";
+alert("<%=request.getAttribute("error_msg")%>");
+
 </script>
 <%
 }
