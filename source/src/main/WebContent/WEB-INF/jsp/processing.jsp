@@ -7,6 +7,10 @@
 <link rel="stylesheet" href="/f3/css/processing.css">
 <title>異物加工</title>
 <style>
+* {
+max-width: 100%;
+  height: auto;
+}
 #caption {
 width: 210px;
 height: 70px;
@@ -59,21 +63,21 @@ color: white;
 <!-- 加工の種類 -->
 <div class="kindContainer">
 <img src="/f3/css/images/processKind2.png" alt="加工種類の背景" style="z-index: 900;">
-<div class="pTag" style="position: absolute; left: 4vw; top: 4vh;">
-<p id=kind1 style="">フィルム加工</p><br>
-<p id=kind2 style="">ケージ変形</p><br>
-<p id=kind3 style="">モザイク</p><br>
-<p id=kind4 style="">拡大・縮小</p><br>
-<p id=kind5 style="">背景透過</p><br>
-<p id=kind6 style="">サンプル画像と合成</p><br>
-<p id=kind7 style="">消しゴムマジック</p><br>
-<p id=kind8 style="">3Dデータと合成</p><br>
-<p id=kind9 style="">エフェクト</p><br>
-<p id=kind10 style="">吹き出し</p><br>
-<p id=kind11 style="">ぼかし</p><br>
-<p id=kind12 style="">明るさ変更</p><br>
-<p id=kind13 style="">お絵描き</p><br>
-<p id=kind14 style="">画像ランダム変化</p>
+<div class="pTag" style="position: absolute; z-index: 902; left: 4vw; top: 4vh;">
+<input type="radio" id=kind1 style="" name="kind" value="1">フィルム加工<br>
+<input type="radio" id=kind2 style="" name="kind" value="2">ケージ変形<br>
+<input type="radio" id=kind3 style="" name="kind" value="3">モザイク<br>
+<input type="radio" id=kind4 style="" name="kind" value="4">拡大・縮小<br>
+<input type="radio" id=kind5 style="" name="kind" value="5">背景透過<br>
+<input type="radio" id=kind6 style="" name="kind" value="6">サンプル画像と合成<br>
+<input type="radio" id=kind7 style="" name="kind" value="7">消しゴムマジック<br>
+<input type="radio" id=kind8 style="" name="kind" value="8">3Dデータと合成<br>
+<input type="radio" id=kind9 style="" name="kind" value="9">エフェクト<br>
+<input type="radio" id=kind10 style="" name="kind" value="10">吹き出し<br>
+<input type="radio" id=kind11 style="" name="kind" value="11">ぼかし<br>
+<input type="radio" id=kind12 style="" name="kind" value="12">明るさ変更<br>
+<input type="radio" id=kind13 style="" name="kind" value="13">お絵描き<br>
+<input type="radio" id=kind14 style="" name="kind" value="14">画像ランダム変化
 </div>
 </div>
 
@@ -88,7 +92,8 @@ color: white;
 <div id="addSoundwin" class="addSound">
     <span class="close-button"
     onclick="document.getElementById('addSoundFlag').checked = false;">×</span>
-    <p>音声追加だドン♪</p>
+    <button id="recordBtn">録音開始</button>
+    
     
 </div>
 <!-- 音声選択 -->
@@ -128,11 +133,38 @@ color: white;
 
 
 <!-- 加工機能全般 -->
-
 </body>
 <script>
-document.getElementById('button1').onclick = function() {
-    window.alert('あなたには縁のない場所ですわ。');
-}
+// 録音機能
+// 入力デバイスアクセスと2秒間録音
+document.getElementById('recordBtn').addEventListener('click', async() =>{
+	try {
+		//マイク使用許可
+		const stream = await navigator.mediaDevices.getUserMedia({audio: true});
+		
+		// 形式
+		const options = { mimeType: 'audio/webm'};
+		
+		let chunks = [];
+		const recorder = new mediaRecorder(stream, options);
+		
+		// 音声データが届くたびに保存
+		recorder.ondataavailable = (e) => {
+			if (e.data.size > 0) chunks.push(e.data);
+		};
+		
+		recorder.start();
+		
+		// 2秒後に録音
+		setTimeout(() => {
+			recorder.stop();
+			
+			//マイクストリーム停止
+			stream.getTracks().forEach(track => track.stop());
+		}, 2000);
+	} catch (err) {
+		alert("マイクの使用許可が必要です:" + err);
+	}
+})
 </script>
 </html>
