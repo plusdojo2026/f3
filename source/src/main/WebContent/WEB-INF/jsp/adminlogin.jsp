@@ -9,6 +9,8 @@
 </head>
 <body>
 <div class="screen">
+
+
 	<img src="images/adminbackground.webp" class="bg">
 	<form id="adminlogin" method="POST" action="/f3/AdminLoginServlet">
 		<div class="textlogo">
@@ -23,8 +25,15 @@
 		</div>
 	</form>
 </div>
+<%
+if(request.getAttribute("error_msg")!=null){
+	String error_msg = (String)request.getAttribute("error_msg");
+%>
 <script>
-
+var msg = "<%=request.getAttribute("error_msg")%>";
 </script>
+<%
+}
+%>
 </body>
 </html>
