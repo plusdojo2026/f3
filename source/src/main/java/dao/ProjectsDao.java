@@ -20,12 +20,11 @@ public class ProjectsDao {
 				Class.forName("com.mysql.cj.jdbc.Driver");
 
 				// データベースに接続する
-				conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/f3?"
-						+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
+				conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/f3?characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
 						"root", "password");
 				
 				// SQL文を準備する
-				String sql = "INSERT INTO projects VALUES (0, ?, ?, ?, ?, NOW())";
+				String sql = "INSERT INTO projects (user_id, image_url, number, theme, post_date) VALUES (?, ?, ?, ?, NOW())";
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 				
 				// SQL文を完成させる
@@ -39,11 +38,7 @@ public class ProjectsDao {
 				} else {
 					pStmt.setString(2, "");
 				}
-				if (pIm.getNumber() != null) {
-					pStmt.setString(3, pIm.getNumber());
-				} else {
-					pStmt.setString(3, "");
-				}
+					pStmt.setInt(3, pIm.getNumber());
 				if (pIm.getTheme() != null) {
 						pStmt.setString(4, pIm.getTheme());
 				} else {
