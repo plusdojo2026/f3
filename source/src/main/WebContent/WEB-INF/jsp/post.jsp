@@ -108,10 +108,10 @@ accent-color: #F5B31B;
     
 </div>
 <!-- actionのurlを変更せよ -->
-	<form action="/f3/PostServlet" method="post">
+	<form action="/f3/PostServlet" method="post" enctype="multipart/form-data">
 	<!-- ファイルアップロード -->
 	<div class="fileUpload">
-    <input type="file" id="imageInput" accept="image/*">
+    <input type="file" id="imageInput" name="file" accept="image/*">
 
     <div id="previewArea">
         <img id="previewImage" src="" alt="プレビュー画像">

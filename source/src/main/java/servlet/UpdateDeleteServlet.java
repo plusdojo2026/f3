@@ -35,36 +35,49 @@ public class UpdateDeleteServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		 request.setCharacterEncoding("UTF-8");
+		
 		HttpSession session = request.getSession();
-		if (session.getAttribute("id") == null) {
+		if (session.getAttribute("userId") == null) {
 			response.sendRedirect("/f3/LoginServlet");
 			return;
 		}
+
+		String oldUserId =(String)session.getAttribute("userId");
 		
 		String userId = request.getParameter("userId");
 		String userName = request.getParameter("userName");
 		String password = request.getParameter("password");
 		String email = request.getParameter("mailAddress");
-
+		
 		Users user =new Users(userId,userName,password,email,false,false);
 
 			UsersDao dao = new UsersDao();
 
 			if ("変更".equals(request.getParameter("submit"))) {
 
-				if (dao.update(user)) {
+				if (dao.update(user,oldUserId)) {
 
 					request.setAttribute("msg","ユーザー情報を更新しました");
 				} else {
 					request.setAttribute("msg","更新に失敗しました");
 				}
 			} else if ("退会".equals(request.getParameter("submit"))) {
-				if (dao.delete(userId)) {
-					request.setAttribute("msg","退会しました");
 
-				} else {
-					request.setAttribute("msg","退会に失敗しました");
-				}
+			    String loginUserId =(String)session.getAttribute("userId");
+
+			    if (dao.delete(loginUserId)) {
+
+			        session.invalidate(); // セッション破棄
+
+			        response.sendRedirect("/f3/LoginServlet");
+			        return;
+
+			    } else {
+
+			        request.setAttribute("msg","退会に失敗しました");
+			    }
 			}
 			request.getRequestDispatcher(
 					"/WEB-INF/jsp/setting.jsp")

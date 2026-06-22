@@ -1,21 +1,32 @@
 package servlet;
 
+import java.io.File;
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
+
+import dao.ProjectsDao;
+import dto.Projects;
+
+
 
 /**
  * Servlet implementation class PostServlet
  */
 @WebServlet("/PostServlet")
+@MultipartConfig
 public class PostServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
+	private static final String UPLOAD_DIR = "/f3/uploadImages";
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -38,13 +49,64 @@ public class PostServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// リクエストパラメータを取得する。
-		// 画像ファイルの格納場所がわかり次第書け
-		String theme = request.getParameter("number");
+		// 画像ファイルのアップロード
+		Part filePart = request.getPart("file");
+		
+		if (filePart == null || filePart.getSize() == 0) {
+			response.getWriter().write("ファイルがありません");
+			return;
+		}
+		
+		// 保存先ディレクトリ取得
+		String UPLOAD_DIR = getServletContext().getRealPath("/uploadImages");
+		
+		// ディレクトリ作成
+			File dir = new File(UPLOAD_DIR);
+			if (!dir.exists()) {
+				dir.mkdirs();
+					}
+		
+		// ファイル名取得
+			String fileName = System.currentTimeMillis() + "_" + filePart.getSubmittedFileName();
+			
+		
+		
+		// 保存パス(物理)
+			String filePath = UPLOAD_DIR + File.separator + fileName;
+			
+		// URL用パス (DB保存用)
+			String imageUrl = "uploadImages/" + fileName;
+			
+			
+		// ファイル保存
+			filePart.write(filePath);
+			
+			response.getWriter().write("保存成功: " + fileName);
+		
+		// リクエストパラメータを取得する。 
+		String theme = request.getParameter("theme");
 		String number = request.getParameter("number");
 		
-		// Daoを使って上記の変数をデータベースに登録する。
+		// セッションスコープでユーザーIDを取得する
+		HttpSession session = request.getSession(false);
 		
+		if (session == null) {
+			response.sendRedirect("/f3/LoginServlet");
+			return;
+		}
+		
+		String userId = (String) session.getAttribute("userId");
+		if(userId == null) {
+			response.sendRedirect("/f3/LoginServlet");
+			return;
+		}
+		
+		
+		
+		// Daoを使って上記の変数をデータベースに登録する。
+		ProjectsDao pDao = new ProjectsDao();
+		pDao.insert(new Projects(0, userId, imageUrl, number, theme, "現在日時"));
+	
 		// post.jspにフォワードする
 		RequestDispatcher dispatcher = 
 				request.getRequestDispatcher("/WEB-INF/jsp/post.jsp");

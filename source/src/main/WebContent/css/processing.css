@@ -1,5 +1,11 @@
 @charset "UTF-8";
 
+
+
+* {
+max-width: 100%;
+  height: auto;
+}
 /* 背景画像設定 */
 body {
 	margin: 0;
