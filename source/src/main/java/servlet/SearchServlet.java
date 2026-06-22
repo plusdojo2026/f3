@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.ReviewDAO;
+import dao.ReviewDao;
 import dto.Review;
 /**
  * Servlet implementation class SearchServlet
@@ -21,11 +21,7 @@ public class SearchServlet extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    //public SearchServlet() {
-        //super();
-        // TODO Auto-generated constructor stub
     //}
-
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -48,11 +44,12 @@ public class SearchServlet extends HttpServlet {
 		
 		// リクエストパラメータを取得する
 				request.setCharacterEncoding("UTF-8");
-				String search = request.getParameter("search");
+				String searchword = request.getParameter("search");
 				
 				// 検索処理を行う
-				ReviewDAO rDao = new ReviewDAO();
-				List<Review> cardList = rDao.select(new Review(0, search));
+				ReviewDao rDao = new ReviewDao();
+				//10件表示させる  検索結果をとってくる			
+				List<Review> cardList = rDao.select(0,searchword);
 				
 				// 検索結果をリクエストスコープに格納する
 				request.setAttribute("cardList", cardList);

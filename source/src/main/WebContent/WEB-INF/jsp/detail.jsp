@@ -4,7 +4,7 @@
 <html>
 
 <head>
-<link rel="stylesheet" href="css/saku.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/detail.css">
 <meta charset="UTF-8">
 <title>作品詳細</title>
 </head>

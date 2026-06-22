@@ -4,7 +4,7 @@
 <html>
 
 <head>
-	<link rel="stylesheet" href="f3/css/search.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/search.css">
 	<meta charset="UTF-8">
 	<title>作品検索</title>
 </head>
@@ -40,8 +40,8 @@
 		<!--検索バー -->
 		<div class="search">
 
-			<form method="GET" action="SearchServlet" method="post">
-				<input type="search" name="search" value="">
+			<form method="POST" action="SearchServlet">
+				<input type="search" name="search">
 			</form>
 
 			<!--表示順セレクト -->
