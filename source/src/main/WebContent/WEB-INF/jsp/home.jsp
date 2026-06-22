@@ -12,8 +12,8 @@
 	<!-- ヘッダー（ここから） -->
 	<header>
 		<div class="header">
-			<a href="/WebContent/LoginServlet"><img src="/f3/css/images/home/ログインボタン.png" width="110" height="130" alt=""></a>
-			<a href="/WebContent/LogoutServlet"><img src="/f3/css/images/home/ログアウト.png" width="110" height="130" alt=""></a>
+			<a href="/f3/LoginServlet"><img src="/f3/css/images/home/ログインボタン.png" width="110" height="130" alt=""></a>
+			<a href="/f3/LogoutServlet"><img src="/f3/css/images/home/ログアウト.png" width="110" height="130" alt=""></a>
 			<!-- 通知 -->
 			<a href="login.jsp"><img src="/f3/css/images/home/デべそ.png" width="140" height="120" alt="" class="right"></a>
 		</div>
