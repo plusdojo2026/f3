@@ -4,7 +4,7 @@ public class Projects {
 	private int projectId;
 	private String userId;
 	private String imageUrl;
-	private String number;
+	private int number;
 	private String theme;
 	private String postDate;
 	
@@ -27,10 +27,10 @@ public class Projects {
 	public void setImageUrl(String imageUrl) {
 		this.imageUrl = imageUrl;
 	}
-	public String getNumber() {
+	public int getNumber() {
 		return number;
 	}
-	public void setNumber(String number) {
+	public void setNumber(int number) {
 		this.number = number;
 	}
 	public String getTheme() {
@@ -45,7 +45,7 @@ public class Projects {
 	public void setPostDate(String postDate) {
 		this.postDate = postDate;
 	}
-	public Projects(int projectId, String userId, String imageUrl, String number, String theme, String postDate) {
+	public Projects(int projectId, String userId, String imageUrl, int number, String theme, String postDate) {
 		super();
 		this.projectId = projectId;
 		this.userId = userId;

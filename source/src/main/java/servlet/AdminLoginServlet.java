@@ -34,6 +34,7 @@ public class AdminLoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		// 管理者ログイン画面に移る
+		System.out.println("doGetに入りました");
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/adminlogin.jsp");
 		dispatcher.forward(request, response);
 	}
@@ -44,17 +45,19 @@ public class AdminLoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// リクエストパラメータを取得する
 				request.setCharacterEncoding("UTF-8");
-				String admin_id = request.getParameter("admin_id");
+				int admin_id = Integer.parseInt(request.getParameter("admin_id"));
 				String password = request.getParameter("password");
 				
 				AdminDao dao = new AdminDao();
 				Admin admin = dao.login(admin_id, password);
 				if(admin != null) { //ログイン成功
+					System.out.println("doPostの成功に入りました");
 					HttpSession session = request.getSession();
 					session.setAttribute("user_id", admin.getAdmin_id());
 					response.sendRedirect("/f3/CensorshipServlet");
 				}else { // ログイン失敗
 					// リクエストスコープに、タイトル、メッセージ、戻り先を格納する
+					System.out.println("doPostの失敗に入りました");
 					request.setAttribute("error_msg","管理者IDもしくはパスワードが間違えています。");
 
 					// 結果ページにフォワードする
