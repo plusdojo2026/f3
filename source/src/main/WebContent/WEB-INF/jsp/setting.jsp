@@ -20,7 +20,7 @@
 		    <input type="password" name="password" placeholder="パスワード" class="password"><br>
 		    <div class="submit">
             <input type="submit" name="submit" value="変更">
-            <input type="submit" name="submit" value="退会"><br>
+            <input type="submit" name="submit" value="退会" id="withdraw"><br>
             </div> 
         </form>
        
@@ -80,9 +80,10 @@
     
     /* 退会ボタンをクリックしたときの処理 */
     formObj.onsubmit = function(event) {
-    	
-    	if (window.confirm('あんたが退会するなんてな。別れの言葉はなしか？') === false) {
-    	      event.preventDefault();
+    	if (event.submitter.id === "withdraw") {
+    		if (window.confirm('あんたが退会するなんてな。別れの言葉はなしか？') === false) {
+    	      	event.preventDefault();
+    		}
     	}
     };
 
