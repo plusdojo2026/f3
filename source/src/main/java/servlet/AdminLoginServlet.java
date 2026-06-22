@@ -30,6 +30,8 @@ public class AdminLoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		// 管理者ログイン画面に移る
+		System.out.println("ServletA start");
+		System.out.println("AdminLoginServlet start");
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/adminlogin.jsp");
 		dispatcher.forward(request, response);
 	}
@@ -38,6 +40,9 @@ public class AdminLoginServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("ServletA start");
+		System.out.println("AdminLoginServlet start");
+
 		response.sendRedirect("/f3/CensorshipServlet");
 	}
 

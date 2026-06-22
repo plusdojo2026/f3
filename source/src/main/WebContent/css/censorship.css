@@ -2,8 +2,9 @@
 
 body {
 background-image: url("images/adminbackground.webp"); /* 背景画像を指定 */
-background-size: 95%;
+background-size: cover;
 background-attachment: fixed;
+background-repeat: no-repeat;
 }
 
 .censorlist{
@@ -16,26 +17,25 @@ background-attachment: fixed;
 }
 .flower{
 	width:auto;
-	height:300px;
+	height:200px;
 }
 .logo{
 	width:auto;
-	height:300px;
-	transform: scale(1.3);
+	height:200px;
 }
 .ban{
 	width:auto;
-	height:300px;
-	transform: scale(1.3);
+	height:200px;
+	transform: scale(1.4);
 }
 .top{
-	display:flex;
-	justify-content: center; 
+	display:flex; 
 	align-items: center;     /* 垂直方向中央 */
   	width: 100%;
-  	gap:20%;
   	margin-bottom: 100px;
+  	justify-content: space-around;
 }
+
 .img{
 	width:300px;
 	height:300px;
@@ -73,8 +73,4 @@ button[name="undo"]{
 	width:300px;
 	height:300px;
 	transform: scale(1.4)
-}
-.img{
-	width:300px;
-	height:300px;
 }
