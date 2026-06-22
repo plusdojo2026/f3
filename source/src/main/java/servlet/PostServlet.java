@@ -81,11 +81,16 @@ public class PostServlet extends HttpServlet {
 		// ファイル保存
 			filePart.write(filePath);
 			
-			response.getWriter().write("保存成功: " + fileName);
+			
 		
 		// リクエストパラメータを取得する。 
 		String theme = request.getParameter("theme");
-		String number = request.getParameter("number");
+		int number = 3;
+		try {
+		number = Integer.parseInt(request.getParameter("number"));
+		} catch (Exception e) {
+			number = 3;
+		}
 		
 		// セッションスコープでユーザーIDを取得する
 		HttpSession session = request.getSession(false);
@@ -105,8 +110,11 @@ public class PostServlet extends HttpServlet {
 		
 		// Daoを使って上記の変数をデータベースに登録する。
 		ProjectsDao pDao = new ProjectsDao();
-		pDao.insert(new Projects(0, userId, imageUrl, number, theme, "現在日時"));
-	
+		boolean result = pDao.insert(new Projects(0, userId, imageUrl, number, theme, "yyyy-MM-dd HH:mm:ss"));
+		
+		// コンソールで登録結果を確認するための
+		System.out.println(result);
+		System.out.println(filePath);
 		// post.jspにフォワードする
 		RequestDispatcher dispatcher = 
 				request.getRequestDispatcher("/WEB-INF/jsp/post.jsp");

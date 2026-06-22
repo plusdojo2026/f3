@@ -111,7 +111,7 @@ color: white;
 <!-- キャプション 送信は音声や画像加工とまとめて-->
 <div class="caption" style="position: relative; top: 77vh; left: 30vw;">
 <img src="/f3/css/images/proCaption.png" alt="キャプションボックス画像" style="position: absolute; width: 20vw; height: auto;">
-<input id="caption" type="text" placeholder="キャプション" style="position: absolute; top: 4vh; left: 3vw">
+<input id="caption" type="text" maxlength="100" name="caption" placeholder="キャプション" style="position: absolute; top: 4vh; left: 3vw">
 </div>
 
 
@@ -126,7 +126,7 @@ color: white;
     <span class="close-button"
     onclick="document.getElementById('popupFlag').checked = false;">×</span>
     <h3 style="color: white">通報内容</h3>
-    <input type="text">
+    <input type="text" maxlength="50" name="reason">
     <input type="submit" value="送信">
     
 </div>
