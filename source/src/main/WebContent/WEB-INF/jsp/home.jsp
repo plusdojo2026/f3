@@ -31,9 +31,9 @@
 			</form>
 		</div>
 		<div class="center">
-			<a href="/WebContent/PostServlet"><img src="/f3/css/images/home/異物投稿.png" width="105" height="140" alt="" class="post"></a>
-			<a href="/WebContent/SearchServlet"><img src="/f3/css/images/home/異物探索.png" width="105" height="120" alt="" class="search"></a>
-			<a href="/WebContent/SettingServlet"><img src="/f3/css/images/home/ホーム画面コイン.png" width="120" height="160" alt="" class="right"></a>
+			<a href="/f3/PostServlet"><img src="/f3/css/images/home/異物投稿.png" width="105" height="140" alt="" class="post"></a>
+			<a href="/f3/SearchServlet"><img src="/f3/css/images/home/異物探索.png" width="105" height="120" alt="" class="search"></a>
+			<a href="/f3/SettingServlet"><img src="/f3/css/images/home/ホーム画面コイン.png" width="120" height="160" alt="" class="right"></a>
 		</div>
 	</main>
 	<!-- メイン（ここまで） -->
