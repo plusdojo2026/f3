@@ -40,7 +40,7 @@
 		<!--検索バー -->
 		<div class="search">
 
-			<form method="GET" action="">
+			<form method="GET" action="SearchServlet" method="post">
 				<input type="search" name="search" value="">
 			</form>
 
