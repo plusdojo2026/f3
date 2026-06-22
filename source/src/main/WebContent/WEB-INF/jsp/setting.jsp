@@ -13,13 +13,13 @@
 <h2 class="title2">異物クロニクル</h2>
 <!-- どのサーブレットに送るか確認 -->
     <main class="form">
-        <form action="SettingServlet" method="post">
+        <form action="SettingServlet" method="post" id="setting">
 		    <input type="text" name="userName" placeholder="ユーザー名" class="username"><br>
 		    <input type="text" name="mailAddress" placeholder="メールアドレス" class="mailaddress"><br>
 		    <input type="text" name="userId" placeholder="ユーザーID" class="userid"><br>
 		    <input type="password" name="password" placeholder="パスワード" class="password"><br>
 		    <div class="submit">
-            <input type="submit" name="submit" value="変更">
+            <input type="submit" name="change" value="変更">
             <input type="submit" name="submit" value="退会"><br>
             </div> 
         </form>
@@ -64,10 +64,10 @@
     <div class="navi-background"></div>
     <div id="naviwin" class="navi">
         <span class="close-button" onclick="document.getElementById('naviFlag').checked = false;">➡➡➡　罰</span><br><br><br><br>
-        <a href="WebContent/login.jsp" style="color: white;">ログイン</a><br><br>
-        <a href="WebContent/search.jsp" style="color: white;">異物探索</a><br><br>
-        <a href="WebContent/setting.jsp" style="color: white;">設定</a><br><br>
-        <a href="WebContent/login.jsp" style="color: white;">ログアウト</a>
+        <a href="/WebContent/login.jsp" style="color: white;">ログイン</a><br><br>
+        <a href="/WebContent/search.jsp" style="color: white;">異物探索</a><br><br>
+        <a href="/WebContent/setting.jsp" style="color: white;">設定</a><br><br>
+        <a href="/WebContent/login.jsp" style="color: white;">ログアウト</a>
     </div>
     
     <!-- JavaScript -->
@@ -75,8 +75,12 @@
     document.getElementById('button1').onclick = function() {
         window.alert('同意したね。');
     }
+    /* HTML要素をオブジェクトとして取得する */
+    let formObj = document.getElementById('setting');
+    
     /* 退会ボタンをクリックしたときの処理 */
     formObj.onsubmit = function(event) {
+    	
     	if (window.confirm('あんたが退会するなんてな。別れの言葉はなしか？') === false) {
     	      event.preventDefault();
     	}
