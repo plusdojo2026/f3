@@ -135,13 +135,10 @@ body {
  height: auto;
  z-index: 901;
  }
- .kindContainer p {
- position: absolute;
- z-index: 902;
- width: 10vw; 
- height: auto;
  
- }
+ 
+ 
+ 
  /* 音声追加 */
  /* 画像 */
  #addSoundImage {

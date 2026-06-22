@@ -7,6 +7,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import dao.UsersDao;
+import dto.Users;
 
 /**
  * Servlet implementation class UpdateDeleteSevrlet
@@ -26,17 +30,44 @@ public class UpdateDeleteServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+		HttpSession session = request.getSession();
+		if (session.getAttribute("id") == null) {
+			response.sendRedirect("/f3/LoginServlet");
+			return;
+		}
+		
+		String userId = request.getParameter("userId");
+		String userName = request.getParameter("userName");
+		String password = request.getParameter("password");
+		String email = request.getParameter("mailAddress");
 
+		Users user =new Users(userId,userName,password,email,false,false);
+
+			UsersDao dao = new UsersDao();
+
+			if ("変更".equals(request.getParameter("submit"))) {
+
+				if (dao.update(user)) {
+
+					request.setAttribute("msg","ユーザー情報を更新しました");
+				} else {
+					request.setAttribute("msg","更新に失敗しました");
+				}
+			} else if ("退会".equals(request.getParameter("submit"))) {
+				if (dao.delete(userId)) {
+					request.setAttribute("msg","退会しました");
+
+				} else {
+					request.setAttribute("msg","退会に失敗しました");
+				}
+			}
+			request.getRequestDispatcher(
+					"/WEB-INF/jsp/setting.jsp")
+					.forward(request, response);
+	}
 }
