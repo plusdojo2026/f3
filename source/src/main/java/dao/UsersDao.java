@@ -163,7 +163,7 @@ public class UsersDao {
 			return result;
 		}
 		
-		public boolean update(Users user) {
+		public boolean update(Users user , String oldUserId) {
 			Connection conn = null;
 			boolean result = false;
 
@@ -177,7 +177,8 @@ public class UsersDao {
 						"root", "password");
 
 				// SQL文を準備する
-				String sql = "UPDATE users SET user_name=?, email=?, user_id=?, password=? WHERE user_id=?";
+				String sql = "UPDATE users SET user_name=?, email=? , user_id=? , password=? WHERE user_id=?";
+
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 
 				// SQL文を完成させる
@@ -185,10 +186,17 @@ public class UsersDao {
 				pStmt.setString(2, user.getEmail());
 				pStmt.setString(3, user.getUserId());
 				pStmt.setString(4, user.getPassword());
+				pStmt.setString(5, oldUserId);  //ログイン中のID
+				
 
 				// SQL文を実行する
-				if (pStmt.executeUpdate() == 1) {
-					result = true;
+				// SQL文を実行する
+				int count = pStmt.executeUpdate();
+
+				System.out.println("更新件数=" + count);
+
+				if (count == 1) {
+				    result = true;
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -211,6 +219,7 @@ public class UsersDao {
 
 		// 引数cardで指定された番号のレコードを削除し、成功したらtrueを返す
 		public boolean delete(String userId) {
+			
 			Connection conn = null;
 			boolean result = false;
 
@@ -231,8 +240,11 @@ public class UsersDao {
 				pStmt.setString(1, userId);
 
 				// SQL文を実行する
-				if (pStmt.executeUpdate() == 1) {
-					result = true;
+				int count = pStmt.executeUpdate();
+
+
+				if (count == 1) {
+				    result = true;
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
