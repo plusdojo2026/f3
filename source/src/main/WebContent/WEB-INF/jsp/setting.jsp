@@ -13,7 +13,7 @@
 <h2 class="title2">異物クロニクル</h2>
 <!-- どのサーブレットに送るか確認 -->
     <main class="form">
-        <form action="SettingServlet" method="post" id="setting">
+        <form action="/f3/SettingServlet" method="post" id="setting">
 		    <input type="text" name="userName" placeholder="ユーザー名" class="username"><br>
 		    <input type="text" name="mailAddress" placeholder="メールアドレス" class="mailaddress"><br>
 		    <input type="text" name="userId" placeholder="ユーザーID" class="userid"><br>

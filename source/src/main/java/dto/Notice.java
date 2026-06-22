@@ -5,45 +5,46 @@ import java.io.Serializable;
 
 public class Notice implements Serializable {
 	
-	private String noticeId;
+	private int noticeId;
 	private String userId;
 	private String content;
-	private String cursedAlert;
+	private boolean cursedAlert;
 	
 	// 引数のあるコンストラクタ 
-	/*public Notice(String noticeId, String userId, String content, String cursedAlert) {
+	public Notice(int noticeId, String userId, String content, boolean cursedAlert) {
 		this.noticeId = noticeId;
 		this.userId = userId;
 		this.content = content;
-		this.cursedAlert = cursedAlert;*/
-		
+		this.cursedAlert = cursedAlert;
 	}
+	
+	
 	// 引数のないコンストラクタ
 	public Notice() {
 	}
 	
-	public String getNoticeId(String noticeId) {
+	public int getNoticeId() {
 		return noticeId;
 	}
-	public void setNoticeId(String noticeId) {
+	public void setNoticeId(int noticeId) {
 		this.noticeId = noticeId;
 	}
-	public String getUserId(String userId) {
+	public String getUserId() {
 		return userId;
 	}
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
-	public String getContent(String content) {
+	public String getContent() {
 		return content;
 	}
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public String getCursedAlert(String cursedAlert) {
+	public boolean getCursedAlert() {
 		return cursedAlert;
 	}
-	public void setCursedAlert(String cursedAlert) {
+	public void setCursedAlert(boolean cursedAlert) {
 		this.cursedAlert = cursedAlert;
 	}
 	
