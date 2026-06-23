@@ -28,7 +28,7 @@
 
 		<div class="input-box">
 			<label class="vertical-label"></label> 
-			<input type="text" class="vertical-input" name="password" id="password" placeholder="パスワード入力">
+			<input type="password" class="vertical-input" name="password" id="password" placeholder="パスワード入力">
 		</div>
 	</div>
 	

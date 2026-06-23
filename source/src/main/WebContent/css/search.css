@@ -165,3 +165,7 @@ body {
 .title2{
     font-family: "taisyokatuji";
 }
+
+    img {
+        max-width: 100%;
+    }

@@ -45,6 +45,8 @@ public class AdminLoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// リクエストパラメータを取得する
 				request.setCharacterEncoding("UTF-8");
+				String adminIdStr = request.getParameter("admin_id");
+				System.out.println("admin_id=[" + adminIdStr + "]");
 				int admin_id = Integer.parseInt(request.getParameter("admin_id"));
 				String password = request.getParameter("password");
 				

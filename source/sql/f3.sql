@@ -71,7 +71,7 @@ CREATE TABLE history(
 	editedimage_url VARCHAR(255) NOT NULL,/*加工画像URL*/
 	process_count int NOT NULL,/*加工順番*/
 	project_id int NOT NULL,/*プロジェクトID*/
-	voice_id int NOT NULL,/*音声ID*/
+	voice_id int ,/*音声ID*/
 	caption VARCHAR(500) NOT NULL,/*キャプション*/
 	processing_date DATETIME,/*加工日時*/
 	
@@ -156,6 +156,8 @@ CREATE TABLE curse(
 	project_id int NOT NULL,/*プロジェクトID*/
 	user_id VARCHAR(20) NOT NULL,/*対象ユーザID*/
 	raw_image_url VARCHAR(255) NOT NULL,/*未加工画像URL*/
+	curse_flg boolean,
+	curse_date DATETIME,
 	
 	FOREIGN KEY (project_id)
         REFERENCES projects(project_id),

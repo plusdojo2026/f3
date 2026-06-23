@@ -12,7 +12,7 @@ import dto.Review;
 
 public class ReviewDao {
 	// 引数card指定された項目で検索して、取得されたデータのリストを返す
-	public List<Review> select(Review card) {
+	public List<Review> select(Review card,String order) {
 		Connection conn = null;
 		List<Review> cardList = new ArrayList<Review>();
 
@@ -24,33 +24,41 @@ public class ReviewDao {
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/f3?"
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
 					"root", "password");
-
+			
+			
 			// SQL文を準備する //重複削除DISTINCT
-			String sql = "SELECT DISTINCT project_id, thumbnail_url, good, grossgood, scarygood "
-					+ "FROM review "
-					+"JOIN projects ON project_id=project_id"
-					+"JOIN history ON project_id=project_id"
-					+"JOIN users ON user_id=user_id"
-					+"JOIN project_tags ON project_id=project_id"
-					//キャプション、ユーザー名、タグに含まれるか　一つ一致したらヒット
-					+ "WHERE caption LIKE ? OR user_name LIKE ? OR tag_name LIKE ? "
-					//id順
-					+ "ORDER BY project_id"
+			String sql = "SELECT DISTINCT r.project_id, r.thumbnail_url, r.good, r.grossgood, r.scarygood "
+					+ "FROM review r "                                //基準テーブル
+					+ "JOIN projects p ON r.project_id=p.project_id " //テーマ検索
+					+ "JOIN history h ON r.project_id=h.project_id "//キャプション検索
+					+ "JOIN users u ON h.user_id=u.user_id "//ユーザー名検索
+					+ "JOIN project_tags pt ON r.project_id=pt.project_id "//タグ検索
+					//どれか一つ一致したらヒット テーブル別名.カラム名
+					+ "WHERE h.caption LIKE ? OR u.user_name LIKE ? OR pt.tag_name LIKE ? "
+					//順番
+					+ "ORDER BY ?";
+			
+			//desc
 					//１０件まで表示
-					+"LIMIT 10 OFFSET ?";
+					//+"LIMIT 10 OFFSET ?";
+			
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
+			
+			
 			// SQL文を完成させる
-			if (card.getthumbnailUrl() != null) {
-				pStmt.setString(1, "%" + card.getprojectId() + "%");
-				pStmt.setString(2, "%" + card.getthumbnailUrl() + "%");
-				pStmt.setString(3, "%" + card.getgood() + "%");
-				pStmt.setString(4, "%" + card.getgrossGood() + "%");
-				pStmt.setString(5, "%" + card.getscaryGood() + "%");
-			}
+			//ワードを入れるとSQLへ
+			String like="%"+card.getWord()+"%" ;
+				pStmt.setString(1, like);
+				pStmt.setString(2, like);
+				pStmt.setString(3, like);
+			
 
 			// SQL文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
+
+			
+			
 
 			// 結果表をコレクションにコピーする
 			while (rs.next()) {

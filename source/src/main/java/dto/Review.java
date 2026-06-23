@@ -8,42 +8,53 @@ private int projectId;        // プロジェクトID
     private int good;             // いいね
     private int grossGood;        // きもいいね
     private int scaryGood;        // こわいいね
-
+    
+    private String word;			//検索フィールド
 	
-	public int getprojectId() {
+	public int getProjectId() {
 		return projectId;
 }
-	public void setprojectId(int projectId) {
+	public void setProjectId(int projectId) {
 		this.projectId = projectId;
 	}
 
-	public String getthumbnailUrl() {
+	public String getThumbnailUrl() {
 		return thumbnailUrl;
 }
-	public void setthumbnailUrl(String thumbnailUrl) {
+	public void setThumbnailUrl(String thumbnailUrl) {
 		this.thumbnailUrl = thumbnailUrl;
 	}
 	
-	public int getgood() {
+	public int getGood() {
 		return good;
 }
-	public void setgood(int good) {
+	public void setGood(int good) {
 		this.good = good;
 	}
 	
-	public int getgrossGood() {
+	public int getGrossGood() {
 		return grossGood;
 }
-	public void setgrossGood(int grossGood) {
+	public void setGrossGood(int grossGood) {
 		this.grossGood = grossGood;
 	}
 	
-	public int getscaryGood() {
+	public int getScaryGood() {
 		return scaryGood;
 }
-	public void setscaryGood(int scaryGood) {
+	public void setScaryGood(int scaryGood) {
 		this.scaryGood = scaryGood;
 	}
+	
+
+	public String getWord() {
+		return word;
+	}
+
+	public void setWord(String word) {
+		this.word = word;
+	}
+
 	
 	
 	public Review() {
@@ -52,6 +63,7 @@ private int projectId;        // プロジェクトID
 		this.good = 0;
 		this.grossGood = 0;
 		this.scaryGood = 0;
+		this.word ="";
 	}
 
 	public Review(int projectId, String thumbnailUrl, int good,int grossGood,int scaryGood) {
