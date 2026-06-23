@@ -1,8 +1,9 @@
 package dto;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class Relay {
+public class Relay implements Serializable{
 	private int relay_id;
 	private String user_id;
 	private int process_count;
@@ -22,60 +23,53 @@ public class Relay {
 		this.relay_id = relay_id;
 		
 	}
-	public int getRelay_id() {
-		return relay_id;
+	public String getUser_id() {
+		return user_id;
 	}
-	public void setRelay_id(int relay_id) {
-		this.relay_id = relay_id;
+	public void setUser_id(String user_id) {
+		this.user_id =user_id;
 		
 	}
-	public int getRelay_id() {
-		return relay_id;
+	public int getProcess_count() {
+		return process_count;
 	}
-	public void setRelay_id(int relay_id) {
-		this.relay_id = relay_id;
+	public void setProcess_count(int process_count) {
+		this.process_count = process_count;
 		
 	}
-	public int getRelay_id() {
-		return relay_id;
+	public int getProject_id() {
+		return project_id;
 	}
-	public void setRelay_id(int relay_id) {
-		this.relay_id = relay_id;
+	public void setProject_id(int project_id) {
+		this.project_id = project_id;
 		
 	}
-	public int getRelay_id() {
-		return relay_id;
+	public int getRedraw_count() {
+		return redraw_count;
 	}
-	public void setRelay_id(int relay_id) {
-		this.relay_id = relay_id;
+	public void setRedraw_count(int redraw_count) {
+		this.redraw_count = redraw_count;
 		
 	}
-	public int getRelay_id() {
-		return relay_id;
+	public String getRelay_image_url() {
+		return relay_image_url;
 	}
-	public void setRelay_id(int relay_id) {
-		this.relay_id = relay_id;
+	public void setRelay_image_url(String relay_image_url) {
+		this.relay_image_url = relay_image_url;
 		
 	}
-	public int getRelay_id() {
-		return relay_id;
+	public LocalDateTime getAssigned_at() {
+		return assigned_at;
 	}
-	public void setRelay_id(int relay_id) {
-		this.relay_id = relay_id;
+	public void setAssigned_at(LocalDateTime assigned_at) {
+		this.assigned_at = assigned_at;
 		
 	}
-	public int getRelay_id() {
-		return relay_id;
+	public LocalDateTime getDeadline_at() {
+		return deadline_at;
 	}
-	public void setRelay_id(int relay_id) {
-		this.relay_id = relay_id;
-		
-	}
-	public int getRelay_id() {
-		return relay_id;
-	}
-	public void setRelay_id(int relay_id) {
-		this.relay_id = relay_id;
+	public void setDeadline_at(LocalDateTime deadline_at) {
+		this.deadline_at = deadline_at;
 		
 	}
 

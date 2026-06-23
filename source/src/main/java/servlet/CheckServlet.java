@@ -1,11 +1,15 @@
 package servlet;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import dao.CensorshipDao;
 
 /**
  * Servlet implementation class CheckServlet
@@ -23,19 +27,42 @@ public class CheckServlet extends HttpServlet {
     }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
-
-	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		request.setCharacterEncoding("UTF-8");
+		HttpSession session = request.getSession();
+		int admin_id = (int)session.getAttribute("admin_id");
+		int project_id = Integer.parseInt(request.getParameter("project_id"));
+		String user_id = request.getParameter("user_id");
+		String source = request.getParameter("source");
+		String action = request.getParameter("action");
+		
+		if("許可".equals(action)) {
+			CensorshipDao dao = new CensorshipDao();
+			boolean result = dao.authorize(project_id,user_id,source);
+			if (result) {
+	            response.setContentType("text/html; charset=UTF-8");
+	            response.getWriter().println("<script>alert('共有に成功しました'); location.href='MenuServlet';</script>");
+	        } else {
+	            response.setContentType("text/html; charset=UTF-8");
+	            response.getWriter().println("<script>alert('共有に失敗しました'); history.back();</script>");
+	        }
+		}else if("取り消し".equals(action)) {
+			CensorshipDao dao = new CensorshipDao();
+			boolean result = dao.undo(project_id,user_id,admin_id);
+			if (result) {
+	            response.setContentType("text/html; charset=UTF-8");
+	            response.getWriter().println("<script>alert('共有に成功しました'); location.href='MenuServlet';</script>");
+	        } else {
+	            response.setContentType("text/html; charset=UTF-8");
+	            response.getWriter().println("<script>alert('共有に失敗しました'); history.back();</script>");
+	        }
+		}
+		
+		
+		
 	}
 
 }
