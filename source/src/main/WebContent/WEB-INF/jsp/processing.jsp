@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -57,8 +58,16 @@ color: white;
 
 
 
+
 <!-- Canvas -->
 <canvas id="canvas" width="700" height="400" style="border:3px solid black; padding: 0;"></canvas>
+<!-- ① アップロードボタン -->
+<input type="file" id="upload" accept="image/*" style="z-index: 2000;">
+
+
+<!-- ② スタンプボタン -->
+<button onclick="addStamp('/f3/css/images/logoAnker.png')">スタンプ1</button>
+<button onclick="addStamp('/f3/css/images/processTimer.png')">スタンプ2</button>
 
 <!-- 加工の種類 -->
 <div class="kindContainer">
@@ -66,7 +75,7 @@ color: white;
 <div class="pTag" style="position: absolute; z-index: 902; left: 4vw; top: 4vh;">
 <input type="radio" id=kind1 style="" name="kind" value="1">フィルム加工<br>
 <input type="radio" id=kind2 style="" name="kind" value="2">ケージ変形<br>
-<input type="radio" id=kind3 style="" name="kind" value="3">モザイク<br>
+<input type="radio" id=kind3 style="" name="kind" value="3" onclick="mosaicOn = true;">モザイク<br>
 <input type="radio" id=kind4 style="" name="kind" value="4">拡大・縮小<br>
 <input type="radio" id=kind5 style="" name="kind" value="5">背景透過<br>
 <input type="radio" id=kind6 style="" name="kind" value="6">サンプル画像と合成<br>
@@ -76,7 +85,17 @@ color: white;
 <input type="radio" id=kind10 style="" name="kind" value="10">吹き出し<br>
 <input type="radio" id=kind11 style="" name="kind" value="11">ぼかし<br>
 <input type="radio" id=kind12 style="" name="kind" value="12">明るさ変更<br>
-<input type="radio" id=kind13 style="" name="kind" value="13">お絵描き<br>
+<input type="radio" id=kind13 style="" name="kind" value="13" onclick="drawOpen = true;">お絵描き
+
+<div class="draw-background"></div>
+
+<div id="drawwin" class="draw">
+    <span class="close-button"
+    onclick="document.getElementById('kind13').checked = false;">×</span>
+    
+</div>
+
+<br>
 <input type="radio" id=kind14 style="" name="kind" value="14">画像ランダム変化
 </div>
 </div>
@@ -106,7 +125,7 @@ color: white;
 <div id="selSoundwin" class="selSound">
     <span class="close-button"
     onclick="document.getElementById('selSoundFlag').checked = false;">×</span>
-    <p>選べ、死にたくなければな</p>
+    
 </div>
 <!-- キャプション 送信は音声や画像加工とまとめて-->
 <div class="caption" style="position: relative; top: 77vh; left: 30vw;">
@@ -133,8 +152,46 @@ color: white;
 
 
 <!-- 加工機能全般 -->
+
 </body>
 <script>
+const canvas = document.getElementById("canvas");
+// 2D描画コンテキストを取得する
+const ctx = canvas.getContext("2d");
+
+let baseImage = null;
+
+//　！！！！開発用。画像をアップロードしてCanvasに表示
+const upload = document.getElementById("upload");
+
+
+upload.addEventListener("change", function() {
+  const file = this.files[0];
+
+  if (!file) return;
+
+  const reader = new FileReader();
+
+  reader.onload = function(e) {
+    const img = new Image();
+    
+    img.onload = function() {
+        baseImage = img;
+        draw();
+      
+    };
+
+    img.src = e.target.result;
+  };
+
+
+reader.readAsDataURL(file);
+});
+
+// キャンバスに矩形を描画
+ctx.strokeRect(50, 20, 200, 200);
+ctx.fillRect(180, 80, 100, 100);
+
 // 録音機能
 // 入力デバイスアクセスと2秒間録音
 document.getElementById('recordBtn').addEventListener('click', async() =>{
@@ -146,7 +203,7 @@ document.getElementById('recordBtn').addEventListener('click', async() =>{
 		const options = { mimeType: 'audio/webm'};
 		
 		let chunks = [];
-		const recorder = new mediaRecorder(stream, options);
+		const recorder = new MediaRecorder(stream, options);
 		
 		// 音声データが届くたびに保存
 		recorder.ondataavailable = (e) => {

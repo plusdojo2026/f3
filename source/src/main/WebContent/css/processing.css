@@ -75,9 +75,8 @@ body {
         #naviFlag:checked + .navi-background + .navi {
             display: block;
         }   
- #naviwin a {
- font-size: 30px;
- }   
+        
+ 
 
  /* テーマ */
  #themeContainer {
