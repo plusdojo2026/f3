@@ -127,6 +127,7 @@ accent-color: #F5B31B;
 	
 	<!-- 人数指定メーター -->
 	<div class="number" style="position: absolute; top: 90vh; left: 50vw;">
+		<p id="valueDisplay">5</p>
 		<input type="range" id="number" name="number" min="3" max="7" value="5">
 		
 	</div>
@@ -170,6 +171,12 @@ accent-color: #F5B31B;
             }
         });
         
+// 人数指定スライダー（メーター）
+    const number = document.getElementById('number');
+
+    number.addEventListener('input', (e) => {
+        document.getElementById('valueDisplay').textContent = e.target.value;
+    });
 </script>
 </html>
 
