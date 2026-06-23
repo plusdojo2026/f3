@@ -1,6 +1,7 @@
 package dto;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 public class Curse implements Serializable {
 
@@ -15,6 +16,21 @@ public class Curse implements Serializable {
 
 	// 未加工画像URL
 	private String rawImageUrl;
+	
+	private LocalDateTime curseDate;
+
+	public LocalDateTime getCurseDate() {
+		return curseDate;
+	}
+
+	public void setCurseDate(LocalDateTime curseDate) {
+		this.curseDate = curseDate;
+	}
+
+	public Curse(LocalDateTime curseDate) {
+		super();
+		this.curseDate = curseDate;
+	}
 
 	// コンストラクタ
 	public Curse() {

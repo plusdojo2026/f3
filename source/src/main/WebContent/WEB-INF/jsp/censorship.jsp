@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,40 +21,36 @@
 		</div>
 	</div>
 	<!-- ここにc:forEach -->
-	<div class="censorlist">
-		<img src="images/ログアウト.png" class="img"><!-- ここにc:forEach -->
-		<input type="text" name="caption" value="テストです">
-		<button type="button" onclick="playAudio()" class="voice">
-			<img src="images/再生ボタン.png" class="voice" alt="再生ボタン">
-		</button>
-		<button type="submit" class="undo" name="undo" value="取り消し">
-			<img src="images/取り消し.png" class="cancel" alt="取り消しボタン">
-		</button>
-		<button type="submit" class="authorize" name="authorize" value="許可">
-			<img src="images/許可.png" class="permission" alt="許可ボタン">
-		</button>
-	</div>
-	<div class="censorlist">
-		<img src="images/ログアウト.png" class="img"><!-- ここにc:forEach -->
-		<input type="text" name="caption" value="テストです">
-		<button type="button" onclick="playAudio()" class="voice">
-			<img src="images/再生ボタン.png" class="voice" alt="再生ボタン">
-		</button>
-		<button type="submit" class="undo" name="undo" value="取り消し">
-			<img src="images/取り消し.png" class="cancel" alt="取り消しボタン">
-		</button>
-		<button type="submit" class="authorize" name="authorize" value="許可">
-			<img src="images/許可.png" class="permission" alt="許可ボタン">
-		</button>
-	</div>
-	
-<script>
-const audio = new Audio("voices/jingle_22.mp3");
+	<c:forEach var="e" items="${CensorshipList}">
+		<div class="censorlist">
+			<img src="${e.imageUrl }" class="img"><!-- ここにc:forEach -->
+			<input type="text" name="caption" value="${e.caption}">
+			<button type="button" onclick="playAudio('${e.voiceUrl}')" class="voice">
+				<img src="images/再生ボタン.png" class="voice" alt="再生ボタン">
+			</button>
+			<form action="/f3/CheckServlet" method="post">
+				<input type="hidden" name="project_id" value="${e.projectId}">
+				<input type="hidden" name="user_id" value="${e.userId}">
+				<input type="hidden" name="source" value="${e.source}">
+				<button type="submit" class="undo" name="action" value="取り消し">
+					<img src="images/取り消し.png" class="cancel" alt="取り消しボタン">
+				</button>
+				<button type="submit" class="authorize" name="action" value="許可">
+					<img src="images/許可.png" class="permission" alt="許可ボタン">
+				</button>
+			</form>
+		</div>
+	</c:forEach>
 
-function playAudio() {
-    audio.currentTime = 0; 
-    audio.play();
-}
-</script>
+			<script>
+				
+
+				function playAudio(url) {
+					const audio = new Audio(url);
+					audio.currentTime = 0;
+					audio.play();
+				}
+			</script>
+
 </body>
 </html>

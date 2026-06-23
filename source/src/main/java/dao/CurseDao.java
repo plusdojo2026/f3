@@ -91,6 +91,8 @@ public class CurseDao {
 
 			// 1件見つかった
 			if(rs.next()) {
+				
+				System.out.println("呪いデータ見つかった");
 
 				curse = new Curse();
 
@@ -101,6 +103,10 @@ public class CurseDao {
 				curse.setUserId(rs.getString("user_id"));
 
 				curse.setRawImageUrl(rs.getString("raw_image_url"));
+				
+				curse.setCurseDate(rs.getTimestamp("curse_date").toLocalDateTime());
+			}else {
+				 System.out.println("呪いデータなし");
 			}
 
 		}
@@ -125,5 +131,34 @@ public class CurseDao {
 
 		return curse;
 	}
+	
+	public boolean releaseCurse(int curseId) {
+
+	    Connection conn = null;
+
+	    try {
+
+	        Class.forName("com.mysql.cj.jdbc.Driver");
+
+	     // データベースに接続する
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/f3?"
+					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
+					"root", "password");
+
+	        String sql ="UPDATE curse SET curse_flg = FALSE WHERE curse_id = ?";
+
+	        PreparedStatement pStmt =conn.prepareStatement(sql);
+
+	        pStmt.setInt(1, curseId);
+
+	        return pStmt.executeUpdate() == 1;
+
+	    } catch(Exception e) {
+
+	        e.printStackTrace();
+	    }
+
+	    return false;
 	}
+}
 
