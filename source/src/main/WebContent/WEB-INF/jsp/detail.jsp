@@ -46,9 +46,16 @@
 		<div class="topArea">
 			<!--上段 -->
 			<!--スライドショー -->
-			<div class="slideshow">
-				<input type="text" value="スライドショー">
-			</div>
+			<section>
+				<div class="slideshow" id="slide_size">
+					<div class="image_box">
+						<!-- 最初の画像 -->
+						<img id="main_image" src="${historyList[0].editedimage_url}">
+					</div>
+				</div>
+			</section>
+			<!-- キャプション表示 -->
+			
 
 			<!--メイン画面構成 右 -->
 			<div class="light">
@@ -114,10 +121,12 @@
 
 		<div class="bottomArea">
 			<!--キャプション -->
-			<div class="caption">
-				<input type="text" value="キャプション">
-			</div>
-
+			<section>
+				<div class="caption">
+					${historyList[historyList.size-1].caption}
+					<!-- <input type="text" value="キャプション"> -->
+				</div>
+			</section>
 
 		</div>
 	</div>
@@ -192,7 +201,50 @@
 	                // ユーザーの選択がそのまま送信される処理
 	            }
 	        }
-		
+	    
+	 	// Servletから渡された画像一覧
+	    const images = [
+	    <c:forEach items="${historyList}" var="h">
+	        "${h.editedimage_url}",
+	    </c:forEach>
+	    ];
+
+	    /*// キャプション一覧
+	    const captions = [
+	    <c:forEach items= "${historyList}" var="h">
+	        "${h.caption}",
+	    </c:forEach>
+	    ];*/
+
+	    let current = 0;
+
+	    // ページ変更処理
+	    function changeImage(num) {
+	        // 次の番号を計算
+	        let next = current + num;
+	        // 最小値・最大値チェック
+	        if(next >= 0 && next < images.length) {
+	            // 現在位置更新
+	            current = next;
+	            // 画像変更
+	            document.getElementById("main_image").src = images[current];
+	            // キャプション変更
+	            document.getElementById("caption").innerHTML = captions[current];
+	        }
+	    }
+
+	    // スライド部分クリック
+	    document.getElementById("slide_size").onclick = function(event){
+	        // 左半分クリック
+	        if(event.offsetX < 50){
+	            // 前へ
+	            changeImage(-1);
+	        }else{
+	            // 右半分クリック
+	            // 次へ
+	            changeImage(1);
+	        }
+	    };
 	</script>
 
 </body>

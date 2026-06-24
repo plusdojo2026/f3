@@ -1,5 +1,77 @@
 package dao;
 
-public class HistoryDao {
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
+import dto.History;
+
+public class HistoryDao {
+    Connection conn = null;
+
+    // historyテーブルから加工画像URL一覧を取得するメソッド
+    public List<History> getHistory(int project_id) throws Exception {
+
+        // 取得した加工履歴を入れるリスト
+        List<History> list = new ArrayList<>();
+        
+        try {
+        	// JDBCドライバを読み込む
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            
+            // データベースに接続
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/f3?"
+    				+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
+    				"root", "password");
+            
+           
+            // SELECT文を準備する
+            // hの画像URL、hのキャプションを取り出して
+            String sql = "SELECT editedimage_url, caption, process_count FROM history WHERE project_id = ? ORDER BY process_count ASC";
+            
+
+            // SQLを実行する準備
+            PreparedStatement pStmt = conn.prepareStatement(sql);
+            // プロジェクトIDを指定
+            pStmt.setInt(1,project_id);
+
+            // SQL実行
+            ResultSet rs = pStmt.executeQuery();
+
+            
+            // 取得したデータを1件ずつ取り出す
+            while(rs.next()){
+            	// 1加工分の箱を作成
+            	History h = new History();
+            	// 画像URLを保存
+            	h.setEditedimage_url(rs.getString("editedimage_url"));
+            	// キャプション保存
+            	h.setCaption(rs.getString("caption"));
+            	// 加工順保存
+            	h.setProcess_count(rs.getInt("process_count"));
+                // リストに追加
+                list.add(h);
+            }
+        }
+        catch(Exception e) {
+        	e.printStackTrace();
+        }
+        finally {
+			// DB切断
+			if (conn != null) {
+				try {
+					conn.close();
+				}
+				catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+        // 取得した画像一覧を返す
+        return list;
+    }
 }
