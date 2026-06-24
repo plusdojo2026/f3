@@ -28,10 +28,14 @@ public class ProcessingServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 開発用。画面と画面をつなぐとき不要なら削除せよ。
+	
 				RequestDispatcher dispatcher = 
 						request.getRequestDispatcher("/WEB-INF/jsp/processing.jsp");
 				dispatcher.forward(request, response);
+				
+				// セッションスコープでproject_idを取得する
+				
+				// Daoでテーマを取得する
 	}
 
 	/**

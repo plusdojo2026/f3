@@ -54,6 +54,10 @@ public class Projects {
 		this.theme = theme;
 		this.postDate = postDate;
 	}
+	public Projects(String theme) {
+		super();
+		this.theme = theme;
+	}
 	
 	
 
