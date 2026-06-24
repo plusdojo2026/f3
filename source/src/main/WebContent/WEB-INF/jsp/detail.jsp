@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 
@@ -121,7 +122,7 @@
 			<!--キャプション -->
 			<section>
 				<div class="caption">
-					${historyList[historyList.size-1].caption}
+					${historyList[fn:length(historyList)-1].caption}
 					<!-- <input type="text" value="キャプション"> -->
 				</div>
 			</section>
