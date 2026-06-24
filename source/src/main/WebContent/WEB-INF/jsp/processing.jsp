@@ -63,7 +63,7 @@ color: white;
 <!-- Canvas -->
 <canvas id="canvas" width="700" height="400" style="border:3px solid black; padding: 0;"></canvas>
 <!-- アップロード -->
-<img src=`${relay_image_url}` id="upload" style="z-index: 2000;">
+<img src="${relay_image_url}" id="upload" style="z-index: 2000;">
 
 
 
@@ -119,8 +119,10 @@ color: white;
 </div>
 <!-- キャプション 送信は音声や画像加工とまとめて-->
 <div class="caption" style="position: relative; top: 77vh; left: 30vw;">
+<form action="/f3/CaptionServlet" method="POST">
 <img src="/f3/css/images/proCaption.png" alt="キャプションボックス画像" style="position: absolute; width: 20vw; height: auto;">
 <input id="caption" type="text" maxlength="100" name="caption" placeholder="キャプション" style="position: absolute; top: 4vh; left: 3vw">
+</form>
 </div>
 
 
@@ -141,7 +143,9 @@ color: white;
 </div>
 
 <!-- 加工終了ボタン -->
-<img id="complete" src="/f3/css/images/completePro.png" onclick="document.getElementById('proForm').submit(); submitCanvas()" style="position: absolute; width: 10%; height: auto; left: 80%; top: 80%;">
+<img id="complete" src="/f3/css/images/completePro.png" 
+onclick="document.getElementById('proForm').submit(); submitCanvas(); document.get" 
+style="position: absolute; width: 10%; height: auto; left: 80%; top: 80%;">
 </form>
 <!-- 加工機能全般 -->
 
