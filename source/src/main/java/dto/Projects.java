@@ -56,6 +56,10 @@ public class Projects implements Serializable{
 		this.theme = theme;
 		this.postDate = postDate;
 	}
+	public Projects(String theme) {
+		super();
+		this.theme = theme;
+	}
 	
 	
 
