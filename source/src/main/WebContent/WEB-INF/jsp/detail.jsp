@@ -234,7 +234,7 @@
 	    // スライド部分クリック
 	    document.getElementById("slide_size").onclick = function(event){
 	        // 左半分クリック
-	        if(event.offsetX < 50){
+	        if(event.offsetX < 300){
 	            // 前へ
 	            changeImage(-1);
 	        }else{
