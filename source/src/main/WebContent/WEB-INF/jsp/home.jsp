@@ -3,6 +3,7 @@
 	pageEncoding="UTF-8"
 	isELIgnored="false"%>
 	
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 	
 <!DOCTYPE html>
 <html>
@@ -30,9 +31,17 @@
 	<main>
 	<!-- 画像がくる -->
 		<div class="form">
-			<form action="processing.jsp" method="post">
-				<p>加工画像<br>
-				<input type="text" name="relay"></p>
+			<form action="ProcessingServlet" method="post">
+
+			    <input type="hidden" name="relayId" value="${relay.relay_id}">
+			
+			    <c:if test="${not empty relay}">
+			        <input type="image"
+			               src="${relay.relay_image_url}"
+			               alt="加工開始"
+			               style="width:400px;">
+			    </c:if>
+			
 			</form>
 		</div>
 		<div class="center">
