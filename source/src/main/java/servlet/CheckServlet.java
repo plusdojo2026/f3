@@ -33,6 +33,9 @@ public class CheckServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
+		
+		System.out.println("admin_id=" + session.getAttribute("admin_id"));
+		
 		int admin_id = (int)session.getAttribute("admin_id");
 		int project_id = Integer.parseInt(request.getParameter("project_id"));
 		String user_id = request.getParameter("user_id");
