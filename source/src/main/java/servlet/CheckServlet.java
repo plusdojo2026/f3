@@ -44,7 +44,7 @@ public class CheckServlet extends HttpServlet {
 			boolean result = dao.authorize(project_id,user_id,source,admin_id);
 			if (result) {
 	            response.setContentType("text/html; charset=UTF-8");
-	            response.getWriter().println("<script>alert('許可に成功しました'); location.href='MenuServlet';</script>");
+	            response.getWriter().println("<script>alert('許可に成功しました'); location.href='CensorshipServlet';</script>");
 	        } else {
 	            response.setContentType("text/html; charset=UTF-8");
 	            response.getWriter().println("<script>alert('許可に失敗しました'); history.back();</script>");
@@ -54,7 +54,7 @@ public class CheckServlet extends HttpServlet {
 			boolean result = dao.undo(project_id,user_id,admin_id);
 			if (result) {
 	            response.setContentType("text/html; charset=UTF-8");
-	            response.getWriter().println("<script>alert('取り消しに成功しました'); location.href='MenuServlet';</script>");
+	            response.getWriter().println("<script>alert('取り消しに成功しました'); location.href='CensorshipServlet';</script>");
 	        } else {
 	            response.setContentType("text/html; charset=UTF-8");
 	            response.getWriter().println("<script>alert('取り消しに失敗しました'); history.back();</script>");

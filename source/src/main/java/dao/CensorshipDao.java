@@ -19,7 +19,7 @@ public class CensorshipDao {
         	Class.forName("com.mysql.cj.jdbc.Driver");
 
             conn = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/webapp1?"
+                "jdbc:mysql://localhost:3306/f3?"
                 + "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
                 "root",
                 "password"
@@ -55,7 +55,8 @@ public class CensorshipDao {
                if(count == 0) {
            	    return false;
            	}
-               return ture;
+            
+               return true;
 
             	
         }catch (Exception e) {
@@ -84,7 +85,7 @@ public class CensorshipDao {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
             conn = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/webapp1?"
+                "jdbc:mysql://localhost:3306/f3?"
                 + "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
                 "root",
                 "password"
@@ -92,20 +93,7 @@ public class CensorshipDao {
             String sql;
             String imageUrl = null;
             int processCount = 0;
-             sql =
-            	    "INSERT INTO censorship(project_id," 
-            	     +"user_id,result,admin_id) VALUES(?,?,TRUE,?)";
-
-            	pStmt = conn.prepareStatement(sql);
-
-            	pStmt.setInt(1, project_id);
-            	pStmt.setString(2, user_id);
-            	pStmt.setInt(3, admin_id);
-
-            	int count = pStmt.executeUpdate();
-            	if(count == 0) {
-            	    return false;
-            	}
+            
             	
 
             
@@ -114,7 +102,7 @@ public class CensorshipDao {
             // 元画像取得
             // =====================
 
-            if ("PROJECT".equals(source)) {
+            if ("project".equals(source)) {
 
                 sql =
                     "SELECT image_url " +
@@ -129,6 +117,7 @@ public class CensorshipDao {
                 rs = pStmt.executeQuery();
 
                 if (!rs.next()) {
+                	System.out.println("② 元画像取得失敗");
                     return false;
                 }
 
@@ -150,6 +139,7 @@ public class CensorshipDao {
                 rs = pStmt.executeQuery();
 
                 if (!rs.next()) {
+                	System.out.println("③ history取得失敗");
                     return false;
                 }
 
@@ -175,6 +165,7 @@ public class CensorshipDao {
             rs = pStmt.executeQuery();
 
             if (!rs.next()) {
+            	System.out.println("④ projects.number取得失敗");
                 return false;
             }
 
@@ -200,6 +191,25 @@ public class CensorshipDao {
             if (rs.next()) {
                 historyCount = rs.getInt("cnt");
             }
+            System.out.println("project_id=" + project_id);
+            System.out.println("user_id=" + user_id);
+            System.out.println("source=" + source);
+            System.out.println("admin_id=" + admin_id);
+             sql =
+            	    "INSERT INTO censorship(project_id," 
+            	     +"user_id,result,admin_id) VALUES(?,?,TRUE,?)";
+
+            	pStmt = conn.prepareStatement(sql);
+
+            	pStmt.setInt(1, project_id);
+            	pStmt.setString(2, user_id);
+            	pStmt.setInt(3, admin_id);
+
+            	int count = pStmt.executeUpdate();
+            	if(count == 0) {
+            		System.out.println("① censorship INSERT失敗");
+            	    return false;
+            	}
 
             // =====================
             // 完成判定
@@ -258,10 +268,12 @@ public class CensorshipDao {
             rs = pStmt.executeQuery();
 
             if (!rs.next()) {
+            	System.out.println("⑤ 次の加工者が見つからない");
                 return false;
             }
-
             nextUserId = rs.getString("user_id");
+            System.out.println("選ばれたユーザー=" + nextUserId);
+
 
             // =====================
             // relay登録
