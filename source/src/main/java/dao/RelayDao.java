@@ -58,8 +58,8 @@ public class RelayDao {
 
             conn = DriverManager.getConnection(URL, USER, PASS);
 
-            String sql = "SELECT * FROM relay WHERE user_id = ? ORDER BY assigned_at DESC LIMIT 1";
-
+            String sql = "SELECT * FROM relay r WHERE r.user_id = ? AND NOT EXISTS (SELECT 1 FROM history h WHERE h.project_id = r.project_id AND h.user_id = r.user_id) ORDER BY r.assigned_at DESC LIMIT 1";
+            
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, userId);
 
@@ -99,9 +99,9 @@ public class RelayDao {
         return relay;
     }
 
-    // =================================================
-    // ■ ③ 削除（期限切れ・再利用用）
-    // =================================================
+
+    //  削除（期限切れ・再利用用）
+
     public boolean delete(int relayId) {
 
         Connection conn = null;
@@ -127,9 +127,8 @@ public class RelayDao {
         return false;
     }
 
-    // =================================================
-    // ■ ④（任意）ユーザーの最新レコード取得チェック用
-    // =================================================
+
+    // 任意）ユーザーの最新レコード取得チェック用
     public boolean existsByUserId(String userId) {
 
         Connection conn = null;
