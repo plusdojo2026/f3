@@ -36,11 +36,11 @@ color: white;
     <span class="close-button"
     onclick="document.getElementById('naviFlag').checked = false;">×</span>
     <br><br><br><br>
-    <a href="" style="color: white;">ログイン</a><br><br>
-    <a href="" style="color: white;">異物探索</a><br><br>
+    <a href="/f3/LoginServlet" style="color: white;">ログイン</a><br><br>
+    <a href="/f3/SearchServlet" style="color: white;">異物探索</a><br><br>
     <a href="" style="color: white;">通知</a><br><br>
-    <a href="" style="color: white;">設定</a><br><br>
-    <a href="" style="color: white;">ログアウト</a>
+    <a href="/f3/SettingServlet" style="color: white;">設定</a><br><br>
+    <a href="/f3/LogoutServlet" style="color: white;">ログアウト</a>
     
 </div>
 
@@ -259,6 +259,20 @@ function showMenu(kind) {
 		break;
 
 	case "10":
+		menu.innerHTML = `
+			<img name="fkds" src="/f3/css/images/fkds/fkds001.png" 
+			style="width: 10%; height: auto; z-index: 4000"; 
+			onclick="addFkds(this);">
+			<img name="fkds" src="/f3/css/images/fkds/fkds002.png" 
+			style="width: 10%; height: auto; z-index: 4000"; 
+			onclick="addFkds(this);">
+			<img name="fkds" src="/f3/css/images/fkds/fkds003.png" 
+			style="width: 10%; height: auto; z-index: 4000"; 
+			onclick="addFkds(this);">
+			<img name="fkds" src="/f3/css/images/fkds/fkds004.png" 
+			style="width: 10%; height: auto; z-index: 4000"; 
+			onclick="addFkds(this);">
+			`;
 		
 		break;
 	
@@ -457,7 +471,78 @@ function addStamp(imgElement) {
   img.src = imgElement.src;
 }
 
+//吹き出し
+function addFkds(imgElement) {
+  const img = new Image();
 
+  img.onload = () => {
+
+    const w = 80;
+    const h = 80;
+
+    // canvas中央に配置
+    let x = canvas.width / 2 - w / 2;
+    let y = canvas.height / 2 - h / 2;
+
+    let dragging = false;
+    let offsetX = 0;
+    let offsetY = 0;
+
+    // 現在の状態を保存（背景）
+    let baseSnapshot = ctx.getImageData(0, 0, canvas.width, canvas.height);
+
+    // 最初に描画（中央）
+    drawPreview();
+
+    canvas.onmousedown = (e) => {
+      const rect = canvas.getBoundingClientRect();
+      const mx = e.clientX - rect.left;
+      const my = e.clientY - rect.top;
+
+      // スタンプ内クリックでドラッグ開始
+      if (mx >= x && mx <= x + w && my >= y && my <= y + h) {
+        dragging = true;
+        offsetX = mx - x;
+        offsetY = my - y;
+      }
+    };
+
+    canvas.onmousemove = (e) => {
+      if (!dragging) return;
+
+      const rect = canvas.getBoundingClientRect();
+      const mx = e.clientX - rect.left;
+      const my = e.clientY - rect.top;
+
+      x = mx - offsetX;
+      y = my - offsetY;
+
+      drawPreview();
+    };
+
+    canvas.onmouseup = () => {
+      if (!dragging) return;
+      dragging = false;
+
+      // 確定描画
+      ctx.putImageData(baseSnapshot, 0, 0);
+      ctx.drawImage(img, x, y, w, h);
+
+      // 新しい状態を更新
+      baseSnapshot = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    };
+
+    function drawPreview() {
+      ctx.putImageData(baseSnapshot, 0, 0);
+      ctx.globalAlpha = 0.7; // 半透明プレビュー
+      ctx.drawImage(img, x, y, w, h);
+      ctx.globalAlpha = 1.0;
+    }
+
+  };
+
+  img.src = imgElement.src;
+}
 // お絵描き
 function enableDraw() {
 	let drawing = false;
