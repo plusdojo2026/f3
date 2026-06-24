@@ -34,11 +34,11 @@
 					<br>
 					<br>
 					<br>
-					<br> <a href="/webappAns/RegistServlet" style="color: white;">ログイン</a><br>
-					<br> <a href="" style="color: white;">異物探索</a><br>
+					<br> <a href="/f3/LoginServlet"  style="color: white;">ログイン</a><br>
+					<br> <a href="/f3/SearchServlet" style="color: white;">異物探索</a><br>
 					<br> <a href="" style="color: white;">通知</a><br>
-					<br> <a href="" style="color: white;">設定</a><br>
-					<br> <a href="" style="color: white;">ログアウト</a>
+					<br> <a href="/f3/SettingServlet" style="color: white;">設定</a><br>
+					<br> <a href="/f3/LogoutServlet" style="color: white;">ログアウト</a>
 
 				</div>
 			</div>
@@ -66,11 +66,11 @@
 	<div class="content">
 
 		<!--作品画像サムネ -->
-		<form method="POST" action="/f3/DetailServlet">
+		<form method="GET" action="/f3/DetailServlet">
 		<c:forEach var="r" items="${cardList}">
 			<div class="thumbnail">
-			<a href=f3/DetailServlet >
-				<img src="${r.thumbnailUrl}"width="100">
+			<a href=/f3/DetailServlet >
+				<img src="${r.thumbnailUrl}"width="200">
 					</a>
 			</div>
 		</c:forEach>

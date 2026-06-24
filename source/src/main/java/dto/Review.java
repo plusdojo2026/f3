@@ -9,7 +9,7 @@ private int projectId;        // プロジェクトID
     private int grossGood;        // きもいいね
     private int scaryGood;        // こわいいね
     
-    private String word;			//検索フィールド
+   
 	
 	public int getProjectId() {
 		return projectId;
@@ -47,13 +47,6 @@ private int projectId;        // プロジェクトID
 	}
 	
 
-	public String getWord() {
-		return word;
-	}
-
-	public void setWord(String word) {
-		this.word = word;
-	}
 
 	
 	
@@ -63,7 +56,7 @@ private int projectId;        // プロジェクトID
 		this.good = 0;
 		this.grossGood = 0;
 		this.scaryGood = 0;
-		this.word ="";
+		
 	}
 
 	public Review(int projectId, String thumbnailUrl, int good,int grossGood,int scaryGood) {

@@ -24,32 +24,17 @@ public class ReviewDao {
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/f3?"
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
 					"root", "password");
-			
-			
 			// SQL文を準備する //重複削除DISTINCT
-			String sql = "SELECT DISTINCT r.project_id, r.thumbnail_url, r.good, r.grossgood, r.scarygood "
-					+ "FROM review r "                                //基準テーブル
-					+ "JOIN projects p ON r.project_id=p.project_id " //テーマ検索
-					+ "JOIN history h ON r.project_id=h.project_id "//キャプション検索
-					+ "JOIN users u ON h.user_id=u.user_id "//ユーザー名検索
-					+ "JOIN project_tags pt ON r.project_id=pt.project_id "//タグ検索
+			String sql = "SELECT * FROM review";
 					
-					//順番
-					+ "ORDER BY project_id";
 			
 			//desc
 					//１０件まで表示
 					//+"LIMIT 10 OFFSET ?";
 			
 			PreparedStatement pStmt = conn.prepareStatement(sql);
-
-		
 			// SQL文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
-
-			
-			
-
 			// 結果表をコレクションにコピーする
 			while (rs.next()) {
 				Review Review = new Review(

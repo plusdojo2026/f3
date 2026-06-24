@@ -35,13 +35,8 @@ public class SearchServlet extends HttpServlet {
 				// 検索処理を行う
 				ReviewDao rDao = new ReviewDao();
 				//表示させる 		
-			
-
 				List<Review> cardList = rDao.select();
 
-				
-				
-				
 				// 検索結果をリクエストスコープに格納する
 				request.setAttribute("cardList", cardList);
 
@@ -49,8 +44,6 @@ public class SearchServlet extends HttpServlet {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/search.jsp");
 				dispatcher.forward(request, response);
 			}
-
-		
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
