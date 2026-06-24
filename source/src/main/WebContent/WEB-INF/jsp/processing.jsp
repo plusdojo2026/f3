@@ -36,11 +36,11 @@ color: white;
     <span class="close-button"
     onclick="document.getElementById('naviFlag').checked = false;">×</span>
     <br><br><br><br>
-    <a href="" style="color: white;">ログイン</a><br><br>
-    <a href="" style="color: white;">異物探索</a><br><br>
+    <a href="/f3/LoginServlet" style="color: white;">ログイン</a><br><br>
+    <a href="/f3/SearchServlet" style="color: white;">異物探索</a><br><br>
     <a href="" style="color: white;">通知</a><br><br>
-    <a href="" style="color: white;">設定</a><br><br>
-    <a href="" style="color: white;">ログアウト</a>
+    <a href="/f3/SettingServlet" style="color: white;">設定</a><br><br>
+    <a href="/f3/LogoutServlet" style="color: white;">ログアウト</a>
     
 </div>
 
