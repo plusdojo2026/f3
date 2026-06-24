@@ -55,7 +55,7 @@ public class AdminLoginServlet extends HttpServlet {
 				if(admin != null) { //ログイン成功
 					System.out.println("doPostの成功に入りました");
 					HttpSession session = request.getSession();
-					session.setAttribute("user_id", admin.getAdmin_id());
+					session.setAttribute("admin_id", admin.getAdmin_id());
 					response.sendRedirect("/f3/CensorshipServlet");
 				}else { // ログイン失敗
 					// リクエストスコープに、タイトル、メッセージ、戻り先を格納する
