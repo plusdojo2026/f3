@@ -85,11 +85,9 @@ public class ProjectsDao {
 					PreparedStatement pStmt = conn.prepareStatement(sql);
 					
 					// SQL文を完成させる
-					if (pIm.getUserId() != null) {
-						pStmt.setString(1, pIm.getUserId());
-					} else {
-						pStmt.setString(1, "");
-					}
+					
+						pStmt.setInt(1, pIm.getProjectId());
+					
 					
 					// SQL文を実行する
 					if (pStmt.executeUpdate() == 1) {
