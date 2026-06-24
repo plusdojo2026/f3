@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import dao.ProjectsDao;
 import dto.Projects;
+import dto.Relay;
 
 /**
  * Servlet implementation class ProcessingServlet
@@ -35,20 +36,27 @@ public class ProcessingServlet extends HttpServlet {
 	
 				
 				// セッションスコープでproject_idを取得する
-				HttpSession session = request.getSession(false);
+				HttpSession session = request.getSession();
 				
 				if(session == null) {
 					response.sendRedirect("/f3/LoginServlet");
 					return;
 				}
-				int projectId = (int) session.getAttribute("projectId");
+				Relay relay = (Relay) session.getAttribute("relay");
+				int projectId = (int) session.getAttribute("project_id");
+				String relay_image_url = (String) session.getAttribute("relay_image_url");
+				String deadline = (String) session.getAttribute("deadline_at");
 				
 				// Daoでテーマを取得する
-				ProjectsDao pDao =new ProjectsDao();
+				ProjectsDao pDao = new ProjectsDao();
 				String result = pDao.selectTheme(new Projects(projectId, "theme"));
 				
-				// リクエストスコープに取得したテーマを格納する
+				// リクエストスコープに取得した要素を格納する
 				request.setAttribute("theme", result);
+				request.setAttribute("relay_image_url", relay_image_url);
+				request.setAttribute("deadline", deadline);
+				
+				
 				
 				// jspにフォワード
 				RequestDispatcher dispatcher = 

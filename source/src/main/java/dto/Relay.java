@@ -72,5 +72,17 @@ public class Relay implements Serializable{
 		this.deadline_at = deadline_at;
 		
 	}
+	public Relay(int relay_id, String user_id, int process_count, int project_id, int redraw_count,
+			String relay_image_url, LocalDateTime assigned_at, LocalDateTime deadline_at) {
+		super();
+		this.relay_id = relay_id;
+		this.user_id = user_id;
+		this.process_count = process_count;
+		this.project_id = project_id;
+		this.redraw_count = redraw_count;
+		this.relay_image_url = relay_image_url;
+		this.assigned_at = assigned_at;
+		this.deadline_at = deadline_at;
+	}
 
 }

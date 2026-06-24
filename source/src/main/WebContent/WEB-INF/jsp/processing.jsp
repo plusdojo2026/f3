@@ -53,7 +53,7 @@ color: white;
 <!-- 時計 -->
 <div class="timerContainer">
 <img src="/f3/css/images/processTimer.png" alt="残り時間">
-<p>23:59</p>
+<p><%= request.getAttribute("deadline") %></p>
 </div>
 
 
@@ -62,8 +62,8 @@ color: white;
 <form action="ProcessingServlet" method="POST" id="proForm" enctype="multipart/form-data">
 <!-- Canvas -->
 <canvas id="canvas" width="700" height="400" style="border:3px solid black; padding: 0;"></canvas>
-<!-- ① アップロードボタン -->
-<input type="file" id="upload" accept="image/*" style="z-index: 2000;">
+<!-- アップロード -->
+<img src=`${relay_image_url}` id="upload" style="z-index: 2000;">
 
 
 
