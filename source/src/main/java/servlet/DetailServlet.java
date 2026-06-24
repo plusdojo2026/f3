@@ -24,6 +24,7 @@ public class DetailServlet extends HttpServlet {
 		// 詳細ページにフォワードする
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/detail.jsp");
 				dispatcher.forward(request, response);
+				
 	}
 
 }

@@ -28,39 +28,34 @@ public class SearchServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		// リクエストパラメータを取得する
+				request.setCharacterEncoding("UTF-8");
+				
 
+				// 検索処理を行う
+				ReviewDao rDao = new ReviewDao();
+				//表示させる 		
+			
 
-		// 検索ページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/search.jsp");
-		dispatcher.forward(request, response);
-	}
+				List<Review> cardList = rDao.select();
 
+				
+				
+				
+				// 検索結果をリクエストスコープに格納する
+				request.setAttribute("cardList", cardList);
+
+				// 結果ページにフォワードする
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/search.jsp");
+				dispatcher.forward(request, response);
+			}
+
+		
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	//検索
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		// リクエストパラメータを取得する
-		request.setCharacterEncoding("UTF-8");
-		String searchword = request.getParameter("search");
-		String order = request.getParameter("order");
-
-		// 検索処理を行う
-		ReviewDao rDao = new ReviewDao();
-		//表示させる 		
-		Review card = new Review();//カードを作る
-		card.setWord(searchword);//word箱　
-
-		List<Review> cardList = rDao.select(card,order);
-
-		// 検索結果をリクエストスコープに格納する
-		request.setAttribute("cardList", cardList);
-
-		// 結果ページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/search.jsp");
-		dispatcher.forward(request, response);
 	}
-
 }
