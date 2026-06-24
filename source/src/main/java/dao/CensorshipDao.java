@@ -228,8 +228,8 @@ public class CensorshipDao {
 
             String nextUserId = null;
 
-            sql ="SELECT u.user_id FROM users u \"WHERE u.user_id NOT IN (SELECT p.user_id " 
-            	+"SELECT p.user_id FROM projects p WHERE p.project_id=?"
+            sql ="SELECT u.user_id FROM users u WHERE u.user_id NOT IN (SELECT p.user_id " 
+            	+" FROM projects p WHERE p.project_id=? "
                 +"UNION SELECT h.user_id FROM history h WHERE h.project_id=? ) "
                 +"ORDER BY RAND() LIMIT 1";
 
