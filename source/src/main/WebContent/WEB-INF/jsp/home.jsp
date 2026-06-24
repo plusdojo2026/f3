@@ -36,10 +36,7 @@
 			    <input type="hidden" name="relayId" value="${relay.relay_id}">
 			
 			    <c:if test="${not empty relay}">
-			        <input type="image"
-			               src="${relay.relay_image_url}"
-			               alt="加工開始"
-			               style="width:400px;">
+			        <input type="image"src="${relay.relay_image_url}"alt="加工開始"style="width:400px;">
 			    </c:if>
 			
 			</form>
