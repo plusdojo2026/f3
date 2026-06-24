@@ -46,7 +46,7 @@ color: white;
 
 <!-- テーマ表示部 -->
 <div id="themeContainer">
-<h2>テーマ</h2>
+<h2><%= request.getAttribute("theme") %></h2>
 <img src="/f3/css/images/themebox.png">
 </div>
 

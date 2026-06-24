@@ -33,6 +33,9 @@ public class CheckServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
+		
+		System.out.println("admin_id=" + session.getAttribute("admin_id"));
+		
 		int admin_id = (int)session.getAttribute("admin_id");
 		int project_id = Integer.parseInt(request.getParameter("project_id"));
 		String user_id = request.getParameter("user_id");
@@ -41,23 +44,23 @@ public class CheckServlet extends HttpServlet {
 		
 		if("許可".equals(action)) {
 			CensorshipDao dao = new CensorshipDao();
-			boolean result = dao.authorize(project_id,user_id,source);
+			boolean result = dao.authorize(project_id,user_id,source,admin_id);
 			if (result) {
 	            response.setContentType("text/html; charset=UTF-8");
-	            response.getWriter().println("<script>alert('共有に成功しました'); location.href='MenuServlet';</script>");
+	            response.getWriter().println("<script>alert('許可に成功しました'); location.href='CensorshipServlet';</script>");
 	        } else {
 	            response.setContentType("text/html; charset=UTF-8");
-	            response.getWriter().println("<script>alert('共有に失敗しました'); history.back();</script>");
+	            response.getWriter().println("<script>alert('許可に失敗しました'); history.back();</script>");
 	        }
 		}else if("取り消し".equals(action)) {
 			CensorshipDao dao = new CensorshipDao();
 			boolean result = dao.undo(project_id,user_id,admin_id);
 			if (result) {
 	            response.setContentType("text/html; charset=UTF-8");
-	            response.getWriter().println("<script>alert('共有に成功しました'); location.href='MenuServlet';</script>");
+	            response.getWriter().println("<script>alert('取り消しに成功しました'); location.href='CensorshipServlet';</script>");
 	        } else {
 	            response.setContentType("text/html; charset=UTF-8");
-	            response.getWriter().println("<script>alert('共有に失敗しました'); history.back();</script>");
+	            response.getWriter().println("<script>alert('取り消しに失敗しました'); history.back();</script>");
 	        }
 		}
 		

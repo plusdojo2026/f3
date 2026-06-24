@@ -12,9 +12,8 @@
 <body>
 	<!--ロゴ -->
 	<header>
-		<div class="logo">
-			<h1>異物クロニクル</h1>
-		</div>
+		<h1 class="title1">異物クロニクル</h1>
+		<h2 class="title2">異物クロニクル</h2>
 		<!--プリティ愛 ナビゲーション-->
 		<div class="area">
 			<div class="prettyAi">
@@ -31,11 +30,10 @@
 					<br>
 					<br>
 					<br>
-					<br> <a href="" style="color: white;">ログイン</a><br>
-					<br> <a href="" style="color: white;">異物探索</a><br>
-					<br> <a href="" style="color: white;">通知</a><br>
-					<br> <a href="" style="color: white;">設定</a><br>
-					<br> <a href="" style="color: white;">ログアウト</a>
+					<br> <a href="/f3/LoginServlet" style="color: white;">ログイン</a><br>
+					<br> <a href="/f3/SearchServlet" style="color: white;">異物探索</a><br>
+					<br> <a href="/f3/settingServlet" style="color: white;">設定</a><br>
+					<br> <a href="/f3/LogoutServlet" style="color: white;">ログアウト</a>
 				</div>
 			</div>
 			</div>

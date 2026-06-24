@@ -1,4 +1,9 @@
 @charset "UTF-8";
+/* すべてのページ */
+@font-face {
+    font-family: 'taisyoKatuji';
+    src: url('/f3/font/taisyokatujippoi7T5.ttf') format('truetype');
+}
 /* body */
 body {
     background-image: url("/f3/css/images/detail/deatilBackgrond.png");
@@ -8,7 +13,18 @@ body {
     /*スクロールしても背景固定？*/
     margin: 0;
 }
-
+.title1{
+	color:white;
+	font-size:50px;
+	margin-top:0px;/*上側の余白を0にする*/
+	margin-bottom:0px;/*下側の余白を-20pxにして、title2との間隔を狭くする*/
+}
+.title2{
+	color:gray;
+	font-size:40px;
+	margin-top:0;/* 上側の余白を0にする */
+	margin-left:30px;
+}
 .logo {
     margin: 0 0 100px 0;
     width: 850px;

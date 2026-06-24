@@ -8,6 +8,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import dao.ProjectsDao;
+import dto.Projects;
 
 /**
  * Servlet implementation class ProcessingServlet
@@ -29,13 +33,27 @@ public class ProcessingServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
+				
+				// セッションスコープでproject_idを取得する
+				HttpSession session = request.getSession(false);
+				
+				if(session == null) {
+					response.sendRedirect("/f3/LoginServlet");
+					return;
+				}
+				int projectId = (int) session.getAttribute("projectId");
+				
+				// Daoでテーマを取得する
+				ProjectsDao pDao =new ProjectsDao();
+				String result = pDao.selectTheme(new Projects(projectId, "theme"));
+				
+				// リクエストスコープに取得したテーマを格納する
+				request.setAttribute("theme", result);
+				
+				// jspにフォワード
 				RequestDispatcher dispatcher = 
 						request.getRequestDispatcher("/WEB-INF/jsp/processing.jsp");
 				dispatcher.forward(request, response);
-				
-				// セッションスコープでproject_idを取得する
-				
-				// Daoでテーマを取得する
 	}
 
 	/**
