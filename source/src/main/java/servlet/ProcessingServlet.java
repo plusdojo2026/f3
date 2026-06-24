@@ -45,7 +45,10 @@ public class ProcessingServlet extends HttpServlet {
 				
 				// Daoでテーマを取得する
 				ProjectsDao pDao =new ProjectsDao();
-				boolean result = pDao.selectTheme(new Projects(projectId, "theme"));
+				String result = pDao.selectTheme(new Projects(projectId, "theme"));
+				
+				// リクエストスコープに取得したテーマを格納する
+				request.setAttribute("theme", result);
 				
 				// jspにフォワード
 				RequestDispatcher dispatcher = 
