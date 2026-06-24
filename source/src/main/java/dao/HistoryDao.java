@@ -74,4 +74,62 @@ public class HistoryDao {
         // 取得した画像一覧を返す
         return list;
     }
+    
+ // 登録用。＊まだコピペしただけ。書き換えよ
+ 			public boolean setHistory(History h) {
+ 			Connection conn = null;
+ 			boolean result = false;
+ 			
+
+ 			try {
+ 				// JDBCドライバを読み込む
+ 				Class.forName("com.mysql.cj.jdbc.Driver");
+
+ 				// データベースに接続する
+ 				conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/f3?characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
+ 						"root", "password");
+ 				
+ 				// SQL文を準備する
+ 				String sql = "INSERT INTO history (user_id, editedimage_url, process_count, project_id, voice_id, caption, processing_date) VALUES (?, ?, ?, ?, 1, ?, NOW())";
+ 				PreparedStatement pStmt = conn.prepareStatement(sql);
+ 				
+ 				// SQL文を完成させる
+ 				if (h.getUserId() != null) {
+ 					pStmt.setString(1, h.getUserId());
+ 				} else {
+ 					pStmt.setString(1, "");
+ 				}
+ 				if (pIm.getImageUrl() != null) {
+ 					pStmt.setString(2, pIm.getImageUrl());
+ 				} else {
+ 					pStmt.setString(2, "");
+ 				}
+ 					pStmt.setInt(3, pIm.getNumber());
+ 				if (pIm.getTheme() != null) {
+ 						pStmt.setString(4, pIm.getTheme());
+ 				} else {
+ 					pStmt.setString(4, "");				
+ 				}
+ 				
+ 				
+ 				// SQL文を実行する
+ 				if (pStmt.executeUpdate() == 1) {
+ 					result = true;
+ 				}
+ 				
+ 			} catch (SQLException e) {
+ 				e.printStackTrace();
+ 			} catch (ClassNotFoundException e) {
+ 				e.printStackTrace();
+ 			} finally {
+ 				// データベースを切断
+ 				if (conn != null) {
+ 					try {
+ 						conn.close();
+ 					} catch (SQLException e) {
+ 						e.printStackTrace();
+ 					}
+ 			}
+ 			} return result;
+ 			}  
 }

@@ -117,13 +117,7 @@ color: white;
     onclick="document.getElementById('selSoundFlag').checked = false;">×</span>
     
 </div>
-<!-- キャプション 送信は音声や画像加工とまとめて-->
-<div class="caption" style="position: relative; top: 77vh; left: 30vw;">
-<form action="/f3/CaptionServlet" method="POST">
-<img src="/f3/css/images/proCaption.png" alt="キャプションボックス画像" style="position: absolute; width: 20vw; height: auto;">
-<input id="caption" type="text" maxlength="100" name="caption" placeholder="キャプション" style="position: absolute; top: 4vh; left: 3vw">
-</form>
-</div>
+
 
 
 <!-- 通報 -->
@@ -144,10 +138,16 @@ color: white;
 
 <!-- 加工終了ボタン -->
 <img id="complete" src="/f3/css/images/completePro.png" 
-onclick="document.getElementById('proForm').submit(); submitCanvas(); document.get" 
+onclick="document.getElementById('proForm').submit(); submitCanvas(); document.getElementById('caption').submit" 
 style="position: absolute; width: 10%; height: auto; left: 80%; top: 80%;">
 </form>
-<!-- 加工機能全般 -->
+<!-- キャプション 送信は音声や画像加工とまとめて-->
+<div class="caption" style="position: relative; top: 77vh; left: 30vw;">
+<form action="/f3/CaptionServlet" method="POST">
+<img src="/f3/css/images/proCaption.png" alt="キャプションボックス画像" style="position: absolute; width: 20vw; height: auto;">
+<input id="caption" type="text" maxlength="100" name="caption" placeholder="キャプション" style="position: absolute; top: 4vh; left: 3vw">
+</form>
+</div>
 
 </body>
 <script>

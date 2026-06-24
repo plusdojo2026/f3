@@ -35,7 +35,7 @@ public class HomeServlet extends HttpServlet {
 	    RelayDao dao = new RelayDao();
 
 	    Relay relay = dao.findByUserId(userId);
-
+	    
 	    System.out.println("relay=" + relay);
 
 	    request.setAttribute("relay", relay);
