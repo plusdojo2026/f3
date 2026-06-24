@@ -8,14 +8,16 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import dto.History;
+
 public class HistoryDao {
     Connection conn = null;
 
     // historyテーブルから加工画像URL一覧を取得するメソッド
-    public List<String> getImages() throws Exception {
+    public List<History> getHistory(int project_id) throws Exception {
 
-        // 取得した画像URLを保存するリスト
-        List<String> images = new ArrayList<>();
+        // 取得した加工履歴を入れるリスト
+        List<History> list = new ArrayList<>();
         
         try {
         	// JDBCドライバを読み込む
@@ -28,15 +30,14 @@ public class HistoryDao {
             
            
             // SELECT文を準備する
-            // プロジェクトIDを開くと
-            String sql = "SELECT h.editedimage_url,v.voice_id,h.caption FROM history"
-            		+ "JOIN voices v ON h.voice_id = v.voice_id WHERE h.project_id = ? ORDER BY h.process_count ASC";
+            // hの画像URL、hのキャプションを取り出して
+            String sql = "SELECT editedimage_url, caption, process_count FROM history WHERE project_id = ? ORDER BY process_count ASC";
             
 
             // SQLを実行する準備
             PreparedStatement pStmt = conn.prepareStatement(sql);
             // プロジェクトIDを指定
-            // pStmt.setInt(1,project_id);
+            pStmt.setInt(1,project_id);
 
             // SQL実行
             ResultSet rs = pStmt.executeQuery();
@@ -44,10 +45,16 @@ public class HistoryDao {
             
             // 取得したデータを1件ずつ取り出す
             while(rs.next()){
-                // editedimage_url列の値を取得
-                String image = rs.getString("editedimage_url");
-                // リストに画像パスを追加
-                images.add(image);
+            	// 1加工分の箱を作成
+            	History h = new History();
+            	// 画像URLを保存
+            	h.setEditedimage_url(rs.getString("editedimage_url"));
+            	// キャプション保存
+            	h.setCaption(rs.getString("caption"));
+            	// 加工順保存
+            	h.setProcess_count(rs.getInt("process_count"));
+                // リストに追加
+                list.add(h);
             }
         }
         catch(Exception e) {
@@ -65,6 +72,6 @@ public class HistoryDao {
 			}
 		}
         // 取得した画像一覧を返す
-        return images;
+        return list;
     }
 }
