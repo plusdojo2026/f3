@@ -43,6 +43,8 @@ public class ProcessingServlet extends HttpServlet {
 					return;
 				}
 				Relay relay = (Relay) session.getAttribute("relay");
+				// セッションスコープに格納
+				request.setAttribute("relay", relay);
 				int projectId = (int) session.getAttribute("project_id");
 				String relay_image_url = (String) session.getAttribute("relay_image_url");
 				String deadline = (String) session.getAttribute("deadline_at");
@@ -55,6 +57,8 @@ public class ProcessingServlet extends HttpServlet {
 				request.setAttribute("theme", result);
 				request.setAttribute("relay_image_url", relay_image_url);
 				request.setAttribute("deadline", deadline);
+				
+				
 				
 				
 				
