@@ -1,6 +1,8 @@
 package dto;
 
-public class Projects {
+import java.io.Serializable;
+
+public class Projects implements Serializable{
 	private int projectId;
 	private String userId;
 	private String imageUrl;

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html>
@@ -33,7 +34,7 @@
 					<br>
 					<br>
 					<br>
-					<br> <a href="" style="color: white;">ログイン</a><br>
+					<br> <a href="/webappAns/RegistServlet" style="color: white;">ログイン</a><br>
 					<br> <a href="" style="color: white;">異物探索</a><br>
 					<br> <a href="" style="color: white;">通知</a><br>
 					<br> <a href="" style="color: white;">設定</a><br>
@@ -65,12 +66,15 @@
 	<div class="content">
 
 		<!--作品画像サムネ -->
+		<form method="POST" action="/f3/DetailServlet">
 		<c:forEach var="r" items="${cardList}">
 			<div class="thumbnail">
-				<img src={pageContext.request.contextPath}${r.thumbnailUrl}
-					width="100">
+			<a href=f3/DetailServlet >
+				<img src="${r.thumbnailUrl}"width="100">
+					</a>
 			</div>
 		</c:forEach>
+		</form>
 	</div>
 	<div class="evaluate">
 		<!-- いいねボタン-->
@@ -106,7 +110,7 @@
 		<button type="button" class="fetch"
 			onclick="window.location.reload(true);">
 
-			<img src="/f3/css/images/load.png" alt="作品をさらに表示する">
+			<img src="/f3/css/images/search/load.png" alt="作品をさらに表示する">
 		</button>
 	</div>
 
