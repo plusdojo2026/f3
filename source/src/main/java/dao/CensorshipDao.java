@@ -105,9 +105,9 @@ public class CensorshipDao {
             if ("project".equals(source)) {
 
                 sql =
-                    "SELECT image_url " +
-                    "FROM projects " +
-                    "WHERE project_id=? AND user_id=?";
+                    "SELECT image_url " 
+                    +"FROM projects " 
+                    +"WHERE project_id=? AND user_id=?";
 
                 pStmt = conn.prepareStatement(sql);
 
@@ -127,9 +127,8 @@ public class CensorshipDao {
             } else {
 
                  sql =
-                    "SELECT editedimage_url, process_count " +
-                    "FROM history " +
-                    "WHERE project_id=? AND user_id=?";
+                    "SELECT editedimage_url, process_count FROM history " 
+                    +"WHERE project_id=? AND user_id=?";
 
                 pStmt = conn.prepareStatement(sql);
 
@@ -153,10 +152,8 @@ public class CensorshipDao {
 
             int number = 0;
 
-             sql =
-                "SELECT number " +
-                "FROM projects " +
-                "WHERE project_id=?";
+             sql = "SELECT number FROM projects WHERE project_id=?" ;
+
 
             pStmt = conn.prepareStatement(sql);
 
@@ -178,9 +175,7 @@ public class CensorshipDao {
             int historyCount = 0;
 
             sql =
-                "SELECT COUNT(*) AS cnt " +
-                "FROM history " +
-                "WHERE project_id=?";
+                "SELECT COUNT(*) AS cnt FROM history WHERE project_id=?";
 
             pStmt = conn.prepareStatement(sql);
 
@@ -217,22 +212,10 @@ public class CensorshipDao {
 
             if (historyCount >= number) {
             	sql =
-            	        "INSERT INTO review(" +
-            	        "project_id," +
-            	        "thumbnail_url," +
-            	        "good," +
-            	        "grossgood," +
-            	        "scarygood" +
-            	        ") " +
-            	        "SELECT " +
-            	        "project_id," +
-            	        "image_url," +
-            	        "0," +
-            	        "0," +
-            	        "0 " +
-            	        "FROM projects " +
-            	        "WHERE project_id=?";
-
+            	        "INSERT INTO review( project_id,thumbnail_url," 
+            	        +"good,grossgood,scarygood) SELECT project_id,"
+            	        +"image_url,0,0,0 FROM projects WHERE project_id=?";
+          
             	    pStmt = conn.prepareStatement(sql);
             	    pStmt.setInt(1, project_id);
             	    pStmt.executeUpdate();
@@ -245,20 +228,10 @@ public class CensorshipDao {
 
             String nextUserId = null;
 
-            sql =
-                "SELECT u.user_id " +
-                "FROM users u " +
-                "WHERE u.user_id NOT IN (" +
-                    "SELECT p.user_id " +
-                    "FROM projects p " +
-                    "WHERE p.project_id=? " +
-                    "UNION " +
-                    "SELECT h.user_id " +
-                    "FROM history h " +
-                    "WHERE h.project_id=? " +
-                ") " +
-                "ORDER BY RAND() " +
-                "LIMIT 1";
+            sql ="SELECT u.user_id FROM users u \"WHERE u.user_id NOT IN (SELECT p.user_id " 
+            	+"SELECT p.user_id FROM projects p WHERE p.project_id=?"
+                +"UNION SELECT h.user_id FROM history h WHERE h.project_id=? ) "
+                +"ORDER BY RAND() LIMIT 1";
 
             pStmt = conn.prepareStatement(sql);
 
@@ -280,19 +253,9 @@ public class CensorshipDao {
             // =====================
 
             sql =
-                "INSERT INTO relay(" +
-                "user_id," +
-                "process_count," +
-                "project_id," +
-                "redraw_count," +
-                "relay_image_url," +
-                "assigned_at," +
-                "deadline_at" +
-                ") VALUES (" +
-                "?,?,?,0,?," +
-                "NOW()," +
-                "DATE_ADD(NOW(), INTERVAL 1 DAY)" +
-                ")";
+                "INSERT INTO relay(user_id,process_count,project_id, " 
+            	+"redraw_count,relay_image_url,assigned_at,deadline_at)" 
+            	+ "VALUES (?,?,?,0,?,NOW(),DATE_ADD(NOW(), INTERVAL 1 DAY))";
 
             pStmt = conn.prepareStatement(sql);
             pStmt.setString(1, nextUserId);
@@ -334,11 +297,10 @@ public class CensorshipDao {
                 "root",
                 "password"
             );
-            String sql =
-            		"select p.project_id,p.user_id,p.image_url,NULL as voice_url,NULL as caption,'project' as source "+
-            		"from projects p where not exists(select 1 from censorship c where c.project_id = p.project_id and c.user_id = p.user_id) "+
-            		"union all select h.project_id,h.user_id, h.editedimage_url as image_url,v.voice_url,h.caption,'history' as source from history h inner join voices v on h.voice_id = v.voice_id where not exists("+
-            		"select 1 from censorship c where c.project_id = h.project_id and c.user_id = h.user_id)";
+            String sql ="select p.project_id,p.user_id,p.image_url,NULL as voice_url,NULL as caption,'project' as source "
+            		+"from projects p where not exists(select 1 from censorship c where c.project_id = p.project_id and c.user_id = p.user_id) "
+            		+"union all select h.project_id,h.user_id, h.editedimage_url as image_url,v.voice_url,h.caption,'history' as source from history h inner join voices v on h.voice_id = v.voice_id where not exists("
+            		+"select 1 from censorship c where c.project_id = h.project_id and c.user_id = h.user_id)";
           
             		
             PreparedStatement ps = conn.prepareStatement(sql);
