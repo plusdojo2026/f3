@@ -31,7 +31,7 @@
 	<main>
 	<!-- 画像がくる -->
 		<div class="form">
-			<form action="ProcessingServlet" method="post">
+			<form action="/f3/ProcessingServlet">
 
 			    <input type="hidden" name="relayId" value="${relay.relay_id}">
 			

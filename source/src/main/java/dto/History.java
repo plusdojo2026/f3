@@ -73,6 +73,19 @@ public class History {
 	public void setProcessing_data(LocalDateTime processing_data) {
 		this.processing_data = processing_data;
 	}
+
+	public History(int work_id, String user_id, String editedimage_url, int process_count, int project_id, int voice_id,
+			String caption, LocalDateTime processing_data) {
+		super();
+		this.work_id = work_id;
+		this.user_id = user_id;
+		this.editedimage_url = editedimage_url;
+		this.process_count = process_count;
+		this.project_id = project_id;
+		this.voice_id = voice_id;
+		this.caption = caption;
+		this.processing_data = processing_data;
+	}
 	
 
 }

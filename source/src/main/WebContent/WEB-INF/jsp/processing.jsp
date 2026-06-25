@@ -43,28 +43,25 @@ color: white;
     <a href="/f3/LogoutServlet" style="color: white;">ログアウト</a>
     
 </div>
-
 <!-- テーマ表示部 -->
 <div id="themeContainer">
-<h2><%= request.getAttribute("theme") %></h2>
+<h2>${sessionScope.theme}</h2>
 <img src="/f3/css/images/themebox.png">
 </div>
 
 <!-- 時計 -->
 <div class="timerContainer">
 <img src="/f3/css/images/processTimer.png" alt="残り時間">
-<p><%= request.getAttribute("deadline") %></p>
+
+<p>${sessionScope.deadline_at}</p>
 </div>
-
-
 
 
 <form action="ProcessingServlet" method="POST" id="proForm" enctype="multipart/form-data">
 <!-- Canvas -->
 <canvas id="canvas" width="700" height="400" style="border:3px solid black; padding: 0;"></canvas>
-<!-- アップロード -->
-<img src="${relay_image_url}" id="upload" style="z-index: 2000;">
-
+<img id="baseImage" src="${sessionScope.relay_image_url}" style="display:none;">
+<input type="hidden" name="image" id="canvasImage">
 
 
 <!-- 加工の種類 -->
@@ -138,49 +135,41 @@ color: white;
 
 <!-- 加工終了ボタン -->
 <img id="complete" src="/f3/css/images/completePro.png" 
-onclick="document.getElementById('proForm').submit(); submitCanvas(); document.getElementById('caption').submit" 
+onclick="submitCanvas(); document.getElementById('proForm').submit();" 
 style="position: absolute; width: 10%; height: auto; left: 80%; top: 80%;">
-</form>
-<!-- キャプション 送信は音声や画像加工とまとめて-->
+
 <div class="caption" style="position: relative; top: 77vh; left: 30vw;">
-<form action="/f3/CaptionServlet" method="POST">
 <img src="/f3/css/images/proCaption.png" alt="キャプションボックス画像" style="position: absolute; width: 20vw; height: auto;">
 <input id="caption" type="text" maxlength="100" name="caption" placeholder="キャプション" style="position: absolute; top: 4vh; left: 3vw">
-</form>
 </div>
+</form>
+
 
 </body>
 <script>
 const canvas = document.getElementById("canvas");
 // 2D描画コンテキストを取得する
 const ctx = canvas.getContext("2d");
-// 開発用画像
-const upload = document.getElementById("upload");
-const menu = document.getElementById("menu");
-
 let originalImage = null;
 let currentTool = null;
 
-// 画像アップロード
-upload.addEventListener("change", (e) => {
-	const file = e.target.files[0];
-	if(!file) return;
-	
-	const img = new Image();
-	img.onload = () => {
-		originalImage = img;
-		redrawBaseImage();
-	};
-	img.src = URL.createObjectURL(file);
-});
+// 加工元画像の挿入
+window.onload = () => {
+    const base = document.getElementById("baseImage");
 
-// 元画像だけ描画
+    const img = new Image();
+    img.onload = () => {
+        originalImage = img;
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+    };
+    img.src = base.src;
+};
+
 function redrawBaseImage() {
-	console.log("再描画された");
-	ctx.clearRect(0, 0, canvas.width, canvas.height);
-	if (originalImage) {
-		ctx.drawImage(originalImage, 0, 0, canvas.width, canvas.height);
-	}
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    if (originalImage) {
+        ctx.drawImage(originalImage, 0, 0, canvas.width, canvas.height);
+    }
 }
 
 // 加工クリア（元画像だけ残す）
@@ -567,15 +556,9 @@ function enableDraw() {
 
 // canvasの内容を提出する
 function submitCanvas() {
-	canvas.toBlob(blob => {
-		const formData = new FormData();
-		formData.append("image", blob, "edited.png");
-		
-		fetch("/f3/uploadImages", {
-			method: "POST",
-			body: formData
-		});
-	});
+	const dataURL = canvas.toDataURL("image/png");
+	document.getElementById("canvasImage").value = dataURL;
+	
 }
 
 // 録音機能
