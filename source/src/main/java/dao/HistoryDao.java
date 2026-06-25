@@ -90,32 +90,44 @@ public class HistoryDao {
  						"root", "password");
  				
  				// SQL文を準備する
+ 				// まずは加工回数を検索して取得する
+ 				String sql0 = "SELECT COUNT(*) FROM history WHERE project_id = ?";
+ 				PreparedStatement pStmt0 = conn.prepareStatement(sql0);
+ 				int count;
+ 				
+ 				pStmt0.setInt(1, h.getProject_id());
+ 				// sqlを実行し、取得した回数を格納する
+ 				count = pStmt0.executeUpdate();
+ 				// 回数に1加える
+ 				count += 1;
+ 				
+ 				// コンソールで確認
+ 				System.out.println(count);
+ 				// 次にデータを登録する
  				String sql = "INSERT INTO history (user_id, editedimage_url, process_count, project_id, voice_id, caption, processing_date) VALUES (?, ?, ?, ?, 1, ?, NOW())";
  				PreparedStatement pStmt = conn.prepareStatement(sql);
  				
  				// SQL文を完成させる
- 				if (h.getUserId() != null) {
- 					pStmt.setString(1, h.getUserId());
+ 				if (h.getUser_id() != null) {
+ 					pStmt.setString(1, h.getUser_id());
  				} else {
  					pStmt.setString(1, "");
  				}
- 				if (pIm.getImageUrl() != null) {
- 					pStmt.setString(2, pIm.getImageUrl());
+ 				if (h.getEditedimage_url() != null) {
+ 					pStmt.setString(2, h.getEditedimage_url());
  				} else {
  					pStmt.setString(2, "");
  				}
- 					pStmt.setInt(3, pIm.getNumber());
- 				if (pIm.getTheme() != null) {
- 						pStmt.setString(4, pIm.getTheme());
- 				} else {
- 					pStmt.setString(4, "");				
- 				}
- 				
+ 				pStmt.setInt(3, count);
+ 				pStmt.setInt(4, h.getProject_id());
+ 				pStmt.setString(5, h.getCaption());
  				
  				// SQL文を実行する
  				if (pStmt.executeUpdate() == 1) {
  					result = true;
  				}
+ 				// コンソール確認用
+ 				System.out.println(result);
  				
  			} catch (SQLException e) {
  				e.printStackTrace();
