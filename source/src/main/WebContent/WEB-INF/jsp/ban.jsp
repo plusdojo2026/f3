@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,33 +21,27 @@
 		</div>
 	</div>
 	<!-- ここにc:forEach -->
-	<div class="reportlist">
-		<img src="images/ログアウト.png" class="img"><!-- ここにc:forEach -->
-		<input type="text" name="caption" value="テストです">
-		<button type="button" onclick="playAudio()" class="voice">
-			<img src="images/再生ボタン.png" class="voice" alt="再生ボタン">
-		</button>
-		<input type="text" name="report" value="通報理由">
-		<button type="submit" name="ban" class="banbuttun" value="BAN">
-			<img src="images/BAN.png" class="ban" alt="BANボタン">
-		</button>
-	</div>
-	<div class="reportlist">
-		<img src="images/ログアウト.png" class="img"><!-- ここにc:forEach -->
-		<input type="text" name="caption" value="テストです">
-		<button type="button" onclick="playAudio()" class="voice">
-			<img src="images/再生ボタン.png" class="voice" alt="再生ボタン">
-		</button>
-		<input type="text" name="report" value="通報理由">
-		<button type="submit" name="ban" class="banbuttun" value="BAN">
-			<img src="images/BAN.png" class="ban" alt="BANボタン">
-		</button>
-	</div>
+	<c:forEach var="e" items="${ReportList}">
+		<div class="reportlist">
+			<img src="{e.imageUrl}" class="img">
+			<input type="text" name="caption" value="${e.caption}">
+			<button type="button" onclick="playAudio('${e.voiceUrl}')" class="voice">
+				<img src="images/再生ボタン.png" class="voice" alt="再生ボタン">
+			</button>
+			<input type="text" name="report" value="${e.reason}">
+			<form action="/f3/BanServlet" method="post">
+			<input type="hidden" name="userId" value="${e.userId}">
+			<button type="submit" name="ban" class="banbuttun" value="BAN">
+				<img src="images/BAN.png" class="ban" alt="BANボタン">
+			</button>
+			</form>
+		</div>
+	</c:forEach>
+	
 	
 <script>
-const audio = new Audio("voices/jingle_22.mp3");
-
-function playAudio() {
+function playAudio(url) {
+	const audio = new Audio(url);
     audio.currentTime = 0; 
     audio.play();
 }

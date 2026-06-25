@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 
@@ -49,7 +49,7 @@
 				<div class="slideshow" id="slide_size">
 					<div class="image_box">
 						<!-- 最初の画像 -->
-						<img id="main_image" src="${historyList[0].editedimage_url}">
+						<img id="main_image" src="${detail[0].imageUrl}">
 					</div>
 				</div>
 			</section>
@@ -121,10 +121,12 @@
 		<div class="bottomArea">
 			<!--キャプション -->
 			<section>
-				<div class="caption">
-					${historyList[fn:length(historyList)-1].caption}
+			<c:if test="${not empty detail }">
+				<div class="caption" id ="caption">
+					${detail[0].caption}
 					<!-- <input type="text" value="キャプション"> -->
 				</div>
+			</c:if>
 			</section>
 
 		</div>
@@ -186,7 +188,7 @@
 	    	'愚者は好きだ。チャンスをやってもどうせ同じ失敗をする。','砂に書いた「いいね」は波にさらわれる。覚えておきなさい。','ハァハァ……どんな拷問をやろうが……無駄だぜ……ハァハァ……「こわいいね」を……飲まされねぇかぎり……俺はぜってえ吐かねぇ。',
 	    	'欺瞞の匂いがするわ。','予言してあげる。「きもいいね」を押した人は必ず死ぬわ。','今のトレンドは「きもいいね」なの。','Repeat after me. Kimo I Ine!','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',];
 
-	    // いいねが押された時の処理
+	    /*/ いいねが押された時の処理
 	    document.getElementById('b').onclick = function() {
 	    // 0~9までの整数のどれか
 	    let reconsider = Math.floor(Math.random() * 10);
@@ -199,21 +201,21 @@
 	            } else {
 	                // ユーザーの選択がそのまま送信される処理
 	            }
-	        }
+	        }*/
 	    
 	 	// Servletから渡された画像一覧
 	    const images = [
-	    <c:forEach items="${historyList}" var="h">
-	        "${h.editedimage_url}",
+	    <c:forEach items="${detail}" var="h">
+	        "${h.imageUrl}",
 	    </c:forEach>
 	    ];
 
-	    /*// キャプション一覧
+	    // キャプション一覧
 	    const captions = [
-	    <c:forEach items= "${historyList}" var="h">
+	    <c:forEach items= "${detail}" var="h">
 	        "${h.caption}",
 	    </c:forEach>
-	    ];*/
+	    ];
 
 	    let current = 0;
 
@@ -231,11 +233,14 @@
 	            document.getElementById("caption").innerHTML = captions[current];
 	        }
 	    }
+	    console.log(document.getElementById("slide_size"));
 
 	    // スライド部分クリック
-	    document.getElementById("slide_size").onclick = function(event){
+	    document.getElementById("main_image").onclick = function(event){
+	    	const width = this.clientWidth;
+
 	        // 左半分クリック
-	        if(event.offsetX < 300){
+	        if(event.offsetX <width/2){
 	            // 前へ
 	            changeImage(-1);
 	        }else{
@@ -243,6 +248,14 @@
 	            // 次へ
 	            changeImage(1);
 	        }
+	    };
+	    console.log("script loaded");
+
+	    const slide = document.getElementById("slide_size");
+	    console.log(slide);
+
+	    slide.onclick = function(event){
+	        console.log("clicked");
 	    };
 	</script>
 
