@@ -13,6 +13,11 @@ body {
     /*スクロールしても背景固定？*/
     margin: 0;
 }
+#main_image{
+    width: 700px;
+    height: 500px;
+    object-fit: cover;
+}
 .title1{
 	color:white;
 	font-size:50px;

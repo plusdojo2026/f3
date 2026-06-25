@@ -1,7 +1,9 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.BanDao;
+import dto.Reportlist;
 
 /**
  * Servlet implementation class BanServlet
@@ -48,6 +51,15 @@ public class BanServlet extends HttpServlet {
 		request.getRequestDispatcher("/WEB-INF/jsp/ban.jsp")
 		.forward(request, response);
 	
+	}
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		BanDao dao = new BanDao();
+		List<Reportlist> reportList = dao.ReportList();
+		request.setAttribute("ReportList", reportList);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/ban.jsp");
+		dispatcher.forward(request, response);
+
 	}
 
 }

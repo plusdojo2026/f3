@@ -66,15 +66,18 @@
 	<div class="content">
 
 		<!--作品画像サムネ -->
-		<form method="GET" action="/f3/DetailServlet">
+		
 		<c:forEach var="r" items="${cardList}">
+			<form method="GET" action="/f3/DetailServlet">
 			<div class="thumbnail">
-			<a href=/f3/DetailServlet >
+			<input type="hidden" name="projectId" value = "${r.projectId}">
+			<button type = "submit">
 				<img src="${r.thumbnailUrl}"width="200">
-					</a>
+			</button>		
 			</div>
+			</form>
 		</c:forEach>
-		</form>
+		
 	</div>
 	<div class="evaluate">
 		<!-- いいねボタン-->
