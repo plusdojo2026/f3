@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.ReportDao;
+import dto.Report;
 
 /**
  * Servlet implementation class ReportServlet
@@ -43,16 +44,17 @@ public class ReportServlet extends HttpServlet {
 		// リクエストパラメーターを取得する
 		String reason = request.getParameter("reason");
 		//リレーIDについてはProcessingRelayServlet完成後に書け
+		HttpSession session = request.getSession();
+		int relayId = (int) session.getAttribute("relay_id");
 		
 		// セッションスコープでユーザーIDを取得する
-		HttpSession session = request.getSession(false);
 		
 		if (session == null) {
 			response.sendRedirect("/f3/LoginServlet");
 			return;
 		}
 		
-		String userId = (String) session.getAttribute("userId");
+		String userId = (String) session.getAttribute("user_id");
 		if(userId == null) {
 			response.sendRedirect("/f3/LoginServlet");
 			return;
@@ -60,7 +62,7 @@ public class ReportServlet extends HttpServlet {
 		
 		// Daoを使って上記の変数をデータベースに登録する
 		ReportDao rDao = new ReportDao();
-		boolean result = rDao.insert(new Report(0, relayId, userId, reason, "yyyy-MM-dd HH:mm:ss"))
+		boolean result = rDao.insert(new Report(0, relayId, userId, reason, "yyyy-MM-dd HH:mm:ss"));
 	}
 
 }
