@@ -36,7 +36,14 @@ public class CheckServlet extends HttpServlet {
 		
 		System.out.println("admin_id=" + session.getAttribute("admin_id"));
 		
-		int admin_id = (int)session.getAttribute("admin_id");
+		
+		Integer admin_id = (Integer) session.getAttribute("admin_id");
+
+		if (admin_id == null) {
+		    System.out.println("admin_idがありません");
+		    response.sendRedirect("/f3/AdminLoginServlet");
+		    return;
+		}
 		int project_id = Integer.parseInt(request.getParameter("project_id"));
 		String user_id = request.getParameter("user_id");
 		String source = request.getParameter("source");

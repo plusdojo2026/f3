@@ -24,7 +24,7 @@ public class BanDao {
             
             String sql = "SELECT r.report_id,r.reason,r.report_time,rl.relay_id, "
             	 +"rl.process_count,rl.redraw_count,rl.relay_image_url, "
-            	+"h.work_id,h.editedimage_url,h.caption,v.voice_url r.user_id "
+            	+"h.work_id,h.editedimage_url,h.caption,v.voice_url ,r.user_id "
             	 +"FROM report r INNER JOIN relay rl ON r.relay_id = "
             	+"rl.relay_id LEFT JOIN history h ON h.project_id = "
             	+"rl.project_id AND h.process_count = rl.process_count "
