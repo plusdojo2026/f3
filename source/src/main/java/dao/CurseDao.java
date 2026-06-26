@@ -20,8 +20,8 @@ public class CurseDao {
 
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/f3?"
-				+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-				"root", "password");
+				+ "characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
+				"f3", "3MY7eT2zLbU8GDVm");
 			
 			// 呪い情報登録SQL
 			String sql ="INSERT INTO curse (project_id,user_id,raw_image_url) VALUES(?,?,?)";
@@ -76,8 +76,8 @@ public class CurseDao {
 
 			// データベースに接続する
 						conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/f3?"
-								+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-								"root", "password");
+								+ "characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
+								"f3", "3MY7eT2zLbU8GDVm");
 
 			// 対象ユーザーの呪い取得
 			String sql ="SELECT * FROM curse WHERE user_id = ?";
@@ -142,8 +142,8 @@ public class CurseDao {
 
 	     // データベースに接続する
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/f3?"
-					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-					"root", "password");
+					+ "characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
+					"f3", "3MY7eT2zLbU8GDVm");
 
 	        String sql ="UPDATE curse SET curse_flg = FALSE WHERE curse_id = ?";
 
