@@ -88,6 +88,17 @@ public class RelayDao {
                 }
             } else {
                 System.out.println("relayなし");
+                relay = new Relay();
+
+                relay.setRelay_id(1);
+                relay.setUser_id(userId);
+                relay.setProcess_count(1);
+                relay.setProject_id(1);
+                relay.setRedraw_count(3);
+                relay.setRelay_image_url("images/test_edit2.jpg");
+                System.out.println(relay);
+
+                
             }
 
         } catch (Exception e) {
