@@ -68,7 +68,7 @@ color: white;
     <span class="close-button"
     onclick="document.getElementById('popupFlag').checked = false;">×</span>
     <h3 style="color: white">通報内容</h3>
-    <input type="text" maxlength="50" name="reason">
+    <input type="text" maxlength="50" name="reason" style="width: 100%; max-width: 100%">
     <input type="submit" value="送信">
     </form>
 </div>
@@ -85,19 +85,19 @@ color: white;
 <img src="/f3/css/images/processKind2.png" alt="加工種類の背景" style="z-index: 900;">
 <div class="pTag" style="position: absolute; z-index: 902; left: 4vw; top: 4vh;">
 <label><input type="radio" id=kind1 style="" name="kind" value="1">フィルム加工</label><br>
-<label><input type="radio" id=kind2 style="" name="kind" value="2">ケージ変形</label><br>
+<label><input type="radio" id=kind2 style="color:red" name="kind" value="2">COMING SOON</label><br>
 <label><input type="radio" id=kind3 style="" name="kind" value="3">モザイク</label><br>
-<label><input type="radio" id=kind4 style="" name="kind" value="4">拡大・縮小</label><br>
-<label><input type="radio" id=kind5 style="" name="kind" value="5">背景透過</label><br>
+<label><input type="radio" id=kind4 style="color:red" name="kind" value="4">COMING SOON</label><br>
+<label><input type="radio" id=kind5 style="color:red" name="kind" value="5">COMING SOON</label><br>
 <label><input type="radio" id=kind6 style="" name="kind" value="6">サンプル画像と合成</label><br>
-<label><input type="radio" id=kind7 style="" name="kind" value="7">消しゴムマジック</label><br>
-<label><input type="radio" id=kind8 style="" name="kind" value="8">3Dデータと合成</label><br>
-<label><input type="radio" id=kind9 style="" name="kind" value="9">エフェクト</label><br>
+<label><input type="radio" id=kind7 style="color:red" name="kind" value="7">COMING SOON</label><br>
+<label><input type="radio" id=kind8 style="color:red" name="kind" value="8">COMING SOON</label><br>
+<label><input type="radio" id=kind9 style="color:red" name="kind" value="9">COMING SOON</label><br>
 <label><input type="radio" id=kind10 style="" name="kind" value="10">吹き出し</label><br>
-<label><input type="radio" id=kind11 style="" name="kind" value="11">ぼかし</label><br>
-<label><input type="radio" id=kind12 style="" name="kind" value="12">明るさ変更</label><br>
+<label><input type="radio" id=kind11 style="color:red" name="kind" value="11">COMING SOON</label><br>
+<label><input type="radio" id=kind12 style="color:red" name="kind" value="12">COMING SOON</label><br>
 <label><input type="radio" id=kind13 style="" name="kind" value="13">お絵描き</label><br>
-<label><input type="radio" id=kind14 style="" name="kind" value="14">画像ランダム変化</label>
+<label><input type="radio" id=kind14 style="color:red" name="kind" value="14">COMING SOON</label>
 </div>
 </div>
 
@@ -141,7 +141,7 @@ style="position: absolute; width: 10%; height: auto; left: 80%; top: 80%;">
 
 <div class="caption" style="position: relative; top: 77vh; left: 30vw;">
 <img src="/f3/css/images/proCaption.png" alt="キャプションボックス画像" style="position: absolute; width: 20vw; height: auto;">
-<input id="caption" type="text" maxlength="100" name="caption" placeholder="キャプション" style="position: absolute; top: 4vh; left: 3vw">
+<input id="caption" type="text" maxlength="100" minlength="1" name="caption" placeholder="キャプションを1文字以上入力してください" style="position: absolute; top: 4vh; left: 3vw">
 </div>
 </form>
 
