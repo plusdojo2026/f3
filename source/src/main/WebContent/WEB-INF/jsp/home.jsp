@@ -41,7 +41,7 @@
 
 				<button type="button" onclick="closeNotice()">閉じる</button>
 			</div>
-			<form action="ProcessingServlet" method="post">
+			<form action="/f3/ProcessingServlet"  id ="process">
 
 			    <input type="hidden" name="relayId" value="${relay.relay_id}">
 			
@@ -94,6 +94,14 @@
 		function closeNotice(){
 		    document.getElementById("noticeModal").style.display = "none";
 		}
+		document.getElementById("process").addEventListener("submit", function(e) {
+		    const img = document.getElementById("image");
+
+		    if (img.src.includes("test_edit2.jpg")) {
+		        alert("この画像では送信できません。");
+		        e.preventDefault(); // form送信を止める
+		    }
+		});
 	</script>
 </body>
 </html>
