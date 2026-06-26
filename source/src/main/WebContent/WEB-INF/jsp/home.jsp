@@ -21,7 +21,7 @@
 			<a href="/f3/LoginServlet"><img src="/f3/css/images/home/ログインボタン.png" width="110" height="130" alt=""></a>
 			<a href="/f3/LogoutServlet"><img src="/f3/css/images/home/ログアウト.png" width="110" height="130" alt=""></a>
 			<!-- 通知 -->
-			<a href="javascript:void(0);" onclick="openNotice()"><img src="/f3/css/images/home/デべそ.png" width="140" height="120" alt="" class="right"></a>
+			<a href="/f3/NoticeSerclet" onclick="openNotice();return false;"><img src="/f3/css/images/home/デべそ.png" width="140" height="120" alt="" class="right"></a>
 		</div>
 		<h1>異物クロニクル</h1>
 		<h2>異物クロニクル</h2>
@@ -31,7 +31,17 @@
 	<main>
 	<!-- 画像がくる -->
 		<div class="form">
-			<form action="/f3/ProcessingServlet">
+			<div id="noticeModal" style="display: none;">
+				<h3>通知一覧</h3>
+
+				<c:forEach var="e" items="${noticelist}">
+					<div>${e.content}</div>
+					<hr>
+				</c:forEach>
+
+				<button type="button" onclick="closeNotice()">閉じる</button>
+			</div>
+			<form action="ProcessingServlet" method="post">
 
 			    <input type="hidden" name="relayId" value="${relay.relay_id}">
 			

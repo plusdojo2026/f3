@@ -17,9 +17,9 @@ public class BanDao {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/f3?characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9",
-                "root",
-                "password"
+                "jdbc:mysql://localhost:3306/f3?characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=GMT%2B9",
+                "f3",
+                "3MY7eT2zLbU8GDVm"
             );
             
             String sql = "SELECT r.report_id,r.reason,r.report_time,rl.relay_id, "
@@ -60,8 +60,8 @@ public class BanDao {
 			
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/f3?"
-					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-					"root", "password");
+					+ "characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
+					"f3", "3MY7eT2zLbU8GDVm");
 			//BANをtrueにする
 			String sql ="UPDATE users SET ban = TRUE WHERE user_id = ?";
 				//SQLの準備
