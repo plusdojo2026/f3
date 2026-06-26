@@ -25,8 +25,8 @@ public class HistoryDao {
             
             // データベースに接続
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/f3?"
-    				+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-    				"root", "password");
+    				+ "characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
+    				"f3", "3MY7eT2zLbU8GDVm");
             
            
             // SELECT文を準備する
@@ -86,8 +86,8 @@ public class HistoryDao {
  				Class.forName("com.mysql.cj.jdbc.Driver");
 
  				// データベースに接続する
- 				conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/f3?characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
- 						"root", "password");
+ 				conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/f3?characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
+ 						"f3", "3MY7eT2zLbU8GDVm");
  				
  				// SQL文を準備する
  				// まずは加工回数を検索して取得する
