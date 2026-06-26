@@ -22,9 +22,9 @@ public class ReviewDao {
 
             conn = DriverManager.getConnection(
                 "jdbc:mysql://localhost:3306/f3?"
-                + "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-                "root",
-                "password"
+                + "characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
+                "f3",
+                "3MY7eT2zLbU8GDVm"
             );
             String sql = "SELECT p.image_url AS image_url,NULL AS voice_url, NULL AS caption,0 AS sort_order "
             			+"FROM projects p WHERE p.project_id = ? UNION ALL SELECT "
@@ -68,8 +68,8 @@ public class ReviewDao {
 
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/f3?"
-					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-					"root", "password");
+					+ "characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
+					"f3", "3MY7eT2zLbU8GDVm");
 			// SQL文を準備する //重複削除DISTINCT
 			String sql = "SELECT * FROM review";
 					
