@@ -21,7 +21,7 @@ public class UsersDao {
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/f3?"
 					+ "characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-					"root", "password");
+					"f3", "3MY7eT2zLbU8GDVm");
 
 			// SELECT文を準備する
 			String sql = "SELECT count(*) FROM users WHERE user_id=? AND password=? AND  ban = FALSE";
@@ -71,8 +71,8 @@ public class UsersDao {
 
 				// データベースに接続する
 				conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/f3?"
-						+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-						"root", "password");
+						+ "characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
+						"f3", "3MY7eT2zLbU8GDVm");
 				
 				String sql ="INSERT INTO users (user_id,user_name,password,email) VALUES(?,?,?,?)";
 				
@@ -124,8 +124,8 @@ public class UsersDao {
 
 				// DB接続
 				conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/f3?"
-						+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-						"root", "password");
+						+ "characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
+						"f3", "3MY7eT2zLbU8GDVm");
 
 				// SQL
 				String sql ="SELECT COUNT(*) FROM users WHERE user_id = ?";
@@ -173,8 +173,8 @@ public class UsersDao {
 
 				// データベースに接続する
 				conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/f3?"
-						+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-						"root", "password");
+						+ "characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
+						"f3", "3MY7eT2zLbU8GDVm");
 
 				// SQL文を準備する
 				String sql = "UPDATE users SET user_name=?, email=? , user_id=? , password=? WHERE user_id=?";
@@ -229,8 +229,8 @@ public class UsersDao {
 
 				// データベースに接続する
 				conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/f3?"
-						+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-						"root", "password");
+						+ "characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
+						"f3", "3MY7eT2zLbU8GDVm");
 
 				// SQL文を準備する
 				String sql = "DELETE FROM users WHERE user_id=?";
