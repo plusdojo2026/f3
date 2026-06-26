@@ -20,9 +20,9 @@ public class CensorshipDao {
 
             conn = DriverManager.getConnection(
                 "jdbc:mysql://localhost:3306/f3?"
-                + "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-                "root",
-                "password"
+                + "characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
+                "f3",
+                "3MY7eT2zLbU8GDVm"
             );
             String sql;
             int count;
@@ -86,9 +86,9 @@ public class CensorshipDao {
 
             conn = DriverManager.getConnection(
                 "jdbc:mysql://localhost:3306/f3?"
-                + "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-                "root",
-                "password"
+                + "characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
+                "f3",
+                "3MY7eT2zLbU8GDVm"
             );
             String sql;
             String imageUrl = null;
@@ -293,9 +293,9 @@ public class CensorshipDao {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/f3?characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9",
-                "root",
-                "password"
+                "jdbc:mysql://localhost:3306/f3?characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=GMT%2B9",
+                "f3",
+                "3MY7eT2zLbU8GDVm"
             );
             String sql ="select p.project_id,p.user_id,p.image_url,NULL as voice_url,NULL as caption,'project' as source "
             		+"from projects p where not exists(select 1 from censorship c where c.project_id = p.project_id and c.user_id = p.user_id) "
