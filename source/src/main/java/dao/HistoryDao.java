@@ -93,18 +93,21 @@ public class HistoryDao {
  				// まずは加工回数を検索して取得する
  				String sql0 = "SELECT COUNT(*) FROM history WHERE project_id = ?";
  				PreparedStatement pStmt0 = conn.prepareStatement(sql0);
- 				int count;
+ 				int count = 0;
  				
  				pStmt0.setInt(1, h.getProject_id());
  				// sqlを実行し、取得した回数を格納する
- 				count = pStmt0.executeUpdate();
+ 				ResultSet rs = pStmt0.executeQuery();
+ 				if(rs.next()) {
+ 					count = rs.getInt(1);
  				// 回数に1加える
- 				count += 1;
+ 	 				count += 1;
+ 				}
+ 					
  				
- 				// コンソールで確認
- 				System.out.println(count);
+ 				
  				// 次にデータを登録する
- 				String sql = "INSERT INTO history (user_id, editedimage_url, process_count, project_id, voice_id, caption, processing_date) VALUES (?, ?, ?, ?, 1, ?, NOW())";
+ 				String sql = "INSERT INTO history (work_id, user_id, editedimage_url, process_count, project_id, voice_id, caption, processing_date) VALUES (0, ?, ?, ?, ?, 1, ?, NOW())";
  				PreparedStatement pStmt = conn.prepareStatement(sql);
  				
  				// SQL文を完成させる
