@@ -9,10 +9,10 @@ import dto.Relay;
 
 public class RelayDao {
 
-    private static final String URL ="jdbc:mysql://localhost:3306/f3?characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Tokyo";
+    private static final String URL ="jdbc:mysql://localhost:3306/f3?characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Tokyo";
 
-    private static final String USER = "root";
-    private static final String PASS = "password";
+    private static final String USER = "f3";
+    private static final String PASS = "3MY7eT2zLbU8GDVm";
 
 
     
