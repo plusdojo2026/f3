@@ -22,8 +22,8 @@ public class NoticeDao {
 
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/f3?"
-					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-					"root", "password");
+					+ "characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
+					"f3", "3MY7eT2zLbU8GDVm");
 
 			// SELECT文を準備する
 			String sql = "SELECT content FROM notice WHERE user_id=? ";
