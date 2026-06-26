@@ -56,8 +56,24 @@ color: white;
 <p>${sessionScope.deadline_at}</p>
 </div>
 
+<!-- 通報 -->
+<label for="popupFlag" id="reportMark">通報</label>
 
-<form action="ProcessingServlet" method="POST" id="proForm" enctype="multipart/form-data">
+<input type="checkbox" id="popupFlag" style="display:none">
+
+<div class="popup-background"></div>
+
+<div id="popwin" class="popup">
+<form action="/f3/ReportServlet" method="post">
+    <span class="close-button"
+    onclick="document.getElementById('popupFlag').checked = false;">×</span>
+    <h3 style="color: white">通報内容</h3>
+    <input type="text" maxlength="50" name="reason">
+    <input type="submit" value="送信">
+    </form>
+</div>
+
+<form action="/f3/ProcessingServlet" method="POST" id="proForm">
 <!-- Canvas -->
 <canvas id="canvas" width="700" height="400" style="border:3px solid black; padding: 0;"></canvas>
 <img id="baseImage" src="${sessionScope.relay_image_url}" style="display:none;">
@@ -117,25 +133,10 @@ color: white;
 
 
 
-<!-- 通報 -->
-<label for="popupFlag" id="reportMark">通報</label>
 
-<input type="checkbox" id="popupFlag" style="display:none">
-
-<div class="popup-background"></div>
-
-<div id="popwin" class="popup">
-    <span class="close-button"
-    onclick="document.getElementById('popupFlag').checked = false;">×</span>
-    <h3 style="color: white">通報内容</h3>
-    <input type="text" maxlength="50" name="reason">
-    <input type="submit" value="送信">
-    
-</div>
 
 <!-- 加工終了ボタン -->
 <img id="complete" src="/f3/css/images/completePro.png" 
-onclick="submitCanvas(); document.getElementById('proForm').submit();" 
 style="position: absolute; width: 10%; height: auto; left: 80%; top: 80%;">
 
 <div class="caption" style="position: relative; top: 77vh; left: 30vw;">
@@ -555,10 +556,14 @@ function enableDraw() {
 }
 
 // canvasの内容を提出する
+document.getElementById("complete").addEventListener("click", function() {
+    submitCanvas();
+    document.getElementById("proForm").submit();
+});
 function submitCanvas() {
 	const dataURL = canvas.toDataURL("image/png");
 	document.getElementById("canvasImage").value = dataURL;
-	
+	console.log("送信するimage:", dataURL.length);
 }
 
 // 録音機能
